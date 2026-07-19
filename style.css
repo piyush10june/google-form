@@ -1305,3 +1305,230 @@ tbody tr:hover {
     margin-right: 6px;
     transform: scale(1.1);
 }
+
+.section-title {
+    text-align: center;
+    color: #fcfefb;
+    margin: 30px 0 20px;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.horoscope-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    table-layout: fixed;
+}
+
+.horoscope-table th,
+.horoscope-table td {
+    border: 1px solid #555;
+    padding: 10px;
+    vertical-align: top;
+}
+
+.horoscope-table th {
+    background: #dce7f5;
+    text-align: center;
+    font-weight: bold;
+}
+
+.horoscope-table td {
+    min-height: 80px;
+    height: 80px;
+}
+
+.horoscope-table td:first-child {
+    text-align: center;
+    font-weight: bold;
+}
+
+.horoscope-table small {
+    font-style: italic;
+    color: #555;
+}
+
+.horoscope-table td:nth-child(3),
+.horoscope-table td:nth-child(4),
+.horoscope-table td:nth-child(5),
+.horoscope-table td:nth-child(6) {
+    background: #fffdf7;
+}
+
+.dob-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    table-layout: fixed;
+}
+
+.dob-table th,
+.dob-table td {
+    border: 1px solid #555;
+    padding: 10px;
+    vertical-align: top;
+}
+
+.dob-table th {
+    background: #dce7f5;
+    text-align: center;
+    font-weight: bold;
+}
+
+.dob-table td {
+    height: 60px;
+}
+
+.dob-table td:first-child {
+    font-weight: bold;
+    background: #fafafa;
+}
+
+.dob-table td:nth-child(2),
+.dob-table td:nth-child(3),
+.dob-table td:nth-child(4),
+.dob-table td:nth-child(5) {
+    background: #fffdf7;
+}
+
+.section-title {
+    text-align: center;
+    color: #fffefd;
+    font-size: 28px;
+    margin: 30px 0 20px;
+}
+
+.palmistry-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    table-layout: fixed;
+}
+
+.palmistry-table th,
+.palmistry-table td {
+    border: 1px solid #555;
+    padding: 10px;
+    vertical-align: top;
+}
+
+.palmistry-table th {
+    background: #dce7f5;
+    text-align: center;
+    font-weight: bold;
+}
+
+.palmistry-table td {
+    height: 70px;
+}
+
+.palmistry-table td:first-child {
+    text-align: center;
+    font-weight: bold;
+}
+
+.palmistry-table td:nth-child(2) {
+    font-weight: bold;
+    background: #fafafa;
+}
+
+.palmistry-table td:nth-child(3),
+.palmistry-table td:nth-child(4),
+.palmistry-table td:nth-child(5),
+.palmistry-table td:nth-child(6) {
+    background: #fffdf7;
+}
+
+.section-title {
+    text-align: center;
+    color: #faf9f7;
+    font-size: 28px;
+    margin: 30px 0 20px;
+}
+
+.home-study-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin-top: 20px;
+}
+
+.home-study-table th,
+.home-study-table td {
+    border: 1px solid #555;
+    padding: 10px;
+    vertical-align: top;
+}
+
+.home-study-table th {
+    background: #dce7f5;
+    text-align: center;
+    font-weight: bold;
+}
+
+.home-study-table td {
+    height: 65px;
+}
+
+.home-study-table td:first-child {
+    background: #fafafa;
+    font-weight: bold;
+}
+
+.home-study-table td:nth-child(2),
+.home-study-table td:nth-child(3),
+.home-study-table td:nth-child(4),
+.home-study-table td:nth-child(5) {
+    background: #fffdf7;
+}
+
+.section-title {
+    text-align: center;
+    color: #f7f6f5;
+    font-size: 28px;
+    margin: 30px 0 20px;
+}
+
+.report-card {
+
+    width: 92%;
+    max-width: 1200px;
+
+    margin: 45px auto;
+
+    background: #fff;
+
+    border-radius: 18px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, .08);
+
+    overflow: hidden;
+
+}
+
+.report-card .table-wrapper {
+
+    padding: 30px;
+
+}
+
+.report-card .section-title {
+
+    margin: 0;
+
+}
+
+.table-wrapper {
+
+    padding: 30px;
+
+}
+
+.sunny {
+    display: flex;
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    margin: 40px 0;
+}
