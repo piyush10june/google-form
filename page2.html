@@ -2060,6 +2060,157 @@
 
             </div>
 
+            <!-- ================= PRAKRITI SUMMARY ================= -->
+
+            <div class="prakriti-summary">
+
+                <h2 class="prakriti-heading">
+                    Evaluating Prakriti of Person to Know Self Well to Excel
+                </h2>
+
+                <table class="prakriti-table">
+
+                    <thead>
+                        <tr>
+                            <th>Observation</th>
+                            <th>Air</th>
+                            <th>Fire</th>
+                            <th>Water</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td><b>Body Weight</b></td>
+
+                            <td><input type="radio" name="bodyWeight" value="Air"> F: 50–55 kg<br>M: 55–65 kg
+                            </td>
+
+                            <td><input type="radio" name="bodyWeight" value="Fire"> F: 55–70 kg<br>M: 65–75 kg</td>
+
+                            <td><input type="radio" name="bodyWeight" value="Water"> F: 70–75 kg<br>M: 75–85 kg</td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Nose</b></td>
+
+                            <td><input type="radio" name="nose" value="Air"> Thin</td>
+
+                            <td><input type="radio" name="nose" value="Fire"> Straight</td>
+
+                            <td><input type="radio" name="nose" value="Water"> Broad</td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Teeth</b></td>
+
+                            <td><input type="radio" name="teeth" value="Air"> Small, Pale, Irregular</td>
+
+                            <td><input type="radio" name="teeth" value="Fire"> Medium, Pale, Regular</td>
+
+                            <td><input type="radio" name="teeth" value="Water"> Big, White</td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Nails</b></td>
+
+                            <td><input type="radio" name="nails" value="Air"> Brittle, Small</td>
+
+                            <td><input type="radio" name="nails" value="Fire"> Soft, Pink, Medium</td>
+
+                            <td><input type="radio" name="nails" value="Water"> Big, Thick</td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Skin</b></td>
+
+                            <td><input type="radio" name="skin" value="Air"> Dry</td>
+
+                            <td><input type="radio" name="skin" value="Fire"> Normal</td>
+
+                            <td><input type="radio" name="skin" value="Water"> Oily</td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Taste</b></td>
+
+                            <td><input type="radio" name="taste" value="Air"> Sour &amp; Bitter</td>
+
+                            <td><input type="radio" name="taste" value="Fire"> Spicy &amp; Sweet</td>
+
+                            <td><input type="radio" name="taste" value="Water"> Sweets</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+                <div class="photo-boxes">
+
+                    <!-- Passport Photo -->
+                    <div class="field full-width">
+                        <label>body photo <span>*</span></label>
+
+                        <div id="passportPhotoContainer">
+                            <input type="file" name="passportPhoto[]"
+                                accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf" required>
+                        </div>
+
+                        <button type="button" class="add-btn"
+                            onclick="addFileField('passportPhotoContainer','passportPhoto[]',true)">
+                            + Add More
+                        </button>
+                    </div>
+
+                    <!-- Profile Photo -->
+                    <div class="field full-width">
+                        <label>face Photo <span>*</span></label>
+
+                        <div id="profilePhotoContainer">
+                            <input type="file" name="profilePhoto[]"
+                                accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf" required>
+                        </div>
+
+                        <button type="button" class="add-btn"
+                            onclick="addFileField('profilePhotoContainer','profilePhoto[]',true)">
+                            + Add More
+                        </button>
+                    </div>
+
+                    <!-- Teeth Photo -->
+                    <div class="field full-width">
+                        <label>Teeth Photo</label>
+
+                        <div id="teethPhotoContainer">
+                            <input type="file" name="teethPhoto[]"
+                                accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf">
+                        </div>
+
+                        <button type="button" class="add-btn"
+                            onclick="addFileField('teethPhotoContainer','teethPhoto[]')">
+                            + Add More
+                        </button>
+                    </div>
+
+                    <!-- Nail Photo -->
+                    <div class="field full-width">
+                        <label>Nail Photo</label>
+
+                        <div id="nailPhotoContainer">
+                            <input type="file" name="nailPhoto[]"
+                                accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf">
+                        </div>
+
+                        <button type="button" class="add-btn"
+                            onclick="addFileField('nailPhotoContainer','nailPhoto[]')">
+                            + Add More
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
 
 
             <div style="display:flex; justify-content:space-between; margin:40px 0;">
@@ -2075,6 +2226,7 @@
             </div>
 
         </div>
+
 
     </div>
 
