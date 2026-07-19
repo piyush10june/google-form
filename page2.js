@@ -8,10 +8,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const radios = document.querySelectorAll('input[type="radio"]');
 
     radios.forEach(radio => {
-        radio.addEventListener("change", updateScore);
+
+        radio.addEventListener("change", function () {
+
+            updateScore();         // Five Elements
+            updatePlanetScore();   // Planet Quiz
+            updateGunaScore();     // Guna Quiz
+            updateElementBalanceScore(); // Element Balance
+
+        });
+
     });
 
     updateScore();
+    updatePlanetScore();
+    updateGunaScore();
+    updateElementBalanceScore(); // Element Balance
 
 });
 
@@ -47,8 +59,11 @@ function updateScore() {
 
     for (let i = 1; i <= 25; i++) {
 
-        answers["q" + i] =
-            document.querySelector('input[name="q' + i + '"]:checked').value;
+        const selected = document.querySelector(
+            'input[name="fe_q' + i + '"]:checked'
+        );
+
+        answers["fe_q" + i] = selected ? selected.value : "";
 
     }
 
@@ -63,6 +78,126 @@ function updateScore() {
         JSON.stringify(answers)
     );
 
-    window.location.href = "page3.html";
+}
+
+function updatePlanetScore() {
+
+    let score = {
+        Ketu: 0,
+        Venus: 0,
+        Sun: 0,
+        Moon: 0,
+        Mars: 0,
+        Rahu: 0,
+        Jupiter: 0,
+        Saturn: 0,
+        Mercury: 0
+    };
+
+    document.querySelectorAll('input[name^="p1_q"]:checked').forEach(radio => {
+        score[radio.value]++;
+    });
+
+    document.getElementById("ketuScore").textContent = score.Ketu + " /13";
+    document.getElementById("venusScore").textContent = score.Venus + " /13";
+    document.getElementById("sunScore").textContent = score.Sun + " /13";
+    document.getElementById("moonScore").textContent = score.Moon + " /13";
+    document.getElementById("marsScore").textContent = score.Mars + " /13";
+    document.getElementById("rahuScore").textContent = score.Rahu + " /13";
+    document.getElementById("jupiterScore").textContent = score.Jupiter + " /13";
+    document.getElementById("saturnScore").textContent = score.Saturn + " /13";
+    document.getElementById("mercuryScore").textContent = score.Mercury + " /13";
+}
+
+// =====================================
+// GUNA QUIZ SCORE
+// =====================================
+
+function updateGunaScore() {
+
+    let score = {
+        Sattav: 0,
+        Rajas: 0,
+        Tamas: 0
+    };
+
+    document.querySelectorAll('input[name^="gu_q"]:checked').forEach(radio => {
+        score[radio.value]++;
+    });
+
+    document.getElementById("sattavScore").textContent = score.Sattav + " /25";
+    document.getElementById("rajasScore").textContent = score.Rajas + " /25";
+    document.getElementById("tamasScore").textContent = score.Tamas + " /25";
+}
+
+// =======================================
+// ELEMENT BALANCE QUIZ
+// =======================================
+
+function updateElementBalanceScore() {
+
+    let score = {
+        Air: 0,
+        Fire: 0,
+        Water: 0
+    };
+
+    document.querySelectorAll('input[name^="eb_q"]:checked').forEach(radio => {
+
+        score[radio.value]++;
+
+    });
+
+    document.getElementById("airElementScore").textContent =
+        score.Air + " /30";
+
+    document.getElementById("fireElementScore").textContent =
+        score.Fire + " /30";
+
+    document.getElementById("waterElementScore").textContent =
+        score.Water + " /30";
+}
+
+let currentQuiz = 0;
+
+const quizzes = document.querySelectorAll(".quiz-section");
+
+function showQuiz(index) {
+
+    quizzes.forEach(q => q.classList.remove("active"));
+
+    quizzes[index].classList.add("active");
+
+    document.getElementById("prevBtn").disabled =
+        (index === 0);
+
+    document.getElementById("nextBtn").disabled =
+        (index === quizzes.length - 1);
 
 }
+
+function nextQuiz() {
+
+    if (currentQuiz < quizzes.length - 1) {
+
+        currentQuiz++;
+
+        showQuiz(currentQuiz);
+
+    }
+
+}
+
+function previousQuiz() {
+
+    if (currentQuiz > 0) {
+
+        currentQuiz--;
+
+        showQuiz(currentQuiz);
+
+    }
+
+}
+
+showQuiz(0);
