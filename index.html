@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blueberry AstroVastu Client Form</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <form id="astroForm">
+
+        <div class="bg-logo"></div>
+
+        <div class="container">
+
+            <!-- =====================================
+             HEADER
+        ====================================== -->
+
+            <div class="top-orange"></div>
+
+            <div class="header">
+
+                <div>
+
+                    <p class="working">Working By</p>
+
+                    <h3>PIYUSH JAIN</h3>
+
+                    <p class="working">Phone Number</p>
+
+                    <h3 style="color:goldenrod;">9693701283</h3>
+
+                </div>
+
+            </div>
+
+            <hr>
+
+            <div class="payment-section">
+
+                <div class="payment-left">
+
+                    <div class="field">
+
+                        <label>Date of Form Filling <span>*</span></label>
+
+                        <input type="date" id="submissionDate" name="submissionDate" required>
+
+                    </div>
+
+                    <div class="payment-details">
+
+                        <h3>Payment Details</h3>
+
+                        <p><b>Google Pay :</b> 9693701283</p>
+
+                        <p><b>PhonePe :</b> 9693701283</p>
+
+                        <p><b>UPI ID :</b> piyush10junepriyanka@okicici</p>
+
+                    </div>
+
+                </div>
+
+                <div class="payment-right">
+
+                    <img src="images/qr.png" class="qr">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =====================================
+             PERSONAL DETAILS
+        ====================================== -->
+
+        <div class="form-card" style="background-color:#F0F7FC;">
+
+            <div class="section-title">
+
+                Personal Details
+
+            </div>
+
+            <div class="grid">
+
+                <div class="field">
+
+                    <label>Full Name <span>*</span></label>
+
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+
+                </div>
+
+                <div class="field">
+
+                    <label>Nick Name</label>
+
+                    <input type="text" id="nickName" name="nickName" placeholder="Enter your nickname">
+
+                </div>
+
+                <div class="field">
+
+                    <label>Date of Birth <span>*</span></label>
+
+                    <input type="date" id="dob" name="dob" required>
+
+                </div>
+
+                <div class="field">
+
+                    <label>Time of Birth <span>*</span></label>
+
+                    <input type="time" id="birthTime" name="birthTime" required>
+
+                </div>
+
+                <div class="field">
+
+                    <label>Birth Place <span>*</span></label>
+
+                    <input type="text" id="birthPlace" name="birthPlace" placeholder="Enter your birth place" required>
+
+                </div>
+
+                <div class="field">
+
+                    <label>Current City <span>*</span></label>
+
+                    <input type="text" id="currentCity" name="currentCity" placeholder="Enter your current city"
+                        required>
+
+                </div>
+
+                <div class="field">
+
+                    <label>What do you do? <span>*</span></label>
+
+                    <textarea id="occupation" name="occupation" placeholder="Enter your occupation" required></textarea>
+
+                </div>
+
+                <div class="field">
+
+                    <label>How do you earn money? <span>*</span></label>
+
+                    <textarea id="incomeSource" name="incomeSource" placeholder="Describe your source of income"
+                        required></textarea>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =====================================
+     NUMEROLOGY DETAILS
+===================================== -->
+
+        <div class="form-card" style="background-color:#F0F7FC;">
+
+            <div class="section-title">
+                Extra Details
+            </div>
+
+            <div class="grid">
+
+                <!-- Car Numbers -->
+                <div class="field full-width">
+                    <label>Car Number(s)</label>
+
+                    <div id="carNumbersContainer">
+                        <input type="text" name="carNumber[]" placeholder="Enter car number">
+                    </div>
+
+                    <button type="button" class="add-btn"
+                        onclick="addField('carNumbersContainer','carNumber[]','Enter car number')">
+                        + Add More
+                    </button>
+                </div>
+
+                <!-- Mobile Numbers -->
+                <div class="field full-width">
+                    <label>Mobile Number(s)</label>
+
+                    <div id="mobileNumbersContainer">
+                        <input type="tel" name="mobileNumber[]" placeholder="Enter mobile number">
+                    </div>
+
+                    <button type="button" class="add-btn"
+                        onclick="addField('mobileNumbersContainer','mobileNumber[]','Enter mobile number')">
+                        + Add More
+                    </button>
+                </div>
+
+                <!-- Email IDs -->
+                <div class="field full-width">
+                    <label>Email ID(s)</label>
+
+                    <div id="emailContainer">
+                        <input type="email" name="email[]" placeholder="Enter email address">
+                    </div>
+
+                    <button type="button" class="add-btn"
+                        onclick="addField('emailContainer','email[]','Enter email address')">
+                        + Add More
+                    </button>
+                </div>
+
+                <!-- Brand Names -->
+                <div class="field full-width">
+                    <label>Brand Name(s)</label>
+
+                    <div id="brandContainer">
+                        <input type="text" name="brandName[]" placeholder="Enter brand name">
+                    </div>
+
+                    <button type="button" class="add-btn"
+                        onclick="addField('brandContainer','brandName[]','Enter brand name')">
+                        + Add More
+                    </button>
+                </div>
+
+                <!-- Marital Status -->
+                <div class="field">
+
+                    <label>Marital Status</label>
+
+                    <select id="maritalStatus" name="maritalStatus">
+
+                        <option value="">-- Select Marital Status --</option>
+                        <option>Married</option>
+                        <option>Unmarried</option>
+                        <option>Engaged</option>
+                        <option>Divorced</option>
+                        <option>Widowed</option>
+                        <option>Separated</option>
+
+                    </select>
+
+                </div>
+
+                <!-- Office Names -->
+                <div class="field full-width">
+                    <label>Office Name(s)</label>
+
+                    <div id="officeContainer">
+                        <input type="text" name="officeName[]" placeholder="Enter office name">
+                    </div>
+
+                    <button type="button" class="add-btn"
+                        onclick="addField('officeContainer','officeName[]','Enter office name')">
+                        + Add More
+                    </button>
+                </div>
+
+                <!-- Signature Photograph -->
+                <div class="field full-width">
+
+                    <label>Signature Photograph <span>*</span></label>
+
+                    <div id="signaturePhotoContainer">
+
+                        <input type="file" name="signaturePhoto[]" accept="image/*,.pdf,.doc,.docx" required>
+
+                    </div>
+
+                    <button type="button" class="add-btn"
+                        onclick="addFileField('signaturePhotoContainer','signaturePhoto[]',true)">
+
+                        + Add More
+
+                    </button>
+
+                </div>
+
+                <!-- Business Logo -->
+                <div class="field full-width">
+
+                    <label>Business Logo</label>
+
+                    <div id="businessLogoContainer">
+
+                        <input type="file" name="businessLogo[]" accept="image/*,.pdf,.doc,.docx">
+
+                    </div>
+
+                    <button type="button" class="add-btn"
+                        onclick="addFileField('businessLogoContainer','businessLogo[]')">
+
+                        + Add More
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =====================================
+     BUSINESS & IDENTITY DETAILS
+===================================== -->
+
+        <div class="form-card" style="background-color:#F0F7FC;">
+
+            <div class="section-title">
+                Business & Identity Details
+            </div>
+
+            <div class="section-description">
+                These details help in Business Numerology, Brand Name Selection and AstroVastu Analysis.
+            </div>
+
+            <div class="grid">
+
+                <!-- Company Name -->
+                <div class="field full-width">
+                    <label>Company Name(s)</label>
+
+                    <div id="companyContainer">
+                        <input type="text" name="companyName[]" placeholder="Enter company name">
+                    </div>
+
+                    <button type="button" class="add-btn"
+                        onclick="addField('companyContainer','companyName[]','Enter company name')">
+                        + Add More
+                    </button>
+                </div>
+
+                <!-- Brand Name -->
+                <div class="field full-width">
+                    <label>Brand Name(s)</label>
+
+                    <div id="businessBrandContainer">
+                        <input type="text" name="businessBrandName[]" placeholder="Enter brand name">
+                    </div>
+
+                    <button type="button" class="add-btn"
+                        onclick="addField('businessBrandContainer','businessBrandName[]','Enter brand name')">
+                        + Add More
+                    </button>
+                </div>
+
+                <!-- Website -->
+                <div class="field full-width">
+                    <label>Domain Name / Website(s)</label>
+
+                    <div id="websiteContainer">
+                        <input type="url" name="website[]" placeholder="https://example.com">
+                    </div>
+
+                    <button type="button" class="add-btn"
+                        onclick="addField('websiteContainer','website[]','https://example.com')">
+                        + Add More
+                    </button>
+                </div>
+
+                <!-- Home Name -->
+                <div class="field full-width">
+                    <label>Home Name / Home Alphabet Selection(s)</label>
+
+                    <div id="homeNameContainer">
+                        <input type="text" name="homeName[]" placeholder="Enter home name">
+                    </div>
+
+                    <button type="button" class="add-btn"
+                        onclick="addField('homeNameContainer','homeName[]','Enter home name')">
+                        + Add More
+                    </button>
+                </div>
+
+                <!-- Nature of Business -->
+                <div class="field full-width">
+                    <label>Nature of Business(es)</label>
+
+                    <div id="businessNatureContainer">
+                        <textarea name="businessNature[]" placeholder="Describe your business"></textarea>
+                    </div>
+
+                    <button type="button" class="add-btn"
+                        onclick="addTextarea('businessNatureContainer','businessNature[]','Describe your business')">
+                        + Add More
+                    </button>
+                </div>
+
+                <!-- Office Name -->
+                <div class="field full-width">
+                    <label>Office Name / Office Alphabet Selection(s)</label>
+
+                    <div id="officeAlphabetContainer">
+                        <input type="text" name="officeAlphabet[]" placeholder="Enter office name">
+                    </div>
+
+                    <button type="button" class="add-btn"
+                        onclick="addField('officeAlphabetContainer','officeAlphabet[]','Enter office name')">
+                        + Add More
+                    </button>
+                </div>
+
+                <!-- Home Address -->
+                <div class="field full-width">
+                    <label>Home Address(es)</label>
+
+                    <div id="homeAddressContainer">
+                        <input type="text" name="homeAddress[]" placeholder="Enter home address">
+                    </div>
+
+                    <button type="button" class="add-btn"
+                        onclick="addField('homeAddressContainer','homeAddress[]','Enter home address')">
+                        + Add More
+                    </button>
+                </div>
+
+                <!-- Office Address -->
+                <div class="field full-width">
+                    <label>Office Address(es)</label>
+
+                    <div id="officeAddressContainer">
+                        <input type="text" name="officeAddress[]" placeholder="Enter office address">
+                    </div>
+
+                    <button type="button" class="add-btn"
+                        onclick="addField('officeAddressContainer','officeAddress[]','Enter office address')">
+                        + Add More
+                    </button>
+                </div>
+
+                <!-- Commercial Address -->
+                <div class="field full-width">
+                    <label>Commercial Address(es)</label>
+
+                    <div id="commercialAddressContainer">
+                        <input type="text" name="commercialAddress[]" placeholder="Enter commercial address">
+                    </div>
+
+                    <button type="button" class="add-btn"
+                        onclick="addField('commercialAddressContainer','commercialAddress[]','Enter commercial address')">
+                        + Add More
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =====================================
+     UPLOAD DOCUMENTS
+===================================== -->
+
+        <!-- =====================================
+     UPLOAD DOCUMENTS
+===================================== -->
+
+        <div class="form-card" style="background-color:#F0F7FC;">
+
+            <div class="section-title">
+                Upload Documents
+            </div>
+
+            <div class="section-description">
+                Kindly upload clear photographs or documents wherever applicable.<br>
+                <strong>Accepted formats:</strong> Images, PDF, Word, Excel, PowerPoint, ZIP, CAD Files.
+            </div>
+
+            <div class="grid">
+
+                <!-- Passport Photo -->
+                <div class="field full-width">
+                    <label>Your Passport Size Photograph <span>*</span></label>
+
+                    <div id="passportPhotoContainer">
+                        <input type="file" name="passportPhoto[]"
+                            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf" required>
+                    </div>
+
+                    <button type="button" class="add-btn"
+                        onclick="addFileField('passportPhotoContainer','passportPhoto[]',true)">
+                        + Add More
+                    </button>
+                </div>
+
+                <!-- Profile Photo -->
+                <div class="field full-width">
+                    <label>Profile Photo <span>*</span></label>
+
+                    <div id="profilePhotoContainer">
+                        <input type="file" name="profilePhoto[]"
+                            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf" required>
+                    </div>
+
+                    <button type="button" class="add-btn"
+                        onclick="addFileField('profilePhotoContainer','profilePhoto[]',true)">
+                        + Add More
+                    </button>
+                </div>
+
+                <!-- Teeth Photo -->
+                <div class="field full-width">
+                    <label>Teeth Photo</label>
+
+                    <div id="teethPhotoContainer">
+                        <input type="file" name="teethPhoto[]"
+                            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf">
+                    </div>
+
+                    <button type="button" class="add-btn" onclick="addFileField('teethPhotoContainer','teethPhoto[]')">
+                        + Add More
+                    </button>
+                </div>
+
+                <!-- Nail Photo -->
+                <div class="field full-width">
+                    <label>Nail Photo</label>
+
+                    <div id="nailPhotoContainer">
+                        <input type="file" name="nailPhoto[]"
+                            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf">
+                    </div>
+
+                    <button type="button" class="add-btn" onclick="addFileField('nailPhotoContainer','nailPhoto[]')">
+                        + Add More
+                    </button>
+                </div>
+
+                <!-- House Map -->
+                <div class="field full-width">
+                    <label>House Map <span>*</span></label>
+
+                    <div id="houseMapContainer">
+                        <input type="file" name="houseMap[]"
+                            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf" required>
+                    </div>
+
+                    <button type="button" class="add-btn" onclick="addFileField('houseMapContainer','houseMap[]',true)">
+                        + Add More
+                    </button>
+                </div>
+
+                <!-- Office Map -->
+                <div class="field full-width">
+                    <label>Office Map <span>*</span></label>
+
+                    <div id="officeMapContainer">
+                        <input type="file" name="officeMap[]"
+                            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf" required>
+                    </div>
+
+                    <button type="button" class="add-btn"
+                        onclick="addFileField('officeMapContainer','officeMap[]',true)">
+                        + Add More
+                    </button>
+                </div>
+
+                <!-- Commercial Map -->
+                <div class="field full-width">
+                    <label>Commercial Map</label>
+
+                    <div id="commercialMapContainer">
+                        <input type="file" name="commercialMap[]"
+                            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf">
+                    </div>
+
+                    <button type="button" class="add-btn"
+                        onclick="addFileField('commercialMapContainer','commercialMap[]')">
+                        + Add More
+                    </button>
+                </div>
+
+                <!-- Letter Head -->
+                <div class="field full-width">
+                    <label>Letter Head</label>
+
+                    <div id="letterHeadContainer">
+                        <input type="file" name="letterHead[]"
+                            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf">
+                    </div>
+
+                    <button type="button" class="add-btn" onclick="addFileField('letterHeadContainer','letterHead[]')">
+                        + Add More
+                    </button>
+                </div>
+
+                <!-- Visiting Card -->
+                <div class="field full-width">
+                    <label>Visiting Card</label>
+
+                    <div id="visitingCardContainer">
+                        <input type="file" name="visitingCard[]"
+                            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf">
+                    </div>
+
+                    <button type="button" class="add-btn"
+                        onclick="addFileField('visitingCardContainer','visitingCard[]')">
+                        + Add More
+                    </button>
+                </div>
+
+                <!-- Name Plate -->
+                <div class="field full-width">
+                    <label>Name Plate of House / Office</label>
+
+                    <div id="namePlateContainer">
+                        <input type="file" name="namePlate[]"
+                            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf">
+                    </div>
+
+                    <button type="button" class="add-btn" onclick="addFileField('namePlateContainer','namePlate[]')">
+                        + Add More
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =====================================
+     PERSONAL ACCESSORIES
+===================================== -->
+
+        <div class="form-card" style="background-color:#F0F7FC;">
+
+            <div class="section-title">
+                Personal Accessories
+            </div>
+
+            <div class="section-description">
+                Select the accessories you regularly use. After selecting an accessory, please describe it.
+            </div>
+
+            <div class="checkbox-grid">
+
+                <div class="accessory">
+                    <label>
+                        <input type="checkbox" class="accessory-check" id="walletCheck" name="walletCheck">
+                        Wallet
+                    </label>
+                    <textarea class="accessory-desc" id="walletDescription" name="walletDescription"
+                        placeholder="Describe your Wallet with shape, colour, size, design and material..."
+                        style="display:none;"></textarea>
+                </div>
+
+                <div class="accessory">
+                    <label>
+                        <input type="checkbox" class="accessory-check" id="watchCheck" name="watchCheck">
+                        Watch
+                    </label>
+                    <textarea class="accessory-desc" id="watchDescription" name="watchDescription"
+                        placeholder="Describe your Watch with shape, colour, size, design and material..."
+                        style="display:none;"></textarea>
+                </div>
+
+                <div class="accessory">
+                    <label>
+                        <input type="checkbox" class="accessory-check" id="ringCheck" name="ringCheck">
+                        Ring
+                    </label>
+                    <textarea class="accessory-desc" id="ringDescription" name="ringDescription"
+                        placeholder="Describe your Ring with shape, colour, size, design and material..."
+                        style="display:none;"></textarea>
+                </div>
+
+                <div class="accessory">
+                    <label>
+                        <input type="checkbox" class="accessory-check" id="braceletCheck" name="braceletCheck">
+                        Bracelet
+                    </label>
+                    <textarea class="accessory-desc" id="braceletDescription" name="braceletDescription"
+                        placeholder="Describe your Bracelet with shape, colour, size, design and material ..."
+                        style="display:none;"></textarea>
+                </div>
+
+                <div class="accessory">
+                    <label>
+                        <input type="checkbox" class="accessory-check" id="chainCheck" name="chainCheck">
+                        Chain
+                    </label>
+                    <textarea class="accessory-desc" id="chainDescription" name="chainDescription"
+                        placeholder="Describe your Chain with shape, colour, size, design and material..."
+                        style="display:none;"></textarea>
+                </div>
+
+                <div class="accessory">
+                    <label>
+                        <input type="checkbox" class="accessory-check" id="spectaclesCheck" name="spectaclesCheck">
+                        Spectacles
+                    </label>
+                    <textarea class="accessory-desc" id="spectaclesDescription" name="spectaclesDescription"
+                        placeholder="Describe your Spectacles with shape, colour, size, design and material..."
+                        style="display:none;"></textarea>
+                </div>
+
+                <div class="accessory">
+                    <label>
+                        <input type="checkbox" class="accessory-check" id="penCheck" name="penCheck">
+                        Pen
+                    </label>
+                    <textarea class="accessory-desc" id="penDescription" name="penDescription"
+                        placeholder="Describe your Pen with shape, colour, size, design and material ..."
+                        style="display:none;"></textarea>
+                </div>
+
+                <div class="accessory">
+                    <label>
+                        <input type="checkbox" class="accessory-check" id="vehicleKeyCheck" name="vehicleKeyCheck">
+                        Vehicle Key
+                    </label>
+                    <textarea class="accessory-desc" id="vehicleKeyDescription" name="vehicleKeyDescription"
+                        placeholder="Describe your Vehicle Key with shape, colour, size, design and material..."
+                        style="display:none;"></textarea>
+                </div>
+
+                <div class="accessory">
+                    <label>
+                        <input type="checkbox" class="accessory-check" id="laptopCheck" name="laptopCheck">
+                        Laptop
+                    </label>
+                    <textarea class="accessory-desc" id="laptopDescription" name="laptopDescription"
+                        placeholder="Describe your Laptop with shape, colour, size, design and material..."
+                        style="display:none;"></textarea>
+                </div>
+
+                <div class="accessory">
+                    <label>
+                        <input type="checkbox" class="accessory-check" id="mobileCheck" name="mobileCheck">
+                        Mobile Phone
+                    </label>
+                    <textarea class="accessory-desc" id="mobileDescription" name="mobileDescription"
+                        placeholder="Describe your Mobile Phone with shape, colour, size, design and material..."
+                        style="display:none;"></textarea>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =====================================
+     OBJECTS
+===================================== -->
+
+        <div class="form-card" style="background-color:#F0F7FC;">
+
+            <div class="section-title">
+                Objects
+            </div>
+
+            <div class="grid">
+
+                <div class="field">
+                    <label>Personal Accessories</label>
+                    <textarea id="personalAccessories" name="personalAccessories"
+                        placeholder="Enter details about your personal accessories"></textarea>
+                </div>
+
+                <div class="field">
+                    <label>Home Decor</label>
+                    <textarea id="homeDecor" name="homeDecor"
+                        placeholder="Enter details about your home decor"></textarea>
+                </div>
+
+                <div class="field">
+                    <label>Work Place Decor</label>
+                    <textarea id="workPlaceDecor" name="workPlaceDecor"
+                        placeholder="Enter details about your workplace decor"></textarea>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =====================================
+     DAILY RITUAL
+===================================== -->
+
+        <div class="form-card" style="background-color:#F0F7FC;">
+
+            <div class="section-title">
+                Daily Ritual
+            </div>
+
+            <div class="grid">
+
+                <div class="field full-width">
+                    <label>Describe Your Daily Ritual</label>
+                    <textarea id="dailyRitual" name="dailyRitual" rows="6"
+                        placeholder="Describe your daily routine, prayers, meditation, yoga, etc."></textarea>
+                </div>
+
+                <div class="field full-width">
+                    <label>Temple Name</label>
+                    <input type="text" id="templeName" name="templeName" placeholder="Enter temple name">
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =====================================
+     PLACES TO VISIT
+===================================== -->
+
+        <div class="form-card" style="background-color:#F0F7FC;">
+
+            <div class="section-title">
+                Places to Visit
+            </div>
+
+            <div class="grid">
+
+                <div class="field full-width">
+                    <label>Places to Visit</label>
+                    <textarea id="placesToVisit" name="placesToVisit" rows="5"
+                        placeholder="Mention the places you frequently visit or wish to visit"></textarea>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =====================================
+     NUMERO / PLANET BASED MANTRA
+===================================== -->
+
+        <div class="form-card" style="background-color:#F0F7FC;">
+
+            <div class="section-title">
+                Numero / Planet Based Mantra
+            </div>
+
+            <div class="grid">
+
+                <div class="field full-width">
+                    <label>Current Mantra by Numerology (If Any)</label>
+                    <textarea id="numeroMantra" name="numeroMantra" rows="5"
+                        placeholder="Enter your current numerology mantra"></textarea>
+                </div>
+
+                <div class="field full-width">
+                    <label>Current Mantra by Planet (If Any)</label>
+                    <textarea id="planetMantra" name="planetMantra" rows="5"
+                        placeholder="Enter your current planetary mantra"></textarea>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =====================================
+     AUSPICIOUS TIME TO CALL
+===================================== -->
+
+        <div class="form-card" style="background-color:#F0F7FC;">
+
+            <div class="section-title">
+                Auspicious Time to Call
+            </div>
+
+            <div class="grid">
+
+                <div class="field">
+                    <label>Preferred Date <span>*</span></label>
+                    <input type="date" id="preferredDate" name="preferredDate" required>
+                </div>
+
+                <div class="field">
+                    <label>Preferred Time <span>*</span></label>
+                    <input type="time" id="preferredTime" name="preferredTime" required>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =====================================
+     DECLARATION
+===================================== -->
+
+        <div class="form-card" style="background-color:#F0F7FC;">
+
+            <div class="section-title">
+                Declaration
+            </div>
+
+            <div class="grid">
+
+                <div class="field full-width">
+
+                    <label for="declaration">
+
+                        <input type="checkbox" id="declaration" name="declaration" required>
+
+                        I hereby declare that all the information provided by me is true and correct to the best of my
+                        knowledge. I understand that this information will be used only for advising me and for
+                        preparing a step-by-step AstroVastu, Numerology, and strategic guidance plan.
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =====================================
+     SUBMIT BUTTON
+===================================== -->
+
+        <div class="submit-section">
+
+            <button type="submit" class="submit-btn">
+                Next Page →
+            </button>
+
+        </div>
+
+        </div>
+
+    </form>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</body>
+
+</html>
