@@ -160,15 +160,15 @@
 
                     <th>Question</th>
 
-                    <th>Air</th>
+                    <th>Air (growth)</th>
 
-                    <th>Fire</th>
+                    <th>Fire (joy)</th>
 
-                    <th>Earth</th>
+                    <th>Earth (nurture)</th>
 
-                    <th>Space</th>
+                    <th>Space(order)</th>
 
-                    <th>Water</th>
+                    <th>Water(depth)</th>
 
                 </tr>
 
@@ -1256,7 +1256,7 @@
      ">
 
             <h2 class="quiz-title">
-                Element Balance Quiz
+                Dosha Quiz
             </h2>
 
             <p class="quiz-instruction">
@@ -2088,63 +2088,51 @@
 
                         <tr>
                             <td><b>Body Weight</b></td>
-
-                            <td><input type="radio" name="bodyWeight" value="Air"> F: 50–55 kg<br>M: 55–65 kg
-                            </td>
-
+                            <td><input type="radio" name="bodyWeight" value="Air"> F: 50–55 kg<br>M: 55–65 kg</td>
                             <td><input type="radio" name="bodyWeight" value="Fire"> F: 55–70 kg<br>M: 65–75 kg</td>
-
                             <td><input type="radio" name="bodyWeight" value="Water"> F: 70–75 kg<br>M: 75–85 kg</td>
                         </tr>
 
                         <tr>
                             <td><b>Nose</b></td>
-
                             <td><input type="radio" name="nose" value="Air"> Thin</td>
-
                             <td><input type="radio" name="nose" value="Fire"> Straight</td>
-
                             <td><input type="radio" name="nose" value="Water"> Broad</td>
                         </tr>
 
                         <tr>
                             <td><b>Teeth</b></td>
-
                             <td><input type="radio" name="teeth" value="Air"> Small, Pale, Irregular</td>
-
                             <td><input type="radio" name="teeth" value="Fire"> Medium, Pale, Regular</td>
-
                             <td><input type="radio" name="teeth" value="Water"> Big, White</td>
                         </tr>
 
                         <tr>
                             <td><b>Nails</b></td>
-
                             <td><input type="radio" name="nails" value="Air"> Brittle, Small</td>
-
                             <td><input type="radio" name="nails" value="Fire"> Soft, Pink, Medium</td>
-
                             <td><input type="radio" name="nails" value="Water"> Big, Thick</td>
                         </tr>
 
                         <tr>
                             <td><b>Skin</b></td>
-
                             <td><input type="radio" name="skin" value="Air"> Dry</td>
-
                             <td><input type="radio" name="skin" value="Fire"> Normal</td>
-
                             <td><input type="radio" name="skin" value="Water"> Oily</td>
                         </tr>
 
                         <tr>
                             <td><b>Taste</b></td>
-
                             <td><input type="radio" name="taste" value="Air"> Sour &amp; Bitter</td>
-
                             <td><input type="radio" name="taste" value="Fire"> Spicy &amp; Sweet</td>
-
                             <td><input type="radio" name="taste" value="Water"> Sweets</td>
+                        </tr>
+
+                        <tr class="prakriti-total">
+                            <td><b>Total</b></td>
+                            <td id="prakritiAirTotal">0</td>
+                            <td id="prakritiFireTotal">0</td>
+                            <td id="prakritiWaterTotal">0</td>
                         </tr>
 
                     </tbody>
@@ -2213,20 +2201,35 @@
                         </button>
                     </div>
 
-                    <!-- kundli Photo -->
-                    <div id="kundliContainer">
-                        <input type="file" name="kundli[]"
-                            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf" required>
-                    </div>
-                    
-                    <button type="button" class="add-btn" onclick="addFileField('kundliContainer','kundli[]',true)">
-                        + Add More
-                    </button>
-
                 </div>
 
             </div>
 
+        </div>
+        <div class="container" id="gunaQuiz" style="
+        background-image: url('images/watermark.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 500px;
+        background-size: cover;
+     ">
+
+<H3 style="text-align: center;color: #b56b00;font-size: 30px;">Kundli Folder</H3>
+            <!-- kundli Photo -->
+            <div class="field full-width">
+
+                <label>kundli PDF</label>
+
+                <div id="kundliContainer">
+                    <input type="file" name="kundli[]"
+                        accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf" required>
+                </div>
+
+                <button type="button" class="add-btn" onclick="addFileField('kundliContainer','kundli[]',true)">
+                    + Add More
+                </button>
+
+            </div>
 
             <div style="display:flex; justify-content:space-between; margin:40px 0;">
 
@@ -2241,7 +2244,6 @@
             </div>
 
         </div>
-
 
     </div>
 

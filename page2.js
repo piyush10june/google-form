@@ -15,17 +15,19 @@ document.addEventListener("DOMContentLoaded", function () {
             updatePlanetScore();   // Planet Quiz
             updateGunaScore();     // Guna Quiz
             updateElementBalanceScore(); // Element Balance
+            updatePrakritiTableScore();   // <-- ADD THIS
 
         });
-
     });
 
-    updateScore();
-    updatePlanetScore();
-    updateGunaScore();
-    updateElementBalanceScore(); // Element Balance
-
 });
+
+updateScore();
+updatePlanetScore();
+updateGunaScore();
+updateElementBalanceScore(); // Element Balance
+
+
 
 // =====================================
 // UPDATE SCORE
@@ -231,3 +233,33 @@ function addFileField(containerId, inputName, required = false) {
     container.appendChild(br);
     container.appendChild(input);
 }
+
+// ================= PRAKRITI TABLE SCORE =================
+
+document.querySelectorAll('.prakriti-table input[type="radio"]').forEach(radio => {
+
+    radio.addEventListener("change", updatePrakritiTableScore);
+
+});
+
+function updatePrakritiTableScore() {
+
+    let air = 0;
+    let fire = 0;
+    let water = 0;
+
+    document.querySelectorAll('.prakriti-table input[type="radio"]:checked').forEach(radio => {
+
+        if (radio.value === "Air") air++;
+        else if (radio.value === "Fire") fire++;
+        else if (radio.value === "Water") water++;
+
+    });
+
+    document.getElementById("prakritiAirTotal").textContent = air;
+    document.getElementById("prakritiFireTotal").textContent = fire;
+    document.getElementById("prakritiWaterTotal").textContent = water;
+
+}
+
+updatePrakritiTableScore();

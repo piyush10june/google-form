@@ -176,7 +176,7 @@
 
             <div class="section-title">
 
-                Needs of client
+                Details given by client
 
             </div>
 
@@ -283,60 +283,6 @@
                         <option>Separated</option>
 
                     </select>
-
-                </div>
-
-                <!-- Office Names -->
-                <div class="field full-width">
-                    <label>Office Name(s)</label>
-
-                    <div id="officeContainer">
-                        <input type="text" name="officeName[]" placeholder="Enter office name">
-                    </div>
-
-                    <button type="button" class="add-btn"
-                        onclick="addField('officeContainer','officeName[]','Enter office name')">
-                        + Add More
-                    </button>
-                </div>
-
-                <!-- Signature Photograph -->
-                <div class="field full-width">
-
-                    <label>Signature Photograph <span>*</span></label>
-
-                    <div id="signaturePhotoContainer">
-
-                        <input type="file" name="signaturePhoto[]" accept="image/*,.pdf,.doc,.docx" required>
-
-                    </div>
-
-                    <button type="button" class="add-btn"
-                        onclick="addFileField('signaturePhotoContainer','signaturePhoto[]',true)">
-
-                        + Add More
-
-                    </button>
-
-                </div>
-
-                <!-- Business Logo -->
-                <div class="field full-width">
-
-                    <label>Business Logo</label>
-
-                    <div id="businessLogoContainer">
-
-                        <input type="file" name="businessLogo[]" accept="image/*,.pdf,.doc,.docx">
-
-                    </div>
-
-                    <button type="button" class="add-btn"
-                        onclick="addFileField('businessLogoContainer','businessLogo[]')">
-
-                        + Add More
-
-                    </button>
 
                 </div>
 
@@ -515,6 +461,60 @@
                     </button>
                 </div>
 
+                <!-- Signature Photograph -->
+                <div class="field full-width">
+
+                    <label>Signature Photograph <span>*</span></label>
+
+                    <div id="signaturePhotoContainer">
+
+                        <input type="file" name="signaturePhoto[]" accept="image/*,.pdf,.doc,.docx" required>
+
+                    </div>
+
+                    <button type="button" class="add-btn"
+                        onclick="addFileField('signaturePhotoContainer','signaturePhoto[]',true)">
+
+                        + Add More
+
+                    </button>
+
+                </div>
+
+                <!-- Business Logo -->
+                <div class="field full-width">
+
+                    <label>Business Logo</label>
+
+                    <div id="businessLogoContainer">
+
+                        <input type="file" name="businessLogo[]" accept="image/*,.pdf,.doc,.docx">
+
+                    </div>
+
+                    <button type="button" class="add-btn"
+                        onclick="addFileField('businessLogoContainer','businessLogo[]')">
+
+                        + Add More
+
+                    </button>
+
+                </div>
+
+                <!-- Name Plate -->
+                <div class="field full-width">
+                    <label>Name Plate of House / Office</label>
+
+                    <div id="namePlateContainer">
+                        <input type="file" name="namePlate[]"
+                            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf">
+                    </div>
+
+                    <button type="button" class="add-btn" onclick="addFileField('namePlateContainer','namePlate[]')">
+                        + Add More
+                    </button>
+                </div>
+
             </div>
 
         </div>
@@ -613,19 +613,7 @@
                     </button>
                 </div>
 
-                <!-- Name Plate -->
-                <div class="field full-width">
-                    <label>Name Plate of House / Office</label>
 
-                    <div id="namePlateContainer">
-                        <input type="file" name="namePlate[]"
-                            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf">
-                    </div>
-
-                    <button type="button" class="add-btn" onclick="addFileField('namePlateContainer','namePlate[]')">
-                        + Add More
-                    </button>
-                </div>
 
             </div>
 
