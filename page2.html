@@ -9,6 +9,11 @@
 
     <link rel="stylesheet" href="style.css">
 
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <style>
         body {
             margin: 0;
@@ -2207,6 +2212,16 @@
                             + Add More
                         </button>
                     </div>
+
+                    <!-- kundli Photo -->
+                    <div id="kundliContainer">
+                        <input type="file" name="kundli[]"
+                            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf" required>
+                    </div>
+                    
+                    <button type="button" class="add-btn" onclick="addFileField('kundliContainer','kundli[]',true)">
+                        + Add More
+                    </button>
 
                 </div>
 

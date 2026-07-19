@@ -10,6 +10,10 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+        
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -160,6 +164,46 @@
                     <label>How do you earn money? <span>*</span></label>
 
                     <textarea id="incomeSource" name="incomeSource" placeholder="Describe your source of income"
+                        required></textarea>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="form-card" style="background-color:#F0F7FC;">
+
+            <div class="section-title">
+
+                Needs of client
+
+            </div>
+
+            <div class="grid">
+
+                <div class="field">
+
+                    <label>client requirement <span>*</span></label>
+
+                    <textarea id="occupation" name="occupation" placeholder="Enter your requirement" required></textarea>
+
+                </div>
+
+                <div class="field">
+
+                    <label>problem statement <span>*</span></label>
+
+                    <textarea id="incomeSource" name="incomeSource" placeholder="Describe your problem"
+                        required></textarea>
+
+                </div>
+
+                <div class="field">
+
+                    <label> Goals / Outcomes <span>*</span></label>
+
+                    <textarea id="incomeSource" name="incomeSource" placeholder="Describe your goals/outcomes"
                         required></textarea>
 
                 </div>
@@ -512,7 +556,7 @@
 
                 <!-- Teeth Photo -->
                 <div class="field full-width">
-                    <label>Teeth Photo</label>
+                    <label>right palm photo</label>
 
                     <div id="teethPhotoContainer">
                         <input type="file" name="teethPhoto[]"
@@ -526,7 +570,7 @@
 
                 <!-- Nail Photo -->
                 <div class="field full-width">
-                    <label>Nail Photo</label>
+                    <label>left palm Photo</label>
 
                     <div id="nailPhotoContainer">
                         <input type="file" name="nailPhoto[]"
@@ -540,7 +584,7 @@
 
                 <!-- House Map -->
                 <div class="field full-width">
-                    <label>House Map <span>*</span></label>
+                    <label>House Map with google location <span>*</span></label>
 
                     <div id="houseMapContainer">
                         <input type="file" name="houseMap[]"
@@ -554,7 +598,7 @@
 
                 <!-- Office Map -->
                 <div class="field full-width">
-                    <label>Office Map <span>*</span></label>
+                    <label>Office Map with google location <span>*</span></label>
 
                     <div id="officeMapContainer">
                         <input type="file" name="officeMap[]"
@@ -569,7 +613,7 @@
 
                 <!-- Commercial Map -->
                 <div class="field full-width">
-                    <label>Commercial Map</label>
+                    <label>Commercial Map with google location </label>
 
                     <div id="commercialMapContainer">
                         <input type="file" name="commercialMap[]"

@@ -201,3 +201,33 @@ function previousQuiz() {
 }
 
 showQuiz(0);
+
+// =====================================
+// ADD MORE FILE UPLOAD
+// =====================================
+
+function addFileField(containerId, inputName, required = false) {
+
+    const container = document.getElementById(containerId);
+
+    if (!container) {
+        alert("Container not found: " + containerId);
+        return;
+    }
+
+    const br = document.createElement("br");
+
+    const input = document.createElement("input");
+
+    input.type = "file";
+    input.name = inputName;
+
+    input.accept = "image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf";
+
+    if (required) {
+        input.required = true;
+    }
+
+    container.appendChild(br);
+    container.appendChild(input);
+}
