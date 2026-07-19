@@ -10,7 +10,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-        
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
@@ -186,7 +186,8 @@
 
                     <label>client requirement <span>*</span></label>
 
-                    <textarea id="occupation" name="occupation" placeholder="Enter your requirement" required></textarea>
+                    <textarea id="occupation" name="occupation" placeholder="Enter your requirement"
+                        required></textarea>
 
                 </div>
 
@@ -262,20 +263,6 @@
 
                     <button type="button" class="add-btn"
                         onclick="addField('emailContainer','email[]','Enter email address')">
-                        + Add More
-                    </button>
-                </div>
-
-                <!-- Brand Names -->
-                <div class="field full-width">
-                    <label>Brand Name(s)</label>
-
-                    <div id="brandContainer">
-                        <input type="text" name="brandName[]" placeholder="Enter brand name">
-                    </div>
-
-                    <button type="button" class="add-btn"
-                        onclick="addField('brandContainer','brandName[]','Enter brand name')">
                         + Add More
                     </button>
                 </div>
@@ -499,6 +486,35 @@
                     </button>
                 </div>
 
+                <!-- Letter Head -->
+                <div class="field full-width">
+                    <label>Letter Head</label>
+
+                    <div id="letterHeadContainer">
+                        <input type="file" name="letterHead[]"
+                            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf">
+                    </div>
+
+                    <button type="button" class="add-btn" onclick="addFileField('letterHeadContainer','letterHead[]')">
+                        + Add More
+                    </button>
+                </div>
+
+                <!-- Visiting Card -->
+                <div class="field full-width">
+                    <label>Visiting Card</label>
+
+                    <div id="visitingCardContainer">
+                        <input type="file" name="visitingCard[]"
+                            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf">
+                    </div>
+
+                    <button type="button" class="add-btn"
+                        onclick="addFileField('visitingCardContainer','visitingCard[]')">
+                        + Add More
+                    </button>
+                </div>
+
             </div>
 
         </div>
@@ -524,37 +540,8 @@
 
             <div class="grid">
 
-                <!-- Passport Photo -->
-                <div class="field full-width">
-                    <label>Your Passport Size Photograph <span>*</span></label>
-
-                    <div id="passportPhotoContainer">
-                        <input type="file" name="passportPhoto[]"
-                            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf" required>
-                    </div>
-
-                    <button type="button" class="add-btn"
-                        onclick="addFileField('passportPhotoContainer','passportPhoto[]',true)">
-                        + Add More
-                    </button>
-                </div>
-
-                <!-- Profile Photo -->
-                <div class="field full-width">
-                    <label>Profile Photo <span>*</span></label>
-
-                    <div id="profilePhotoContainer">
-                        <input type="file" name="profilePhoto[]"
-                            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf" required>
-                    </div>
-
-                    <button type="button" class="add-btn"
-                        onclick="addFileField('profilePhotoContainer','profilePhoto[]',true)">
-                        + Add More
-                    </button>
-                </div>
-
-                <!-- Teeth Photo -->
+                <!-- palm
+                  Photo -->
                 <div class="field full-width">
                     <label>right palm photo</label>
 
@@ -568,7 +555,7 @@
                     </button>
                 </div>
 
-                <!-- Nail Photo -->
+                <!-- palm Photo -->
                 <div class="field full-width">
                     <label>left palm Photo</label>
 
@@ -622,35 +609,6 @@
 
                     <button type="button" class="add-btn"
                         onclick="addFileField('commercialMapContainer','commercialMap[]')">
-                        + Add More
-                    </button>
-                </div>
-
-                <!-- Letter Head -->
-                <div class="field full-width">
-                    <label>Letter Head</label>
-
-                    <div id="letterHeadContainer">
-                        <input type="file" name="letterHead[]"
-                            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf">
-                    </div>
-
-                    <button type="button" class="add-btn" onclick="addFileField('letterHeadContainer','letterHead[]')">
-                        + Add More
-                    </button>
-                </div>
-
-                <!-- Visiting Card -->
-                <div class="field full-width">
-                    <label>Visiting Card</label>
-
-                    <div id="visitingCardContainer">
-                        <input type="file" name="visitingCard[]"
-                            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf">
-                    </div>
-
-                    <button type="button" class="add-btn"
-                        onclick="addFileField('visitingCardContainer','visitingCard[]')">
                         + Add More
                     </button>
                 </div>
