@@ -1,9 +1,11 @@
 /* ===========================
    GOOGLE FONT
 =========================== */
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+/* ===========================
+   RESET
+=========================== */
 * {
     margin: 0;
     padding: 0;
@@ -11,89 +13,69 @@
     font-family: 'Poppins', sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     padding: 0;
     background: #F0F7FC url("images/watermark.png") center center no-repeat fixed;
-    background-size: 700px;
-    font-family: 'Poppins', sans-serif;
+    background-size: min(700px, 75vw);
+    overflow-x: hidden;
 }
 
 /* ===========================
-   WATERMARK LOGO
+   WATERMARK
 =========================== */
 
 .bg-logo {
-
     position: fixed;
-
-    top: 50%;
-    left: 50%;
-
-    transform: translate(-50%, -50%);
-
-    width: 1000px;
-    height: 1000px;
-
-    background: url("images/watermark.png") no-repeat center;
-
+    inset: 0;
+    margin: auto;
+    width: min(1000px, 90vw);
+    height: min(1000px, 90vw);
+    background: url("images/watermark.png") center no-repeat;
     background-size: 80%;
-
     opacity: .045;
-
     pointer-events: none;
-
     z-index: -1;
 }
 
 /* ===========================
-   MAIN CONTAINER
+   CONTAINER
 =========================== */
 
 .container {
-
-    width: 92%;
-    max-width: 1000px;
-
+    width: min(92%, 1100px);
     margin: 40px auto;
 }
 
 /* ===========================
-   GOOGLE FORM CARD
+   FORM CARD
 =========================== */
 
 .form-card {
-
+    position: relative;
     background: #fff;
-
     border-radius: 18px;
-
     overflow: hidden;
-
     margin-bottom: 35px;
-
-    box-shadow:
-        0 12px 35px rgba(0, 0, 0, .08);
-
+    box-shadow: 0 12px 35px rgba(0, 0, 0, .08);
     transition: .35s;
 }
 
 .form-card:hover {
-
     transform: translateY(-3px);
-
-    box-shadow:
-        0 18px 45px rgba(0, 0, 0, .12);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, .12);
 }
 
 /* ===========================
-   TOP ORANGE BAR
+   TOP BAR
 =========================== */
 
 .top-orange {
-
     height: 12px;
-
     background: linear-gradient(90deg,
             #f57c00,
             #ff9800,
@@ -105,202 +87,328 @@ body {
    HEADER
 =========================== */
 
-/* ================= HEADER ================= */
-
 .header {
     position: relative;
     text-align: center;
-    padding: 25px 20px 15px;
+    padding: 30px 25px 20px;
 }
-
-/* Main Logo */
 
 .logo {
+    width: clamp(130px, 18vw, 220px);
+    max-width: 60%;
     display: block;
-    width: 180px;
-    max-width: 55%;
-    height: auto;
-    margin: 0 auto 15px;
-    position: relative;
-    z-index: 2;
-}
-
-/* Corner Decoration */
-
-.corner {
-    position: absolute;
-    top: 18px;
-    right: 20px;
-    width: 150px;
-    max-width: 30%;
-    height: auto;
-    z-index: 1;
-}
-
-.checkbox-grid {
-
-    display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 18px;
-
-    padding: 30px;
-}
-
-.checkbox-grid label {
-
-    font-size: 16px;
-
-    color: #444;
-
-    cursor: pointer;
-}
-
-.checkbox-grid input {
-
-    margin-right: 10px;
-
-    transform: scale(1.2);
-}
-
-.submit-section {
-
-    text-align: center;
-
-    margin: 40px 0 70px;
-}
-
-.submit-btn {
-
-    background: linear-gradient(90deg, #d4af37, #f57c00);
-
-    color: #fff;
-
-    border: none;
-
-    padding: 16px 50px;
-
-    font-size: 20px;
-
-    border-radius: 50px;
-
-    cursor: pointer;
-
-    transition: .3s;
-}
-
-.submit-btn:hover {
-
-    transform: translateY(-3px);
-
-    box-shadow: 0 12px 25px rgba(245, 124, 0, .35);
-}
-
-.button-section {
-
-    display: flex;
-    justify-content: flex-end;
-
-    padding: 25px 35px 35px;
-}
-
-.next-btn {
-
-    background: linear-gradient(90deg, #d4af37, #f57c00);
-
-    color: #fff;
-
-    border: none;
-
-    padding: 15px 45px;
-
-    font-size: 18px;
-
-    font-weight: 600;
-
-    border-radius: 40px;
-
-    cursor: pointer;
-
-    transition: .3s;
+    margin: 0 auto 18px;
 }
 
 .corner {
-
     position: absolute;
-
     top: 20px;
-
     right: 25px;
-
-    width: 180px;
-
+    width: clamp(90px, 12vw, 180px);
     height: auto;
-
-    z-index: 5;
 }
 
+.header h3 {
+    color: #f57c00;
+    margin-top: 10px;
+    font-size: clamp(20px, 2vw, 30px);
+    font-weight: 600;
+}
+
+.working {
+    color: #666;
+    margin-top: 10px;
+    font-size: clamp(14px, 1.3vw, 18px);
+}
+
+/* ===========================
+   FORM FIELDS
+=========================== */
+
+.field {
+    width: 100%;
+}
+
+.field input,
+.field textarea,
 .field select {
     width: 100%;
     padding: 12px 15px;
     border: 1px solid #d8d8d8;
     border-radius: 8px;
     font-size: 15px;
-    font-family: 'Poppins', sans-serif;
     background: #fff;
     outline: none;
     transition: .3s;
-    box-sizing: border-box;
 }
 
+.field input:focus,
+.field textarea:focus,
 .field select:focus {
     border-color: #f57c00;
     box-shadow: 0 0 6px rgba(245, 124, 0, .25);
 }
 
+.field textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* ===========================
+   CHECKBOX GRID
+=========================== */
+
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    padding: 30px;
+}
+
+.checkbox-grid label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    color: #444;
+    cursor: pointer;
+}
+
+.checkbox-grid input {
+    transform: scale(1.15);
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+.button-section {
+    display: flex;
+    justify-content: flex-end;
+    padding: 25px 35px 35px;
+}
+
+.next-btn,
+.submit-btn {
+    border: none;
+    color: #fff;
+    background: linear-gradient(90deg, #d4af37, #f57c00);
+    cursor: pointer;
+    transition: .3s;
+    border-radius: 40px;
+    font-weight: 600;
+}
+
+.next-btn {
+    padding: 15px 45px;
+    font-size: 18px;
+}
+
+.submit-btn {
+    padding: 16px 50px;
+    font-size: 20px;
+    border-radius: 50px;
+}
+
+.next-btn:hover,
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(245, 124, 0, .35);
+}
+
+/* ===========================
+   ADD BUTTON
+=========================== */
+
 .add-btn {
     margin-top: 10px;
-    padding: 8px 16px;
-    background: #f57c00;
-    color: #fff;
+    padding: 10px 18px;
     border: none;
     border-radius: 6px;
+    background: #f57c00;
+    color: #fff;
     cursor: pointer;
-    font-size: 14px;
+    transition: .3s;
 }
 
 .add-btn:hover {
     background: #d86b00;
 }
 
-.form-card {
-    position: relative;
+/* ===========================
+   SUBMIT SECTION
+=========================== */
+
+.submit-section {
+    text-align: center;
+    margin: 40px 0 70px;
 }
 
+/* ====================================================
+                LARGE TABLETS
+==================================================== */
 
+@media (max-width:992px) {
 
-.next-btn:hover {
+    .container {
+        width: 95%;
+    }
 
-    transform: translateY(-2px);
+    .header {
+        padding: 25px 20px;
+    }
 
-    box-shadow: 0 10px 20px rgba(245, 124, 0, .35);
+    .checkbox-grid {
+        padding: 25px;
+        gap: 16px;
+    }
+
+    .button-section {
+        padding: 25px;
+    }
+
 }
 
-.header h3 {
+/* ====================================================
+                    TABLETS
+==================================================== */
 
-    color: #f57c00;
+@media (max-width:768px) {
 
-    margin-top: 8px;
+    body {
+        background-size: 420px;
+    }
 
-    font-size: 24px;
+    .bg-logo {
+        width: 80vw;
+        height: 80vw;
+    }
+
+    .corner {
+        width: 110px;
+        top: 15px;
+        right: 15px;
+    }
+
+    .logo {
+        max-width: 180px;
+    }
+
+    .checkbox-grid {
+        grid-template-columns: 1fr;
+        padding: 22px;
+    }
+
+    .button-section {
+        justify-content: center;
+    }
+
+    .next-btn,
+    .submit-btn {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .header {
+        padding: 25px 15px 20px;
+    }
+
 }
 
-.working {
+/* ====================================================
+                    MOBILE
+==================================================== */
 
-    color: #666;
+@media (max-width:576px) {
 
-    margin-top: 10px;
+    .container {
+        width: 96%;
+        margin: 20px auto;
+    }
+
+    .form-card {
+        border-radius: 14px;
+    }
+
+    .header {
+        padding: 20px 15px;
+    }
+
+    .logo {
+        width: 140px;
+    }
+
+    .corner {
+        position: static;
+        display: block;
+        margin: 10px auto 0;
+        width: 90px;
+    }
+
+    .header h3 {
+        font-size: 20px;
+    }
+
+    .working {
+        font-size: 14px;
+    }
+
+    .checkbox-grid {
+        padding: 18px;
+        gap: 12px;
+    }
+
+    .checkbox-grid label {
+        font-size: 15px;
+    }
+
+    .button-section {
+        padding: 20px;
+    }
+
+    .next-btn,
+    .submit-btn {
+        width: 100%;
+        font-size: 16px;
+        padding: 14px 20px;
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+        font-size: 14px;
+        padding: 11px 12px;
+    }
+
+}
+
+/* ====================================================
+                SMALL MOBILES
+==================================================== */
+
+@media (max-width:380px) {
+
+    .logo {
+        width: 120px;
+    }
+
+    .header h3 {
+        font-size: 18px;
+    }
+
+    .working {
+        font-size: 13px;
+    }
+
+    .checkbox-grid label {
+        font-size: 14px;
+    }
+
+    .next-btn,
+    .submit-btn {
+        font-size: 15px;
+    }
+
 }
 
 /* ===========================
@@ -308,42 +416,32 @@ body {
 =========================== */
 
 .payment-section {
-
     display: flex;
-
     justify-content: space-between;
-
+    align-items: flex-start;
     gap: 40px;
-
-    padding: 35px;
-
+    padding: clamp(20px, 3vw, 35px);
     flex-wrap: wrap;
 }
 
 .payment-left {
-
-    flex: 1;
+    flex: 1 1 450px;
+    min-width: 280px;
 }
 
 .payment-right {
-
-    width: 280px;
-
+    flex: 0 0 280px;
     display: flex;
-
     justify-content: center;
-
     align-items: center;
 }
 
 .qr {
-
-    width: 250px;
-
+    width: 100%;
+    max-width: 250px;
+    height: auto;
     border-radius: 12px;
-
     border: 5px solid #fff;
-
     box-shadow: 0 8px 20px rgba(0, 0, 0, .12);
 }
 
@@ -352,38 +450,24 @@ body {
 =========================== */
 
 .section-title {
-    background: linear-gradient(to right, #f57c00, #dca91d);
-    color: white;
-    font-size: 38px;
-    font-weight: 700;
-
-    padding: 25px 35px;
-
-    background-image:
-        url("images/corner.png"),
-        linear-gradient(to right, #f57c00, #dca91d);
-
-    background-repeat: repeat-x, no-repeat;
-
-    background-size: 180px auto, cover;
-
-    background-position: left center, center;
-}
-
-.section-title {
     position: relative;
     overflow: hidden;
+
     background: linear-gradient(to right, #f57c00, #dca91d);
+    color: #fff;
+
+    font-size: clamp(22px, 3vw, 38px);
+    font-weight: 700;
+
+    padding: clamp(18px, 2.5vw, 25px) clamp(25px, 8vw, 140px) clamp(18px, 2.5vw, 25px) clamp(20px, 3vw, 35px);
 }
 
 .section-title::before {
-
     content: "";
-
     position: absolute;
     inset: 0;
 
-    background: url("images/corner.png") repeat-x center;
+    background: url("images/corner.png") no-repeat right center;
 
     background-size: 180px auto;
 
@@ -392,30 +476,15 @@ body {
     pointer-events: none;
 }
 
-.section-title {
-    background: linear-gradient(to right, #f57c00, #dca91d);
-    color: #fff;
-    font-size: 36px;
-    font-weight: 700;
-
-    padding: 22px 140px 22px 30px;
-
-    position: relative;
-}
-
 /* ===========================
    GRID
 =========================== */
 
 .grid {
-
     display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 25px;
-
-    padding: 35px;
+    padding: clamp(20px, 3vw, 35px);
 }
 
 /* ===========================
@@ -423,83 +492,61 @@ body {
 =========================== */
 
 .field {
-
     display: flex;
-
     flex-direction: column;
+    width: 100%;
 }
 
 .field label {
-
     font-weight: 500;
-
     margin-bottom: 8px;
-
     color: #444;
+    font-size: 15px;
 }
 
 .field span {
-
     color: red;
 }
 
 /* ===========================
-   INPUT
+   INPUTS
 =========================== */
 
 .field input,
 .field textarea,
 .field select {
-
+    width: 100%;
     padding: 14px 16px;
-
     border: 2px solid #d8d8d8;
-
     border-radius: 10px;
-
     font-size: 15px;
-
     transition: .3s;
-
-    background: white;
 }
 
 .field textarea {
-
     min-height: 110px;
-
     resize: vertical;
 }
-
-/* ===========================
-   FOCUS
-=========================== */
 
 .field input:focus,
 .field textarea:focus,
 .field select:focus {
-
     outline: none;
-
     border-color: #f57c00;
-
-    box-shadow:
-        0 0 12px rgba(245, 124, 0, .18);
+    box-shadow: 0 0 12px rgba(245, 124, 0, .18);
 }
 
 /* ===========================
    FILE INPUT
 =========================== */
 
-input[type=file] {
-
+input[type="file"] {
+    width: 100%;
     border: 2px dashed #d4af37;
-
     padding: 18px;
-
     background: #fffaf2;
-
     cursor: pointer;
+    border-radius: 10px;
 }
 
 /* ===========================
@@ -507,32 +554,28 @@ input[type=file] {
 =========================== */
 
 button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 
-    background: linear-gradient(90deg,
-            #f57c00,
-            #d4af37);
-
-    color: white;
+    background: linear-gradient(90deg, #f57c00, #d4af37);
+    color: #fff;
 
     border: none;
+    border-radius: 50px;
 
     padding: 16px 50px;
 
-    border-radius: 50px;
-
     font-size: 17px;
+    font-weight: 600;
 
     cursor: pointer;
-
     transition: .3s;
 }
 
 button:hover {
-
     transform: translateY(-2px);
-
-    box-shadow:
-        0 10px 25px rgba(245, 124, 0, .3);
+    box-shadow: 0 10px 25px rgba(245, 124, 0, .30);
 }
 
 /* ===========================
@@ -540,154 +583,196 @@ button:hover {
 =========================== */
 
 hr {
-
     border: none;
-
     height: 1px;
-
     background: #ececec;
 }
 
-/* ===========================
-   MOBILE
-=========================== */
+/* ====================================================
+                  LARGE TABLETS
+==================================================== */
 
-@media(max-width:900px) {
+@media (max-width:992px) {
 
     .grid {
-
         grid-template-columns: 1fr;
     }
 
     .payment-section {
-
         flex-direction: column;
+        align-items: center;
+    }
+
+    .payment-left,
+    .payment-right {
+        width: 100%;
+        max-width: 100%;
     }
 
     .payment-right {
-
-        width: 100%;
+        margin-top: 10px;
     }
 
     .qr {
-
-        width: 220px;
+        max-width: 220px;
     }
 
-    .logo {
-
-        width: 150px;
-    }
-
-    .header h2 {
-
-        font-size: 26px;
-    }
-
-    .header h3 {
-
-        font-size: 20px;
-    }
-
-    .bg-logo {
-
-        width: 700px;
-        height: 700px;
-    }
 }
 
+/* ====================================================
+                     TABLETS
+==================================================== */
+
+@media (max-width:768px) {
+
+    .section-title {
+        text-align: center;
+        padding: 18px 20px;
+        font-size: 28px;
+    }
+
+    .grid {
+        padding: 20px;
+        gap: 18px;
+    }
+
+    .payment-section {
+        padding: 20px;
+        gap: 25px;
+    }
+
+    button {
+        width: 100%;
+        padding: 15px 20px;
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+        font-size: 14px;
+    }
+
+}
+
+/* ====================================================
+                     MOBILE
+==================================================== */
+
+@media (max-width:576px) {
+
+    .section-title {
+        font-size: 22px;
+        padding: 16px;
+    }
+
+    .grid {
+        padding: 16px;
+        gap: 15px;
+    }
+
+    .payment-section {
+        padding: 16px;
+    }
+
+    .qr {
+        max-width: 180px;
+    }
+
+    .field label {
+        font-size: 14px;
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    button {
+        width: 100%;
+        font-size: 16px;
+        padding: 14px;
+    }
+
+    input[type="file"] {
+        padding: 14px;
+    }
+
+}
+
+/* ====================================================
+                  SMALL MOBILES
+==================================================== */
+
+@media (max-width:380px) {
+
+    .section-title {
+        font-size: 19px;
+    }
+
+    .qr {
+        max-width: 160px;
+    }
+
+    button {
+        font-size: 15px;
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+        font-size: 13px;
+    }
+
+}
+
+/* ===========================
+   BODY
+=========================== */
+
 body {
-    background: linear-gradient(135deg, #edf6fd 0%, #e3eff8 45%, #f8fbff 100%);
+    background: linear-gradient(135deg,
+            #edf6fd 0%,
+            #e3eff8 45%,
+            #f8fbff 100%);
     overflow-x: hidden;
     position: relative;
 }
 
-/* ===========================
-   LOGO
-=========================== */
+/* ==========================================================
+                        LOGO
+========================================================== */
 
 .logo {
     display: block;
-    margin: 20px auto 10px auto;
-    width: 500px;
-    /* Increase or decrease as needed */
+    margin: 20px auto 10px;
+    width: clamp(140px, 28vw, 500px);
+    max-width: 90%;
     height: auto;
 }
 
-/* ================================
-   Mobile Responsive (Max 768px)
-================================ */
-
-@media screen and (max-width:768px) {
-
-    .logo {
-
-        width: 120px;
-
-        margin-bottom: 12px;
-
-        display: block;
-
-        margin-left: auto;
-
-        margin-right: auto;
-
-    }
-
-    .corner {
-
-        position: absolute;
-
-        top: 10px;
-
-        right: 10px;
-
-        width: 80px;
-
-        height: auto;
-
-        z-index: 5;
-
-    }
-
-}
-
-/* ================= MOBILE ================= */
-
-@media (max-width:768px) {
-
-    .header {
-        padding: 20px 15px 10px;
-    }
-
-    .logo {
-        width: 130px;
-        max-width: 65%;
-        margin-bottom: 10px;
-        max-height: 90%;
-    }
-
-    .corner {
-        width: 90px;
-        max-width: 20%;
-        top: -20px;
-        right: 10px;
-    }
-
+.corner {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: clamp(70px, 10vw, 180px);
+    height: auto;
+    z-index: 5;
 }
 
 /* ==========================================================
-                FIVE ELEMENTS QUIZ TABLE
+                    FIVE ELEMENTS QUIZ
 ========================================================== */
 
 .quiz-container {
-    padding: 35px;
+    padding: clamp(18px, 3vw, 35px);
 }
 
 .quiz-title {
     text-align: center;
     color: #d97706;
-    font-size: 34px;
+    font-size: clamp(24px, 3vw, 34px);
     font-weight: 700;
     margin-bottom: 10px;
 }
@@ -695,12 +780,24 @@ body {
 .quiz-subtitle {
     text-align: center;
     color: #666;
-    font-size: 16px;
+    font-size: clamp(14px, 2vw, 16px);
     margin-bottom: 30px;
+}
+
+/* ==========================================================
+                        TABLE
+========================================================== */
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 15px;
+    -webkit-overflow-scrolling: touch;
 }
 
 table {
     width: 100%;
+    min-width: 700px;
     border-collapse: collapse;
     background: #fff;
     border-radius: 15px;
@@ -709,34 +806,26 @@ table {
 }
 
 thead th {
-
     position: sticky;
     top: 0;
     z-index: 5;
 
     background: linear-gradient(90deg, #f57c00, #d4af37);
-
     color: #fff;
 
     padding: 16px 12px;
 
-    font-size: 17px;
-
+    font-size: 16px;
+    font-weight: 600;
     text-align: center;
 }
 
 tbody td {
-
     border: 1px solid #ececec;
-
     padding: 15px 12px;
-
     font-size: 15px;
-
     color: #444;
-
     vertical-align: middle;
-
     transition: .25s;
 }
 
@@ -745,87 +834,59 @@ tbody tr:nth-child(even) {
 }
 
 tbody tr:hover {
-
     background: #fff8ec;
+}
 
+tbody td:hover {
+    background: #fff7e7;
 }
 
 tbody td:first-child {
-
     width: 60px;
-
     text-align: center;
-
     font-weight: 700;
-
     color: #d97706;
 }
 
 tbody td:nth-child(2) {
-
     width: 340px;
-
     font-weight: 500;
-
     text-align: left;
 }
 
-
-/* ===========================
-        CHECKBOX
-=========================== */
+/* ==========================================================
+                        CHECKBOX
+========================================================== */
 
 input[type="checkbox"] {
-
     width: 20px;
-
     height: 20px;
-
-    cursor: pointer;
-
     accent-color: #f57c00;
-
+    cursor: pointer;
     margin-right: 8px;
-
-    transform: translateY(3px);
-
+    transform: translateY(2px);
 }
 
 td label {
-
     display: flex;
-
     align-items: center;
-
-    justify-content: flex-start;
-
     gap: 8px;
-
 }
 
-
-/* ===========================
-          SCORE
-=========================== */
+/* ==========================================================
+                        SCORE ROW
+========================================================== */
 
 .score-row {
-
     background: linear-gradient(90deg, #fff3d9, #fff8ef) !important;
-
 }
 
 .score-row td {
-
-    font-size: 20px;
-
-    font-weight: 700;
-
-    color: #d97706;
-
     text-align: center;
-
     padding: 20px;
-
+    font-size: 20px;
+    font-weight: 700;
+    color: #d97706;
 }
 
 #airScore,
@@ -833,116 +894,87 @@ td label {
 #earthScore,
 #spaceScore,
 #waterScore {
-
     color: #f57c00;
-
     font-size: 24px;
-
     font-weight: 700;
-
 }
 
+/* ==========================================================
+                    LARGE TABLETS
+========================================================== */
 
-/* ===========================
-      HOVER EFFECT
-=========================== */
+@media (max-width:992px) {
 
-tbody td:hover {
-
-    background: #fff7e7;
-
-}
-
-
-/* ===========================
-      SCROLL TABLE
-=========================== */
-
-.table-wrapper {
-
-    overflow-x: auto;
-
-    border-radius: 15px;
-
-}
-
-
-/* ===========================
-     QUESTION COLUMN
-=========================== */
-
-.question {
-
-    font-weight: 600;
-
-    line-height: 1.5;
-
-}
-
-
-/* ===========================
-      OPTION CELLS
-=========================== */
-
-.option-cell {
-
-    min-width: 170px;
-
-    text-align: left;
-
-}
-
-
-/* ===========================
-      RESPONSIVE
-=========================== */
-
-@media(max-width:992px) {
-
-    table {
-
-        min-width: 1300px;
-
+    .logo {
+        width: 260px;
     }
 
-    .table-wrapper {
+    .quiz-container {
+        padding: 25px;
+    }
 
-        overflow-x: auto;
+    thead th,
+    tbody td {
+        padding: 14px 10px;
+        font-size: 14px;
+    }
 
-        -webkit-overflow-scrolling: touch;
+}
 
+/* ==========================================================
+                        TABLETS
+========================================================== */
+
+@media (max-width:768px) {
+
+    .header {
+        padding: 20px 15px;
+    }
+
+    .logo {
+        width: 180px;
+        max-width: 70%;
+    }
+
+    .corner {
+        width: 90px;
+        top: 10px;
+        right: 10px;
+    }
+
+    .quiz-container {
+        padding: 20px 15px;
     }
 
     .quiz-title {
-
-        font-size: 28px;
-
+        font-size: 26px;
     }
 
-}
+    .quiz-subtitle {
+        font-size: 15px;
+    }
 
-@media(max-width:768px) {
-
-    .quiz-container {
-
-        padding: 15px;
-
+    table {
+        min-width: 650px;
     }
 
     thead th {
-
         font-size: 14px;
-
-        padding: 12px 8px;
-
+        padding: 12px 10px;
     }
 
     tbody td {
+        font-size: 14px;
+        padding: 12px 10px;
+    }
 
-        font-size: 13px;
+    input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+    }
 
-        padding: 10px 8px;
-
+    .score-row td {
+        font-size: 18px;
     }
 
     #airScore,
@@ -950,267 +982,511 @@ tbody td:hover {
     #earthScore,
     #spaceScore,
     #waterScore {
-
-        font-size: 18px;
-
-    }
-
-    input[type="checkbox"] {
-
-        width: 18px;
-
-        height: 18px;
-
+        font-size: 22px;
     }
 
 }
 
-@media(max-width:500px) {
+/* ==========================================================
+                        MOBILE
+========================================================== */
+
+@media (max-width:576px) {
+
+    .logo {
+        width: 150px;
+    }
+
+    .corner {
+        position: static;
+        display: block;
+        margin: 10px auto;
+        width: 80px;
+    }
+
+    .quiz-container {
+        padding: 15px 10px;
+    }
 
     .quiz-title {
-
         font-size: 22px;
-
     }
 
     .quiz-subtitle {
-
         font-size: 14px;
+    }
 
+    table {
+        min-width: 600px;
+    }
+
+    thead th {
+        font-size: 13px;
+        padding: 10px 8px;
+    }
+
+    tbody td {
+        font-size: 13px;
+        padding: 10px 8px;
+    }
+
+    .score-row td {
+        font-size: 16px;
+    }
+
+    #airScore,
+    #fireScore,
+    #earthScore,
+    #spaceScore,
+    #waterScore {
+        font-size: 20px;
+    }
+
+    input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
     }
 
 }
+
+/* ==========================================================
+                    EXTRA SMALL DEVICES
+========================================================== */
+
+@media (max-width:380px) {
+
+    .logo {
+        width: 130px;
+    }
+
+    .quiz-title {
+        font-size: 20px;
+    }
+
+    .quiz-subtitle {
+        font-size: 13px;
+    }
+
+    thead th,
+    tbody td {
+        font-size: 12px;
+        padding: 8px 6px;
+    }
+
+    .score-row td {
+        font-size: 15px;
+    }
+
+    #airScore,
+    #fireScore,
+    #earthScore,
+    #spaceScore,
+    #waterScore {
+        font-size: 18px;
+    }
+
+}
+
+
+/* ==========================================================
+                    QUESTION COLUMN
+========================================================== */
+
+.question {
+    font-weight: 600;
+    line-height: 1.6;
+    word-break: break-word;
+}
+
+/* ==========================================================
+                    OPTION CELL
+========================================================== */
+
+.option-cell {
+    min-width: 170px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+/* ==========================================================
+                    QUIZ TITLE
+========================================================== */
 
 .quiz-title {
     text-align: center;
     color: #b56b00;
+    font-size: clamp(22px, 3vw, 34px);
+    font-weight: 700;
     margin-bottom: 10px;
 }
 
 .quiz-instruction {
     text-align: center;
     margin-bottom: 20px;
-    font-size: 15px;
-}
-
-.button-section {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
-}
-
-.score-row {
-    background: #fff6df;
-    font-weight: bold;
-}
-
-/* ===========================
-   GUNA QUIZ
-=========================== */
-
-.quiz-title {
-    text-align: center;
-    color: #b56b00;
-    margin-bottom: 8px;
-}
-
-.quiz-instruction {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 15px;
+    font-size: clamp(14px, 2vw, 16px);
     font-style: italic;
+    color: #666;
 }
+
+/* ==========================================================
+                    TABLE WRAPPER
+========================================================== */
 
 .table-wrapper {
+    width: 100%;
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
+/* ==========================================================
+                    SCORE ROW
+========================================================== */
+
 .score-row {
-    background: #fff6df;
+    background: #fff6df !important;
     font-weight: bold;
 }
 
 .score-row td {
     color: #f57c00;
-    font-size: 22px;
-    font-weight: bold;
+    font-size: clamp(18px, 2vw, 22px);
+    font-weight: 700;
     text-align: center;
+    padding: 18px;
 }
+
+/* ==========================================================
+                    BUTTON SECTION
+========================================================== */
 
 .button-section {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 20px;
     margin-top: 30px;
+    flex-wrap: wrap;
 }
 
 .button-section button {
     min-width: 190px;
 }
 
-/* Better radio buttons */
+/* ==========================================================
+                    RADIO BUTTON
+========================================================== */
 
 input[type="radio"] {
     transform: scale(1.15);
     cursor: pointer;
+    accent-color: #f57c00;
 }
 
-/* Hover effect */
+/* ==========================================================
+                    TABLE HOVER
+========================================================== */
 
 tbody tr:hover {
     background: #fffdf5;
 }
 
+/* ==========================================================
+                    QUIZ SECTION
+========================================================== */
+
 .quiz-section {
-
     display: none;
-
 }
 
 .quiz-section.active {
-
     display: block;
-
 }
 
+/* ==========================================================
+                    QUIZ NAVIGATION
+========================================================== */
+
 .quiz-navigation {
-
     display: flex;
-
     justify-content: space-between;
-
+    align-items: center;
+    gap: 20px;
     margin: 40px 0;
-
+    flex-wrap: wrap;
 }
 
 .quiz-navigation button {
-
     background: #ff9800;
-
-    color: white;
-
+    color: #fff;
     border: none;
-
     padding: 12px 30px;
-
-    font-size: 18px;
-
+    font-size: 16px;
     border-radius: 8px;
-
     cursor: pointer;
+    transition: .3s;
+}
 
+.quiz-navigation button:hover {
+    background: #ef8800;
 }
 
 .quiz-navigation button:disabled {
-
     background: #999;
-
     cursor: not-allowed;
-
 }
 
-.quiz-navigation button {
-    padding: 8px 18px;
-    font-size: 14px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-}
+/* ==========================================================
+                PRAKRITI SUMMARY
+========================================================== */
 
 .prakriti-summary {
-
     margin-top: 50px;
-
 }
 
 .prakriti-heading {
-
     text-align: center;
-
-    font-size: 28px;
-
+    font-size: clamp(24px, 3vw, 32px);
     margin-bottom: 25px;
-
+    color: #b56b00;
 }
 
 .prakriti-info {
-
     margin-bottom: 20px;
-
-    font-size: 20px;
-
+    font-size: clamp(16px, 2vw, 20px);
+    line-height: 1.7;
 }
 
+/* ==========================================================
+                    PRAKRITI TABLE
+========================================================== */
+
 .prakriti-table {
-
     width: 100%;
-
+    min-width: 700px;
     border-collapse: collapse;
-
     margin-bottom: 35px;
-
 }
 
 .prakriti-table th,
 .prakriti-table td {
-
     border: 1px solid #555;
-
-    padding: 8px;
-
+    padding: 10px;
     vertical-align: top;
-
 }
 
 .prakriti-table th {
-
     background: #d8e4f2;
-
     text-align: center;
-
 }
 
 .prakriti-table th:first-child {
-
     background: #f5e8be;
-
 }
 
+/* ==========================================================
+                    PHOTO BOXES
+========================================================== */
+
 .photo-boxes {
-
     display: flex;
-
     justify-content: space-between;
-
+    gap: 20px;
     margin-top: 20px;
-
+    flex-wrap: wrap;
 }
 
 .photo-card {
-
-    width: 22%;
-
+    flex: 1 1 220px;
+    min-width: 180px;
     border: 1px solid #555;
-
     text-align: center;
-
+    background: #fff;
 }
 
 .photo-card h3 {
-
     margin: 0;
-
-    padding: 10px;
-
+    padding: 12px;
     background: #d8e4f2;
-
     border-bottom: 1px solid #555;
+    font-size: 18px;
+}
+
+/* ==========================================================
+                    LARGE TABLETS
+========================================================== */
+
+@media (max-width:992px) {
+
+    table {
+        min-width: 1100px;
+    }
+
+    .quiz-title {
+        font-size: 28px;
+    }
+
+    .prakriti-table {
+        min-width: 650px;
+    }
+
+    .photo-card {
+        flex: 1 1 calc(50% - 20px);
+    }
 
 }
 
+/* ==========================================================
+                        TABLETS
+========================================================== */
+
+@media (max-width:768px) {
+
+    .quiz-container {
+        padding: 15px;
+    }
+
+    thead th {
+        font-size: 14px;
+        padding: 12px 8px;
+    }
+
+    tbody td {
+        font-size: 13px;
+        padding: 10px 8px;
+    }
+
+    .question {
+        font-size: 14px;
+    }
+
+    .option-cell {
+        min-width: 150px;
+    }
+
+    #airScore,
+    #fireScore,
+    #earthScore,
+    #spaceScore,
+    #waterScore {
+        font-size: 18px;
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+        width: 18px;
+        height: 18px;
+    }
+
+    .button-section,
+    .quiz-navigation {
+        flex-direction: column;
+    }
+
+    .button-section button,
+    .quiz-navigation button {
+        width: 100%;
+    }
+
+    .photo-card {
+        flex: 1 1 100%;
+    }
+
+}
+
+/* ==========================================================
+                        MOBILE
+========================================================== */
+
+@media (max-width:576px) {
+
+    .quiz-title {
+        font-size: 22px;
+    }
+
+    .quiz-instruction {
+        font-size: 14px;
+    }
+
+    .question {
+        font-size: 13px;
+    }
+
+    thead th {
+        font-size: 13px;
+    }
+
+    tbody td {
+        font-size: 12px;
+    }
+
+    .score-row td {
+        font-size: 16px;
+    }
+
+    .prakriti-heading {
+        font-size: 24px;
+    }
+
+    .prakriti-info {
+        font-size: 16px;
+    }
+
+    .photo-card h3 {
+        font-size: 16px;
+    }
+
+}
+
+/* ==========================================================
+                    EXTRA SMALL DEVICES
+========================================================== */
+
+@media (max-width:380px) {
+
+    .quiz-title {
+        font-size: 20px;
+    }
+
+    .quiz-instruction {
+        font-size: 13px;
+    }
+
+    thead th,
+    tbody td {
+        font-size: 11px;
+    }
+
+    .score-row td {
+        font-size: 15px;
+    }
+
+    .prakriti-heading {
+        font-size: 20px;
+    }
+
+    .prakriti-info {
+        font-size: 15px;
+    }
+
+    .photo-card h3 {
+        font-size: 15px;
+    }
+
+}
+
+/* ==========================================================
+                    PHOTO AREA
+========================================================== */
+
 .photo-area {
+    min-height: 170px;
+}
 
-    height: 170px;
-
+.photo-boxes {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 25px;
 }
 
 .photo-boxes .field {
@@ -1223,42 +1499,23 @@ tbody tr:hover {
     box-sizing: border-box;
 }
 
-.photo-boxes {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    margin-top: 25px;
-}
-
 .photo-boxes .add-btn {
     width: 100%;
-    margin-top: 8px;
+    margin-top: 10px;
 }
 
 .field {
-    width: 48%;
+    width: 100%;
+    min-width: 0;
 }
 
-.field {
-    min-width: 400px;
-}
-
-.prakriti-total {
-    background: #fff6d5;
-    font-weight: bold;
-}
-
-.prakriti-total td {
-    text-align: center;
-    font-size: 18px;
-}
-
-.prakriti-table input[type="radio"] {
-    margin-right: 6px;
-}
+/* ==========================================================
+                    PRAKRITI TABLE
+========================================================== */
 
 .prakriti-table {
     width: 100%;
+    min-width: 700px;
     border-collapse: collapse;
     margin-top: 20px;
 }
@@ -1273,7 +1530,7 @@ tbody tr:hover {
 .prakriti-table th {
     background: #dce7f5;
     text-align: center;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .prakriti-table th:first-child {
@@ -1283,7 +1540,7 @@ tbody tr:hover {
 .prakriti-table td:first-child,
 .prakriti-table th:first-child {
     width: 18%;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .prakriti-table td:nth-child(2),
@@ -1298,7 +1555,7 @@ tbody tr:hover {
 .prakriti-table td:last-child,
 .prakriti-table th:last-child {
     text-align: center;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .prakriti-table input[type="radio"] {
@@ -1306,33 +1563,68 @@ tbody tr:hover {
     transform: scale(1.1);
 }
 
-.section-title {
-    text-align: center;
-    color: #fcfefb;
-    margin: 30px 0 20px;
-    font-size: 28px;
+.prakriti-total {
+    background: #fff6d5;
     font-weight: 700;
 }
 
-.horoscope-table {
+.prakriti-total td {
+    text-align: center;
+    font-size: 18px;
+}
+
+/* ==========================================================
+                    SECTION TITLE
+========================================================== */
+
+.section-title {
+    text-align: center;
+    color: #fff;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 700;
+    margin: 30px 0 20px;
+}
+
+/* ==========================================================
+                    COMMON TABLE STYLE
+========================================================== */
+
+.horoscope-table,
+.dob-table,
+.palmistry-table,
+.home-study-table {
     width: 100%;
+    min-width: 700px;
     border-collapse: collapse;
     margin-top: 20px;
     table-layout: fixed;
 }
 
 .horoscope-table th,
-.horoscope-table td {
+.horoscope-table td,
+.dob-table th,
+.dob-table td,
+.palmistry-table th,
+.palmistry-table td,
+.home-study-table th,
+.home-study-table td {
     border: 1px solid #555;
     padding: 10px;
     vertical-align: top;
 }
 
-.horoscope-table th {
+.horoscope-table th,
+.dob-table th,
+.palmistry-table th,
+.home-study-table th {
     background: #dce7f5;
     text-align: center;
-    font-weight: bold;
+    font-weight: 700;
 }
+
+/* ==========================================================
+                    HOROSCOPE
+========================================================== */
 
 .horoscope-table td {
     min-height: 80px;
@@ -1341,7 +1633,7 @@ tbody tr:hover {
 
 .horoscope-table td:first-child {
     text-align: center;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .horoscope-table small {
@@ -1356,33 +1648,17 @@ tbody tr:hover {
     background: #fffdf7;
 }
 
-.dob-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    table-layout: fixed;
-}
-
-.dob-table th,
-.dob-table td {
-    border: 1px solid #555;
-    padding: 10px;
-    vertical-align: top;
-}
-
-.dob-table th {
-    background: #dce7f5;
-    text-align: center;
-    font-weight: bold;
-}
+/* ==========================================================
+                    DOB TABLE
+========================================================== */
 
 .dob-table td {
     height: 60px;
 }
 
 .dob-table td:first-child {
-    font-weight: bold;
     background: #fafafa;
+    font-weight: 700;
 }
 
 .dob-table td:nth-child(2),
@@ -1392,32 +1668,9 @@ tbody tr:hover {
     background: #fffdf7;
 }
 
-.section-title {
-    text-align: center;
-    color: #fffefd;
-    font-size: 28px;
-    margin: 30px 0 20px;
-}
-
-.palmistry-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    table-layout: fixed;
-}
-
-.palmistry-table th,
-.palmistry-table td {
-    border: 1px solid #555;
-    padding: 10px;
-    vertical-align: top;
-}
-
-.palmistry-table th {
-    background: #dce7f5;
-    text-align: center;
-    font-weight: bold;
-}
+/* ==========================================================
+                    PALMISTRY TABLE
+========================================================== */
 
 .palmistry-table td {
     height: 70px;
@@ -1425,12 +1678,12 @@ tbody tr:hover {
 
 .palmistry-table td:first-child {
     text-align: center;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .palmistry-table td:nth-child(2) {
-    font-weight: bold;
     background: #fafafa;
+    font-weight: 700;
 }
 
 .palmistry-table td:nth-child(3),
@@ -1440,32 +1693,9 @@ tbody tr:hover {
     background: #fffdf7;
 }
 
-.section-title {
-    text-align: center;
-    color: #faf9f7;
-    font-size: 28px;
-    margin: 30px 0 20px;
-}
-
-.home-study-table {
-    width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed;
-    margin-top: 20px;
-}
-
-.home-study-table th,
-.home-study-table td {
-    border: 1px solid #555;
-    padding: 10px;
-    vertical-align: top;
-}
-
-.home-study-table th {
-    background: #dce7f5;
-    text-align: center;
-    font-weight: bold;
-}
+/* ==========================================================
+                    HOME STUDY
+========================================================== */
 
 .home-study-table td {
     height: 65px;
@@ -1473,7 +1703,7 @@ tbody tr:hover {
 
 .home-study-table td:first-child {
     background: #fafafa;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .home-study-table td:nth-child(2),
@@ -1483,52 +1713,1914 @@ tbody tr:hover {
     background: #fffdf7;
 }
 
-.section-title {
-    text-align: center;
-    color: #f7f6f5;
-    font-size: 28px;
-    margin: 30px 0 20px;
-}
+/* ==========================================================
+                    REPORT CARD
+========================================================== */
 
 .report-card {
-
-    width: 92%;
-    max-width: 1200px;
-
+    width: min(92%, 1200px);
     margin: 45px auto;
-
     background: #fff;
-
     border-radius: 18px;
-
     box-shadow: 0 8px 25px rgba(0, 0, 0, .08);
-
     overflow: hidden;
-
 }
 
 .report-card .table-wrapper {
-
     padding: 30px;
-
 }
 
 .report-card .section-title {
-
     margin: 0;
-
 }
 
 .table-wrapper {
-
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     padding: 30px;
-
 }
+
+/* ==========================================================
+                    SUNNY
+========================================================== */
 
 .sunny {
     display: flex;
     justify-content: center;
-    /* Center horizontally */
     align-items: center;
     margin: 40px 0;
+}
+
+/* ==========================================================
+                    LARGE TABLETS
+========================================================== */
+
+@media (max-width:992px) {
+
+    .photo-boxes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .table-wrapper {
+        padding: 20px;
+    }
+
+    .report-card {
+        width: 96%;
+    }
+
+}
+
+/* ==========================================================
+                        TABLETS
+========================================================== */
+
+@media (max-width:768px) {
+
+    .photo-boxes {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .table-wrapper {
+        padding: 15px;
+    }
+
+    .prakriti-table,
+    .horoscope-table,
+    .dob-table,
+    .palmistry-table,
+    .home-study-table {
+        min-width: 650px;
+    }
+
+    .section-title {
+        font-size: 24px;
+    }
+
+    th,
+    td {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+}
+
+/* ==========================================================
+                        MOBILE
+========================================================== */
+
+@media (max-width:576px) {
+
+    .photo-boxes {
+        grid-template-columns: 1fr;
+    }
+
+    .table-wrapper {
+        padding: 10px;
+    }
+
+    .section-title {
+        font-size: 22px;
+    }
+
+    .prakriti-table,
+    .horoscope-table,
+    .dob-table,
+    .palmistry-table,
+    .home-study-table {
+        min-width: 600px;
+    }
+
+    th,
+    td {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .prakriti-total td {
+        font-size: 16px;
+    }
+
+    .report-card {
+        width: 98%;
+        margin: 20px auto;
+    }
+
+}
+
+/* ==========================================================
+                    EXTRA SMALL DEVICES
+========================================================== */
+
+@media (max-width:380px) {
+
+    .section-title {
+        font-size: 20px;
+    }
+
+    th,
+    td {
+        font-size: 12px;
+    }
+
+    .prakriti-total td {
+        font-size: 15px;
+    }
+
+}
+
+/*====================================================
+        16 ZONE OBSERVATION SHEET
+====================================================*/
+
+.zone-header {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 35px;
+
+    padding: 30px;
+
+}
+
+.zone-field {
+
+    display: flex;
+
+    align-items: center;
+
+    margin-bottom: 18px;
+
+    gap: 12px;
+
+}
+
+.zone-field label {
+
+    min-width: 150px;
+
+    font-weight: 600;
+
+    color: #444;
+
+}
+
+.zone-field input,
+.zone-field select {
+
+    flex: 1;
+
+    border: none;
+
+    border-bottom: 2px solid #999;
+
+    background: transparent;
+
+    padding: 8px;
+
+    font-size: 15px;
+
+    outline: none;
+
+}
+
+.zone-table {
+
+    width: 100%;
+
+    min-width: 850px;
+
+    border-collapse: collapse;
+
+}
+
+.zone-table th {
+
+    background: #dce7f5;
+
+    border: 1px solid #555;
+
+    padding: 12px;
+
+    text-align: center;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+}
+
+.zone-table td {
+
+    border: 1px solid #555;
+
+    height: 55px;
+
+    padding: 10px;
+
+    vertical-align: top;
+
+}
+
+.zone-table td:first-child {
+
+    text-align: center;
+
+    font-weight: 700;
+
+    background: #fafafa;
+
+}
+
+.zone-table tbody tr:nth-child(even) {
+
+    background: #fffdf7;
+
+}
+
+/*=============================
+        RESPONSIVE
+==============================*/
+
+@media(max-width:992px) {
+
+    .zone-header {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+@media(max-width:768px) {
+
+    .zone-header {
+
+        padding: 20px;
+
+    }
+
+    .zone-field {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+    .zone-field label {
+
+        min-width: auto;
+
+    }
+
+    .zone-table {
+
+        min-width: 700px;
+
+    }
+
+}
+
+@media(max-width:576px) {
+
+    .zone-header {
+
+        padding: 15px;
+
+    }
+
+    .zone-table {
+
+        min-width: 650px;
+
+    }
+
+    .zone-table th {
+
+        font-size: 14px;
+
+    }
+
+    .zone-table td {
+
+        font-size: 13px;
+
+        height: 50px;
+
+    }
+
+}
+
+/*=========================================================
+          MAHAVASTU DIAGNOSTIC ANALYSIS
+=========================================================*/
+
+.diagnostic-card {
+    width: min(95%, 1200px);
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, .08);
+    overflow: hidden;
+}
+
+.diagnostic-header {
+    padding: 30px;
+}
+
+.diagnostic-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.left-title h2 {
+    font-size: 30px;
+    color: #1f2937;
+    margin-bottom: 5px;
+}
+
+.left-title p {
+    color: #666;
+}
+
+.center-title {
+    flex: 1;
+    text-align: center;
+}
+
+.center-title h2 {
+    font-size: 28px;
+    color: #1f2937;
+    margin-bottom: 6px;
+}
+
+.center-title p {
+    color: #555;
+}
+
+.right-title {
+    min-width: 250px;
+}
+
+.info-line {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.info-line label {
+    width: 120px;
+    font-weight: 600;
+}
+
+.info-line input {
+    flex: 1;
+    border: none;
+    border-bottom: 2px solid #888;
+    padding: 6px;
+    background: transparent;
+    outline: none;
+    font-size: 15px;
+}
+
+/*================ TABLE ================*/
+
+.diagnostic-wrapper {
+    overflow-x: auto;
+    padding: 0 25px 30px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.diagnostic-table {
+    width: 100%;
+    min-width: 1200px;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.diagnostic-table th,
+.diagnostic-table td {
+    border: 1px solid #555;
+    padding: 8px;
+    vertical-align: top;
+    font-size: 14px;
+}
+
+.diagnostic-table th {
+    background: #dce7f5;
+    text-align: center;
+    font-weight: 700;
+}
+
+.sn {
+    width: 45px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.level {
+    width: 70px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.layer {
+    width: 110px;
+    font-weight: 700;
+}
+
+.object {
+    width: 130px;
+}
+
+.zone {
+    width: 90px;
+}
+
+.observation {
+    width: 170px;
+}
+
+.previous {
+    width: 160px;
+}
+
+.suggestion {
+    width: 240px;
+}
+
+.execution {
+    width: 80px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.vertical {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.layer-title {
+    font-weight: 700;
+}
+
+.sub-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    border-bottom: 1px dashed #ddd;
+}
+
+.sub-item:last-child {
+    border-bottom: none;
+}
+
+.blank {
+    height: 38px;
+}
+
+.note {
+    color: #666;
+    font-size: 13px;
+    font-style: italic;
+}
+
+/*============== PRINT ==============*/
+
+@media print {
+
+    .diagnostic-card {
+        box-shadow: none;
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+    }
+
+}
+
+/*============== TABLET ==============*/
+
+@media(max-width:992px) {
+
+    .diagnostic-header {
+        padding: 20px;
+    }
+
+    .center-title {
+        order: 1;
+        width: 100%;
+    }
+
+    .right-title {
+        width: 100%;
+    }
+
+}
+
+/*============== MOBILE ==============*/
+
+@media(max-width:768px) {
+
+    .left-title h2 {
+        font-size: 24px;
+    }
+
+    .center-title h2 {
+        font-size: 22px;
+    }
+
+    .diagnostic-wrapper {
+        padding: 0 10px 20px;
+    }
+
+    .diagnostic-table {
+        min-width: 1100px;
+    }
+
+    .info-line {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .info-line label {
+        width: auto;
+        margin-bottom: 5px;
+    }
+
+    .info-line input {
+        width: 100%;
+    }
+
+}
+
+/*=========================================================
+                MAPPING SOLUTIONS
+=========================================================*/
+
+.mapping-header {
+
+    text-align: center;
+
+    margin: 25px 0 35px;
+
+}
+
+.mapping-header h2 {
+
+    font-size: 30px;
+
+    color: #222;
+
+    font-weight: 700;
+
+}
+
+.mapping-subtitle {
+
+    margin: 25px 30px 15px;
+
+    font-size: 22px;
+
+    color: #f57c00;
+
+    font-weight: 700;
+
+}
+
+.mapping-table {
+
+    width: 100%;
+
+    min-width: 900px;
+
+    border-collapse: collapse;
+
+}
+
+.mapping-table th {
+
+    background: #dce7f5;
+
+    border: 1px solid #555;
+
+    padding: 12px;
+
+    text-align: center;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+}
+
+.mapping-table td {
+
+    border: 1px solid #555;
+
+    padding: 12px;
+
+    height: 55px;
+
+    vertical-align: middle;
+
+}
+
+.mapping-table td:first-child {
+
+    width: 60px;
+
+    text-align: center;
+
+    font-weight: bold;
+
+}
+
+.mapping-table td:nth-child(2) {
+
+    width: 170px;
+
+}
+
+.mapping-table tbody tr:nth-child(even) {
+
+    background: #fffdf7;
+
+}
+
+/*=========================
+      RESPONSIVE
+=========================*/
+
+@media(max-width:992px) {
+
+    .mapping-header h2 {
+
+        font-size: 26px;
+
+    }
+
+    .mapping-table {
+
+        min-width: 900px;
+
+    }
+
+}
+
+@media(max-width:768px) {
+
+    .mapping-header {
+
+        margin: 20px 0;
+
+    }
+
+    .mapping-header h2 {
+
+        font-size: 22px;
+
+    }
+
+    .mapping-subtitle {
+
+        margin: 20px 15px 10px;
+
+        font-size: 18px;
+
+    }
+
+    .mapping-table {
+
+        min-width: 850px;
+
+    }
+
+    .mapping-table th {
+
+        font-size: 14px;
+
+        padding: 10px;
+
+    }
+
+    .mapping-table td {
+
+        font-size: 13px;
+
+        padding: 10px;
+
+    }
+
+}
+
+@media(max-width:576px) {
+
+    .mapping-table {
+
+        min-width: 800px;
+
+    }
+
+    .mapping-header h2 {
+
+        font-size: 20px;
+
+    }
+
+    .mapping-subtitle {
+
+        font-size: 17px;
+
+    }
+
+}
+
+/*=========================================================
+                EXECUTION SHEET
+=========================================================*/
+
+.execution-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 40px;
+
+    padding: 30px;
+
+    flex-wrap: wrap;
+
+}
+
+.execution-left,
+.execution-right {
+
+    flex: 1;
+
+    min-width: 280px;
+
+}
+
+.execution-center {
+
+    flex: 1;
+
+    text-align: center;
+
+}
+
+.execution-center h2 {
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+    color: #222;
+
+}
+
+.execution-field {
+
+    display: flex;
+
+    align-items: center;
+
+    margin-bottom: 15px;
+
+    gap: 12px;
+
+}
+
+.execution-field label {
+
+    font-weight: 600;
+
+    min-width: 170px;
+
+    color: #444;
+
+}
+
+.execution-field input {
+
+    flex: 1;
+
+    border: none;
+
+    border-bottom: 2px solid #888;
+
+    padding: 8px;
+
+    background: transparent;
+
+    outline: none;
+
+    font-size: 15px;
+
+}
+
+/*=======================*/
+
+.execution-table {
+
+    width: 100%;
+
+    min-width: 850px;
+
+    border-collapse: collapse;
+
+}
+
+.execution-table th {
+
+    background: #dce7f5;
+
+    border: 1px solid #555;
+
+    padding: 12px;
+
+    font-size: 15px;
+
+    text-align: center;
+
+    font-weight: 700;
+
+}
+
+.execution-table td {
+
+    border: 1px solid #555;
+
+    height: 52px;
+
+    padding: 10px;
+
+    vertical-align: top;
+
+}
+
+.execution-table td:first-child {
+
+    text-align: center;
+
+    font-weight: bold;
+
+}
+
+.execution-table td:nth-child(2) {
+
+    text-align: center;
+
+    font-weight: 600;
+
+}
+
+.execution-table tbody tr:nth-child(even) {
+
+    background: #fffdf7;
+
+}
+
+/*=======================*/
+
+@media(max-width:992px) {
+
+    .execution-header {
+
+        flex-direction: column;
+
+        gap: 20px;
+
+    }
+
+    .execution-left,
+    .execution-center,
+    .execution-right {
+
+        width: 100%;
+
+    }
+
+    .execution-center {
+
+        order: -1;
+
+    }
+
+}
+
+@media(max-width:768px) {
+
+    .execution-header {
+
+        padding: 20px;
+
+    }
+
+    .execution-center h2 {
+
+        font-size: 24px;
+
+    }
+
+    .execution-field {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+    .execution-field label {
+
+        min-width: auto;
+
+    }
+
+    .execution-field input {
+
+        width: 100%;
+
+    }
+
+    .execution-table {
+
+        min-width: 750px;
+
+    }
+
+}
+
+@media(max-width:576px) {
+
+    .execution-header {
+
+        padding: 15px;
+
+    }
+
+    .execution-center h2 {
+
+        font-size: 22px;
+
+    }
+
+    .execution-table {
+
+        min-width: 700px;
+
+    }
+
+    .execution-table th {
+
+        font-size: 13px;
+
+        padding: 10px;
+
+    }
+
+    .execution-table td {
+
+        font-size: 13px;
+
+        padding: 8px;
+
+    }
+
+}
+
+.execution-title {
+    text-align: center;
+    margin-top: -10px;
+    margin-bottom: 25px;
+}
+
+.execution-title h2 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #222;
+}
+
+.execution-info {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0 30px;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.execution-left,
+.execution-right {
+    flex: 1;
+    min-width: 280px;
+}
+
+.execution-info p {
+    font-size: 18px;
+    margin: 18px 0;
+}
+
+.execution-info strong {
+    font-weight: 700;
+}
+
+/*==========================================================
+      EXECUTION REPORT CSS - PART 1 (RESPONSIVE)
+      Shared CSS for Pages 36–38
+==========================================================*/
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #ececec;
+    color: #222;
+    line-height: 1.45;
+    padding: 20px;
+}
+
+/*----------------------------------
+PAGE
+----------------------------------*/
+
+.report-page {
+    width: 100%;
+    max-width: 210mm;
+    min-height: 297mm;
+    margin: 20px auto;
+    background: #fff;
+    padding: 18mm 16mm;
+    position: relative;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, .12);
+    overflow: hidden;
+}
+
+/*----------------------------------
+HEADER
+----------------------------------*/
+
+.page-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.page-title h2 {
+    font-size: clamp(15px, 2vw, 18px);
+    font-weight: 700;
+}
+
+.center-title {
+    flex: 1;
+    text-align: center;
+    font-size: clamp(12px, 1.8vw, 14px);
+    font-weight: bold;
+}
+
+.page-no {
+    font-size: 12px;
+}
+
+/*----------------------------------
+LOGO
+----------------------------------*/
+
+.logo-center {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.logo-center img {
+    max-width: 100%;
+    height: 28px;
+    object-fit: contain;
+}
+
+/*----------------------------------
+CLIENT DETAILS
+----------------------------------*/
+
+.client-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+    margin: 12px 0 18px;
+    flex-wrap: wrap;
+}
+
+.client-left,
+.client-right {
+    flex: 1;
+    min-width: 260px;
+}
+
+.info-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 7px;
+}
+
+.info-label {
+    width: 95px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.info-line {
+    flex: 1;
+    border-bottom: 1px solid #777;
+    min-height: 16px;
+}
+
+/*----------------------------------
+TABLE WRAPPER
+----------------------------------*/
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/*----------------------------------
+COMMON TABLE
+----------------------------------*/
+
+.report-table {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: collapse;
+}
+
+.report-table th,
+.report-table td {
+    border: 1px solid #666;
+    padding: 6px;
+    font-size: 11px;
+}
+
+.report-table th {
+    background: #efe3b5;
+    text-align: center;
+    font-weight: bold;
+}
+
+.report-table td {
+    height: 30px;
+    vertical-align: top;
+}
+
+/*----------------------------------
+COLUMN WIDTHS
+----------------------------------*/
+
+.sn-col {
+    width: 6%;
+    text-align: center;
+}
+
+.zone-col {
+    width: 16%;
+}
+
+.suggestion-col {
+    width: 39%;
+}
+
+.outcome-col {
+    width: 39%;
+}
+
+/*----------------------------------
+CONCLUSION TABLE
+----------------------------------*/
+
+.conclusion-table {
+    width: 100%;
+    min-width: 700px;
+    border-collapse: collapse;
+}
+
+.conclusion-table th,
+.conclusion-table td {
+    border: 1px solid #666;
+    padding: 6px;
+    font-size: 11px;
+}
+
+.conclusion-table th {
+    background: #efe3b5;
+    text-align: center;
+    font-weight: bold;
+}
+
+.conclusion-table td {
+    height: 240px;
+    vertical-align: top;
+}
+
+.concern-col {
+    width: 20%;
+}
+
+.result-col {
+    width: 20%;
+}
+
+.observation-col {
+    width: 30%;
+}
+
+.advice-col {
+    width: 30%;
+}
+
+/*----------------------------------
+UTILITY
+----------------------------------*/
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.mt5 {
+    margin-top: 5px;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.mt15 {
+    margin-top: 15px;
+}
+
+.mt20 {
+    margin-top: 20px;
+}
+
+.mb5 {
+    margin-bottom: 5px;
+}
+
+.mb10 {
+    margin-bottom: 10px;
+}
+
+.mb15 {
+    margin-bottom: 15px;
+}
+
+.mb20 {
+    margin-bottom: 20px;
+}
+
+/*----------------------------------
+FOOTER
+----------------------------------*/
+
+.page-footer {
+    position: absolute;
+    bottom: 10mm;
+    right: 16mm;
+    font-size: 11px;
+    color: #555;
+}
+
+/*----------------------------------
+TABLET
+----------------------------------*/
+
+@media (max-width:992px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .report-page {
+        padding: 15mm 12mm;
+    }
+
+    .client-left,
+    .client-right {
+        min-width: 100%;
+    }
+
+}
+
+/*----------------------------------
+MOBILE
+----------------------------------*/
+
+@media (max-width:768px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .report-page {
+        max-width: 100%;
+        min-height: auto;
+        padding: 20px;
+    }
+
+    .page-title {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .center-title {
+        text-align: left;
+    }
+
+    .page-footer {
+        position: static;
+        text-align: right;
+        margin-top: 20px;
+    }
+
+    .info-label {
+        width: 80px;
+        font-size: 10px;
+    }
+
+}
+
+/*==========================================================
+        EXECUTION REPORT CSS - PART 2
+        Responsive + Print + Final Styling
+==========================================================*/
+
+
+/*------------------------------
+Small Tablets
+-------------------------------*/
+
+@media (max-width:768px) {
+
+    .report-table th,
+    .report-table td,
+    .conclusion-table th,
+    .conclusion-table td {
+        font-size: 10px;
+        padding: 5px;
+    }
+
+    .report-table {
+        min-width: 650px;
+    }
+
+    .conclusion-table {
+        min-width: 650px;
+    }
+
+}
+
+
+/*------------------------------
+Large Phones
+-------------------------------*/
+
+@media (max-width:576px) {
+
+    body {
+        padding: 8px;
+    }
+
+    .report-page {
+
+        width: 100%;
+        margin: 10px auto;
+        padding: 16px;
+        border-radius: 8px;
+
+    }
+
+    .page-title h2 {
+
+        font-size: 15px;
+
+    }
+
+    .center-title {
+
+        font-size: 12px;
+
+    }
+
+    .client-info {
+
+        gap: 12px;
+
+    }
+
+    .info-row {
+
+        flex-direction: column;
+        align-items: flex-start;
+
+    }
+
+    .info-label {
+
+        width: 100%;
+        margin-bottom: 3px;
+
+    }
+
+    .info-line {
+
+        width: 100%;
+
+    }
+
+    .report-table th,
+    .report-table td {
+
+        padding: 4px;
+        font-size: 9px;
+
+    }
+
+    .conclusion-table th,
+    .conclusion-table td {
+
+        padding: 4px;
+        font-size: 9px;
+
+    }
+
+}
+
+
+/*------------------------------
+Extra Small Phones
+-------------------------------*/
+
+@media (max-width:400px) {
+
+    .report-page {
+
+        padding: 12px;
+
+    }
+
+    .page-title {
+
+        gap: 6px;
+
+    }
+
+    .page-title h2 {
+
+        font-size: 14px;
+
+    }
+
+    .center-title {
+
+        font-size: 11px;
+
+    }
+
+    .report-table th,
+    .report-table td {
+
+        font-size: 8.5px;
+
+    }
+
+    .conclusion-table th,
+    .conclusion-table td {
+
+        font-size: 8.5px;
+
+    }
+
+}
+
+
+/*------------------------------
+Writing Area
+-------------------------------*/
+
+.blank-area {
+
+    min-height: 220px;
+
+}
+
+.blank-area.large {
+
+    min-height: 300px;
+
+}
+
+.blank-area.xlarge {
+
+    min-height: 420px;
+
+}
+
+
+/*------------------------------
+Borders
+-------------------------------*/
+
+.border {
+
+    border: 1px solid #777;
+
+}
+
+.border-top {
+
+    border-top: 1px solid #777;
+
+}
+
+.border-bottom {
+
+    border-bottom: 1px solid #777;
+
+}
+
+.border-left {
+
+    border-left: 1px solid #777;
+
+}
+
+.border-right {
+
+    border-right: 1px solid #777;
+
+}
+
+
+/*------------------------------
+Alignment
+-------------------------------*/
+
+.flex {
+
+    display: flex;
+
+}
+
+.space-between {
+
+    justify-content: space-between;
+
+}
+
+.align-center {
+
+    align-items: center;
+
+}
+
+.justify-center {
+
+    justify-content: center;
+
+}
+
+
+/*------------------------------
+Widths
+-------------------------------*/
+
+.w-100 {
+
+    width: 100%;
+
+}
+
+.w-75 {
+
+    width: 75%;
+
+}
+
+.w-50 {
+
+    width: 50%;
+
+}
+
+.w-25 {
+
+    width: 25%;
+
+}
+
+
+/*------------------------------
+Spacing
+-------------------------------*/
+
+.p5 {
+
+    padding: 5px;
+
+}
+
+.p10 {
+
+    padding: 10px;
+
+}
+
+.p15 {
+
+    padding: 15px;
+
+}
+
+.p20 {
+
+    padding: 20px;
+
+}
+
+.m5 {
+
+    margin: 5px;
+
+}
+
+.m10 {
+
+    margin: 10px;
+
+}
+
+.m15 {
+
+    margin: 15px;
+
+}
+
+.m20 {
+
+    margin: 20px;
+
+}
+
+
+/*------------------------------
+A4 Print
+-------------------------------*/
+
+@media print {
+
+    body {
+
+        background: #fff;
+        padding: 0;
+        margin: 0;
+
+    }
+
+    .report-page {
+
+        width: 210mm;
+        min-height: 297mm;
+
+        margin: 0;
+
+        box-shadow: none;
+
+        border: none;
+
+        page-break-after: always;
+
+        break-after: page;
+
+    }
+
+    .report-page:last-child {
+
+        page-break-after: auto;
+
+    }
+
+    .table-responsive {
+
+        overflow: visible;
+
+    }
+
+}
+
+
+/*------------------------------
+Landscape Support
+-------------------------------*/
+
+@media (orientation:landscape) {
+
+    .report-page {
+
+        max-width: 1000px;
+
+    }
+
+}
+
+
+/*------------------------------
+Smooth Table
+-------------------------------*/
+
+.report-table tbody tr:hover {
+
+    background: #faf8ef;
+
+}
+
+.conclusion-table tbody tr:hover {
+
+    background: #faf8ef;
+
+}
+
+
+/*------------------------------
+Images
+-------------------------------*/
+
+img {
+
+    max-width: 100%;
+    height: auto;
+
+}
+
+
+/*------------------------------
+Links
+-------------------------------*/
+
+a {
+
+    text-decoration: none;
+    color: inherit;
+
+}
+
+
+/*------------------------------
+Selection
+-------------------------------*/
+
+::selection {
+
+    background: #d8c792;
+    color: #000;
+
+}
+
+/* PAGE 37 */
+
+.conclusion-table {
+
+    width: 100%;
+    border-collapse: collapse;
+
+}
+
+.conclusion-table th {
+
+    background: #efe3b5;
+    border: 1px solid #666;
+    text-align: center;
+    padding: 8px;
+    font-size: 12px;
+    font-weight: 700;
+
+}
+
+.conclusion-table td {
+
+    border: 1px solid #666;
+    vertical-align: top;
+    padding: 10px;
+
+}
+
+.blank-area {
+
+    min-height: 720px;
+
+}
+
+@media(max-width:768px) {
+
+    .blank-area {
+
+        min-height: 420px;
+
+    }
+
+}
+
+.report-table thead th {
+    background: #f3e8c4;
+    font-weight: 700;
+    text-align: center;
+}
+
+.report-table {
+    table-layout: fixed;
+}
+
+.sn-col {
+    width: 5%;
+}
+
+.zone-col {
+    width: 8%;
+}
+
+.suggestion-col {
+    width: 40%;
+}
+
+.outcome-col {
+    width: 47%;
 }
