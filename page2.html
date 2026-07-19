@@ -136,6 +136,7 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: 500px;
+        background-size: cover;
      ">
         <h2>Five Elements Quiz</h2>
 
@@ -458,21 +459,317 @@
             </tbody>
         </table>
 
-        <div class="button-section">
+    </div>
 
-            <button type="button" class="submit-btn" onclick="previousPage()">
-                ← Previous Page
-            </button>
+    <script src="page2.js"></script>
 
-            <button type="button" class="submit-btn" onclick="nextPage()">
-                Next Page →
-            </button>
+    <!-- ================= QUIZ ================= -->
+
+    <div class="container" style="
+        background-image: url('images/watermark.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 500px;
+        background-size: cover;">
+
+        <h2 class="quiz-title">
+            Planets Influence Quiz
+        </h2>
+
+        <p class="quiz-instruction">
+
+            <b>Instruction:</b>
+
+            Choose <b>ONE</b> answer for every question.
+
+            Select the option that best matches your behaviour or habit.
+
+        </p>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th style="width:50px;">#</th>
+
+                        <th style="min-width:260px;">Question</th>
+
+                        <th>Ketu ☋</th>
+
+                        <th>Venus 🌸</th>
+
+                        <th>Sun ☀️</th>
+
+                        <th>Moon 🌙</th>
+
+                        <th>Mars ♂</th>
+
+                        <th>Rahu 🌀</th>
+
+                        <th>Jupiter 📘</th>
+
+                        <th>Saturn 🪓</th>
+
+                        <th>Mercury 🗣️</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <!-- ================= Question 1 ================= -->
+
+                    <tr>
+                        <td>1</td>
+                        <td>How you Think?</td>
+
+                        <td><input type="radio" name="q1" value="Ketu"> I'm in a different world altogether...</td>
+                        <td><input type="radio" name="q1" value="Venus"> Beauty brings peace...</td>
+                        <td><input type="radio" name="q1" value="Sun"> "I lead the way..."</td>
+                        <td><input type="radio" name="q1" value="Moon"> It's all about emotions...</td>
+                        <td><input type="radio" name="q1" value="Mars"> Let's get it done!!</td>
+                        <td><input type="radio" name="q1" value="Rahu"> "All eyes on me!"</td>
+                        <td><input type="radio" name="q1" value="Jupiter"> Think first, guide next...</td>
+                        <td><input type="radio" name="q1" value="Saturn"> Step-by-step with solid effort...</td>
+                        <td><input type="radio" name="q1" value="Mercury"> Let's talk it out!!</td>
+                    </tr>
+
+                    <!-- ================= Question 2 ================= -->
+
+                    <tr>
+                        <td>2</td>
+                        <td>When you have to present yourself in a group...</td>
+
+                        <td><input type="radio" name="q2" value="Ketu"> Speak mystically or stay enigmatic</td>
+                        <td><input type="radio" name="q2" value="Venus"> Dress well, stylish & appealing</td>
+                        <td><input type="radio" name="q2" value="Sun"> Speak with authority & clarity</td>
+                        <td><input type="radio" name="q2" value="Moon"> Stay calm, speak with emotional depth</td>
+                        <td><input type="radio" name="q2" value="Mars"> Direct & energetic delivery</td>
+                        <td><input type="radio" name="q2" value="Rahu"> Steal the spotlight with bold moves</td>
+                        <td><input type="radio" name="q2" value="Jupiter"> Teach with insights</td>
+                        <td><input type="radio" name="q2" value="Saturn"> Ticking off each logical point</td>
+                        <td><input type="radio" name="q2" value="Mercury"> Use wit, jokes or wordplay</td>
+                    </tr>
+
+                    <!-- ================= Question 3 ================= -->
+
+                    <tr>
+                        <td>3</td>
+                        <td>When it's about money or spending...</td>
+
+                        <td><input type="radio" name="q3" value="Ketu"> Whatever little I have is enough</td>
+                        <td><input type="radio" name="q3" value="Venus"> Spend on décor, brands & comforts</td>
+                        <td><input type="radio" name="q3" value="Sun"> Maintain dignity & save responsibly</td>
+                        <td><input type="radio" name="q3" value="Moon"> Spend on emotions, gifts & comfort</td>
+                        <td><input type="radio" name="q3" value="Mars"> Earn fast, spend fast</td>
+                        <td><input type="radio" name="q3" value="Rahu"> Show off through brands</td>
+                        <td><input type="radio" name="q3" value="Jupiter"> Save for long-term goals</td>
+                        <td><input type="radio" name="q3" value="Saturn"> Budget & cut-down mindset</td>
+                        <td><input type="radio" name="q3" value="Mercury"> Log all income-expense</td>
+                    </tr>
+
+                    <!-- ================= Question 4 ================= -->
+
+                    <tr>
+                        <td>4</td>
+                        <td>When you have to give a presentation in office/team...</td>
+
+                        <td><input type="radio" name="q4" value="Ketu"> Quiet but impactful statements</td>
+                        <td><input type="radio" name="q4" value="Venus"> Top-class designs & aesthetics</td>
+                        <td><input type="radio" name="q4" value="Sun"> Command attention directly</td>
+                        <td><input type="radio" name="q4" value="Moon"> Use emotional storytelling</td>
+                        <td><input type="radio" name="q4" value="Mars"> Get straight to the point</td>
+                        <td><input type="radio" name="q4" value="Rahu"> Trendy lines, catchy format</td>
+                        <td><input type="radio" name="q4" value="Jupiter"> Talk in depth & philosophy</td>
+                        <td><input type="radio" name="q4" value="Saturn"> Use structure & data-backed logic</td>
+                        <td><input type="radio" name="q4" value="Mercury"> Win with jokes & facts</td>
+                    </tr>
+
+                    <!-- ================= Question 5 ================= -->
+
+                    <tr>
+                        <td>5</td>
+                        <td>When choosing a house/property...</td>
+
+                        <td><input type="radio" name="q5" value="Ketu"> Peaceful, spiritual places</td>
+                        <td><input type="radio" name="q5" value="Venus"> Vastu-compliant & beautiful interiors</td>
+                        <td><input type="radio" name="q5" value="Sun"> Prestigious, elite societies</td>
+                        <td><input type="radio" name="q5" value="Moon"> Family-friendly locality</td>
+                        <td><input type="radio" name="q5" value="Mars"> Secure & practical layout</td>
+                        <td><input type="radio" name="q5" value="Rahu"> Most trending or popular location</td>
+                        <td><input type="radio" name="q5" value="Jupiter"> School & temples nearby</td>
+                        <td><input type="radio" name="q5" value="Saturn"> Budget-friendly & durable</td>
+                        <td><input type="radio" name="q5" value="Mercury"> Close to workplace, easy commute</td>
+                    </tr>
+
+                    <!-- ================= Question 6 ================= -->
+
+                    <tr>
+                        <td>6</td>
+                        <td>When you get free time...</td>
+
+                        <td><input type="radio" name="q6" value="Ketu"> Meditation, mystic arts</td>
+                        <td><input type="radio" name="q6" value="Venus"> Netflix, coffee, cozy space</td>
+                        <td><input type="radio" name="q6" value="Sun"> Motivational TED Talks</td>
+                        <td><input type="radio" name="q6" value="Moon"> Journaling, music, writing</td>
+                        <td><input type="radio" name="q6" value="Mars"> Hiking, gym, biking</td>
+                        <td><input type="radio" name="q6" value="Rahu"> Making trending reels</td>
+                        <td><input type="radio" name="q6" value="Jupiter"> Studying astrology/spirituality</td>
+                        <td><input type="radio" name="q6" value="Saturn"> Making DIY stuff</td>
+                        <td><input type="radio" name="q6" value="Mercury"> Listening to podcasts, watching YouTube</td>
+                    </tr>
+
+                    <!-- ================= Question 7 ================= -->
+
+                    <tr>
+                        <td>7</td>
+                        <td>When someone asks for help...</td>
+
+                        <td><input type="radio" name="q7" value="Ketu"> Silent, anonymous help</td>
+                        <td><input type="radio" name="q7" value="Venus"> Gifting, decorating, adding beauty</td>
+                        <td><input type="radio" name="q7" value="Sun"> Offer direction or lead the way</td>
+                        <td><input type="radio" name="q7" value="Moon"> Listen & give emotional support</td>
+                        <td><input type="radio" name="q7" value="Mars"> Jump in to take action</td>
+                        <td><input type="radio" name="q7" value="Rahu"> Help publicly, share it too</td>
+                        <td><input type="radio" name="q7" value="Jupiter"> Offer deep guidance</td>
+                        <td><input type="radio" name="q7" value="Saturn"> Build a step-wise solution</td>
+                        <td><input type="radio" name="q7" value="Mercury"> Help through calls, messaging & discussions
+                        </td>
+                    </tr>
+
+                    <!-- ================= Question 8 ================= -->
+
+                    <tr>
+                        <td>8</td>
+                        <td>When dealing with clients or relatives...</td>
+
+                        <td><input type="radio" name="q8" value="Ketu"> Stay observant, quiet</td>
+                        <td><input type="radio" name="q8" value="Venus"> Sweet and polite talk</td>
+                        <td><input type="radio" name="q8" value="Sun"> Direct, to the point</td>
+                        <td><input type="radio" name="q8" value="Moon"> Build emotional rapport</td>
+                        <td><input type="radio" name="q8" value="Mars"> Close the deal quickly</td>
+                        <td><input type="radio" name="q8" value="Rahu"> Impress through status</td>
+                        <td><input type="radio" name="q8" value="Jupiter"> Talk with ethics & wisdom</td>
+                        <td><input type="radio" name="q8" value="Saturn"> Set clear boundaries & rules</td>
+                        <td><input type="radio" name="q8" value="Mercury"> Speak with facts, friendly tone</td>
+                    </tr>
+
+                    <!-- ================= Question 9 ================= -->
+
+                    <tr>
+                        <td>9</td>
+                        <td>When you feel lonely or face problems...</td>
+
+                        <td><input type="radio" name="q9" value="Ketu"> Go into meditation or read</td>
+                        <td><input type="radio" name="q9" value="Venus"> Watch movies, relax in comfort</td>
+                        <td><input type="radio" name="q9" value="Sun"> Stay composed & self-contained</td>
+                        <td><input type="radio" name="q9" value="Moon"> Cry or stay quiet to process</td>
+                        <td><input type="radio" name="q9" value="Mars"> Workout or jump into action</td>
+                        <td><input type="radio" name="q9" value="Rahu"> Post on social media, express loudly</td>
+                        <td><input type="radio" name="q9" value="Jupiter"> Seek spiritual insight or mentor</td>
+                        <td><input type="radio" name="q9" value="Saturn"> Dive deep into work</td>
+                        <td><input type="radio" name="q9" value="Mercury"> Call or talk it out with someone</td>
+                    </tr>
+
+                    <!-- ================= Question 10 ================= -->
+
+                    <tr>
+                        <td>10</td>
+                        <td>When it's about faith or life guidance...</td>
+
+                        <td><input type="radio" name="q10" value="Ketu"> Seek mystics, gurus, mantra</td>
+                        <td><input type="radio" name="q10" value="Venus"> Love temple ambience & rituals</td>
+                        <td><input type="radio" name="q10" value="Sun"> Believe in truth and self-respect</td>
+                        <td><input type="radio" name="q10" value="Moon"> Trust emotions & devotion</td>
+                        <td><input type="radio" name="q10" value="Mars"> "Work is worship" mindset</td>
+                        <td><input type="radio" name="q10" value="Rahu"> Follow flashy spiritual influencers</td>
+                        <td><input type="radio" name="q10" value="Jupiter"> Study scriptures or attend satsangs</td>
+                        <td><input type="radio" name="q10" value="Saturn"> Be disciplined and timely</td>
+                        <td><input type="radio" name="q10" value="Mercury"> Debate, forward articles & research</td>
+                    </tr>
+
+                    <!-- ================= Question 11 ================= -->
+
+                    <tr>
+                        <td>11</td>
+                        <td>When a career growth opportunity arises...</td>
+
+                        <td><input type="radio" name="q11" value="Ketu"> Silently plan a surprise move</td>
+                        <td><input type="radio" name="q11" value="Venus"> Improve image and grooming</td>
+                        <td><input type="radio" name="q11" value="Sun"> Ask directly for promotion</td>
+                        <td><input type="radio" name="q11" value="Moon"> Take team along, collaborate</td>
+                        <td><input type="radio" name="q11" value="Mars"> Grab a new target, fast execution</td>
+                        <td><input type="radio" name="q11" value="Rahu"> Promote yourself on social media</td>
+                        <td><input type="radio" name="q11" value="Jupiter"> Seek mentor blessings and clarity</td>
+                        <td><input type="radio" name="q11" value="Saturn"> Prepare thoroughly, follow process</td>
+                        <td><input type="radio" name="q11" value="Mercury"> Use networking and casual chats</td>
+                    </tr>
+
+                    <!-- ================= Question 12 ================= -->
+
+                    <tr>
+                        <td>12</td>
+                        <td>When you achieve something big...</td>
+
+                        <td><input type="radio" name="q12" value="Ketu"> Stay low-key, inwardly fulfilled</td>
+                        <td><input type="radio" name="q12" value="Venus"> Celebrate in style, throw a party</td>
+                        <td><input type="radio" name="q12" value="Sun"> Say "I told you so" confidently</td>
+                        <td><input type="radio" name="q12" value="Moon"> Thank everyone with humility</td>
+                        <td><input type="radio" name="q12" value="Mars"> Set higher goals instantly</td>
+                        <td><input type="radio" name="q12" value="Rahu"> Announce it everywhere, show it off</td>
+                        <td><input type="radio" name="q12" value="Jupiter"> Share your learnings with others</td>
+                        <td><input type="radio" name="q12" value="Saturn"> Remain simple and consistent</td>
+                        <td><input type="radio" name="q12" value="Mercury"> Blog it, vlog it or podcast it</td>
+                    </tr>
+
+                    <!-- ================= Question 13 ================= -->
+
+                    <tr>
+                        <td>13</td>
+                        <td>When facing low energy or rising expenses...</td>
+
+                        <td><input type="radio" name="q13" value="Ketu"> Retreat into silence and meditation</td>
+                        <td><input type="radio" name="q13" value="Venus"> Retail therapy or beauty breaks</td>
+                        <td><input type="radio" name="q13" value="Sun"> Remain calm and composed</td>
+                        <td><input type="radio" name="q13" value="Moon"> Get emotional or isolate quietly</td>
+                        <td><input type="radio" name="q13" value="Mars"> Push yourself into productivity</td>
+                        <td><input type="radio" name="q13" value="Rahu"> Blame external reasons</td>
+                        <td><input type="radio" name="q13" value="Jupiter"> Reflect and find root cause</td>
+                        <td><input type="radio" name="q13" value="Saturn"> Create a recovery plan, control spending</td>
+                        <td><input type="radio" name="q13" value="Mercury"> Track, organize and bounce back with
+                            structure</td>
+                    </tr>
+
+                    <!-- ================= SCORE ================= -->
+
+                    <tr class="score-row">
+
+                        <td colspan="2"><b>Score</b></td>
+
+                        <td id="ketuScore">0 /13</td>
+                        <td id="venusScore">0 /13</td>
+                        <td id="sunScore">0 /13</td>
+                        <td id="moonScore">0 /13</td>
+                        <td id="marsScore">0 /13</td>
+                        <td id="rahuScore">0 /13</td>
+                        <td id="jupiterScore">0 /13</td>
+                        <td id="saturnScore">0 /13</td>
+                        <td id="mercuryScore">0 /13</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
 
         </div>
 
     </div>
-
-    <script src="page2.js"></script>
 
 </body>
 

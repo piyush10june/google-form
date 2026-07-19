@@ -39,36 +39,7 @@ function updateScore() {
     document.getElementById("spaceScore").textContent = score.Space + " /25";
     document.getElementById("waterScore").textContent = score.Water + " /25";
 
-}
 
-// =====================================
-// PREVIOUS PAGE
-// =====================================
-
-function previousPage() {
-
-    window.location.href = "index.html";
-
-}
-
-// =====================================
-// NEXT PAGE
-// =====================================
-
-function nextPage() {
-
-    // Validate all questions answered
-
-    for (let i = 1; i <= 25; i++) {
-
-        if (!document.querySelector('input[name="q' + i + '"]:checked')) {
-
-            alert("Please answer Question " + i);
-
-            return;
-        }
-
-    }
 
     // Save answers
 
