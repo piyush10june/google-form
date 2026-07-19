@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Blueberry AstroVastu - Five Elements Quiz</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #F0F7FC url("images/watermark.png") center center no-repeat fixed;
+            background-size: 700px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1200px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, .15);
+            position: relative;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background: #f59b23;
+            color: #fff;
+        }
+
+        td:first-child {
+            text-align: left;
+        }
+
+        h2 {
+            text-align: center;
+            color: #b56b00;
+        }
+    </style>
+
+</head>
+
+<body style="
+        background-image: url('images/watermark.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 500px;
+        background-size: cover;
+     ">
+
+    <div class="container" style="
+        background-image: url('images/watermark.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 500px;
+        background-size: cover;
+     ">
+
+        <!-- HEADER -->
+
+        <img src="images/logo.png" class="logo">
+
+        <img src="images/corner.png" class="corner">
+
+        <div class="top-orange"></div>
+
+        <div class="header">
+
+            <div>
+
+                <p class="working">Working By</p>
+
+                <h3>PIYUSH JAIN</h3>
+
+                <p class="working">Phone Number</p>
+
+                <h3 style="color:goldenrod;">9693701283</h3>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="payment-section">
+
+            <div class="payment-left">
+
+                <div class="payment-details">
+
+                    <h3>Payment Details</h3>
+
+                    <p><b>Google Pay :</b> 9693701283</p>
+
+                    <p><b>PhonePe :</b> 9693701283</p>
+
+                    <p><b>UPI ID :</b> piyush10junepriyanka@okicici</p>
+
+                </div>
+
+            </div>
+
+            <div class="payment-right">
+
+                <img src="images/qr.png" class="qr">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="container" style="
+        background-image: url('images/watermark.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 500px;
+     ">
+        <h2>Five Elements Quiz</h2>
+
+        <p style="text-align:center">
+            Please select the option that best describes you.
+            Each question has only one answer.
+        </p>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th style="width:45px;">Q.</th>
+
+                    <th>Question</th>
+
+                    <th>Air</th>
+
+                    <th>Fire</th>
+
+                    <th>Earth</th>
+
+                    <th>Space</th>
+
+                    <th>Water</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>1</td>
+                    <td>Which sense do you rely on most while making decisions?</td>
+
+                    <td><input type="radio" name="q1" value="Air"> Planning instinct</td>
+                    <td><input type="radio" name="q1" value="Fire"> Heartfelt emotion</td>
+                    <td><input type="radio" name="q1" value="Earth"> Gut feeling</td>
+                    <td><input type="radio" name="q1" value="Space"> Logical observation</td>
+                    <td><input type="radio" name="q1" value="Water"> Intuitive knowing</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>What triggers your strongest memories?</td>
+
+                    <td><input type="radio" name="q2" value="Air"> Sounds / Shouting</td>
+                    <td><input type="radio" name="q2" value="Fire"> Laughs / Warmth</td>
+                    <td><input type="radio" name="q2" value="Earth"> Food / Family</td>
+                    <td><input type="radio" name="q2" value="Space"> Scents / Grief</td>
+                    <td><input type="radio" name="q2" value="Water"> Silence / Depth</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>Which emotion hits you first in tough situations?</td>
+
+                    <td><input type="radio" name="q3" value="Air"> Frustration / Anger</td>
+                    <td><input type="radio" name="q3" value="Fire"> Excitement / Joy</td>
+                    <td><input type="radio" name="q3" value="Earth"> Worry / Sympathy</td>
+                    <td><input type="radio" name="q3" value="Space"> Sadness / Grief</td>
+                    <td><input type="radio" name="q3" value="Water"> Fear / Awe</td>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <td>What kind of overload affects you the most?</td>
+
+                    <td><input type="radio" name="q4" value="Air"> Pressure / Stress</td>
+                    <td><input type="radio" name="q4" value="Fire"> Noise / Chaos</td>
+                    <td><input type="radio" name="q4" value="Earth"> Overeating / Overcaring</td>
+                    <td><input type="radio" name="q4" value="Space"> Over-control / Criticism</td>
+                    <td><input type="radio" name="q4" value="Water"> Isolation / Fear</td>
+                </tr>
+
+                <tr>
+                    <td>5</td>
+                    <td>What instantly soothes you?</td>
+
+                    <td><input type="radio" name="q5" value="Air"> Movement / Wind</td>
+                    <td><input type="radio" name="q5" value="Fire"> Warmth / Laughter</td>
+                    <td><input type="radio" name="q5" value="Earth"> Familiar food / Touch</td>
+                    <td><input type="radio" name="q5" value="Space"> Clean air / Structure</td>
+                    <td><input type="radio" name="q5" value="Water"> Stillness / Water</td>
+                </tr>
+
+                <tr>
+                    <td>6</td>
+                    <td>What experience do you value the most?</td>
+
+                    <td><input type="radio" name="q6" value="Air"> Progress / Growth</td>
+                    <td><input type="radio" name="q6" value="Fire"> Passion / Drama</td>
+                    <td><input type="radio" name="q6" value="Earth"> Harmony / Belonging</td>
+                    <td><input type="radio" name="q6" value="Space"> Purity / Clarity</td>
+                    <td><input type="radio" name="q6" value="Water"> Mystery / Solitude</td>
+                </tr>
+
+                <tr>
+                    <td>7</td>
+                    <td>What kind of environment feels energizing to you?</td>
+
+                    <td><input type="radio" name="q7" value="Air"> Trees / Vision boards</td>
+                    <td><input type="radio" name="q7" value="Fire"> Fireplaces / Red lights</td>
+                    <td><input type="radio" name="q7" value="Earth"> Kitchen / Garden</td>
+                    <td><input type="radio" name="q7" value="Space"> White walls / Order</td>
+                    <td><input type="radio" name="q7" value="Water"> Cave / Dark water</td>
+                </tr>
+
+                <tr>
+                    <td>8</td>
+                    <td>When do you feel most alive?</td>
+
+                    <td><input type="radio" name="q8" value="Air"> Challenge / Adventure</td>
+                    <td><input type="radio" name="q8" value="Fire"> Love / Connection</td>
+                    <td><input type="radio" name="q8" value="Earth"> Caring / Stability</td>
+                    <td><input type="radio" name="q8" value="Space"> Structure / Refinement</td>
+                    <td><input type="radio" name="q8" value="Water"> Depth / Reflection</td>
+                </tr>
+
+                <tr>
+                    <td>9</td>
+                    <td>What's the first thing you notice in a space?</td>
+
+                    <td><input type="radio" name="q9" value="Air"> Energy / Movement</td>
+                    <td><input type="radio" name="q9" value="Fire"> Vibe / Heat</td>
+                    <td><input type="radio" name="q9" value="Earth"> Clutter / Warmth</td>
+                    <td><input type="radio" name="q9" value="Space"> Air / Cleanliness</td>
+                    <td><input type="radio" name="q9" value="Water"> Mood / Quiet</td>
+                </tr>
+
+                <tr>
+                    <td>10</td>
+                    <td>What's your guilty pleasure?</td>
+
+                    <td><input type="radio" name="q10" value="Air"> Exploration / Expansion</td>
+                    <td><input type="radio" name="q10" value="Fire"> Social fun / Play</td>
+                    <td><input type="radio" name="q10" value="Earth"> Comfort food / Ritual</td>
+                    <td><input type="radio" name="q10" value="Space"> Neatness / Clean space</td>
+                    <td><input type="radio" name="q10" value="Water"> Immersion / Baths</td>
+                </tr>
+
+                <tr>
+                    <td>11</td>
+                    <td>How do you usually act?</td>
+
+                    <td><input type="radio" name="q11" value="Air"> Assertive / Driven</td>
+                    <td><input type="radio" name="q11" value="Fire"> Spontaneous / Charismatic</td>
+                    <td><input type="radio" name="q11" value="Earth"> Supportive / Nurturing</td>
+                    <td><input type="radio" name="q11" value="Space"> Controlled / Methodical</td>
+                    <td><input type="radio" name="q11" value="Water"> Withdrawn / Fluid</td>
+                </tr>
+
+                <tr>
+                    <td>12</td>
+                    <td>What makes you feel powerful?</td>
+
+                    <td><input type="radio" name="q12" value="Air"> Strategic planning</td>
+                    <td><input type="radio" name="q12" value="Fire"> Expressive presence</td>
+                    <td><input type="radio" name="q12" value="Earth"> Loyalty &amp; Service</td>
+                    <td><input type="radio" name="q12" value="Space"> Precision &amp; Rules</td>
+                    <td><input type="radio" name="q12" value="Water"> Silence &amp; Depth</td>
+                </tr>
+
+                <tr>
+                    <td>13</td>
+                    <td>How do you respond under stress?</td>
+
+                    <td><input type="radio" name="q13" value="Air"> Anger / Push through</td>
+                    <td><input type="radio" name="q13" value="Fire"> Panic / Dramatic burst</td>
+                    <td><input type="radio" name="q13" value="Earth"> Worry / Self-sacrifice</td>
+                    <td><input type="radio" name="q13" value="Space"> Judging / Shutting down</td>
+                    <td><input type="radio" name="q13" value="Water"> Withdrawal / Freeze</td>
+                </tr>
+
+                <tr>
+                    <td>14</td>
+                    <td>What's your natural talent?</td>
+
+                    <td><input type="radio" name="q14" value="Air"> Leadership / Vision</td>
+                    <td><input type="radio" name="q14" value="Fire"> Entertainment / Inspiration</td>
+                    <td><input type="radio" name="q14" value="Earth"> Teaching / Healing</td>
+                    <td><input type="radio" name="q14" value="Space"> Organizing / Managing</td>
+                    <td><input type="radio" name="q14" value="Water"> Counseling / Listening</td>
+                </tr>
+
+                <tr>
+                    <td>15</td>
+                    <td>How is your energy expressed?</td>
+
+                    <td><input type="radio" name="q15" value="Air"> Bold &amp; fast</td>
+                    <td><input type="radio" name="q15" value="Fire"> High &amp; scattered</td>
+                    <td><input type="radio" name="q15" value="Earth"> Soft &amp; supportive</td>
+                    <td><input type="radio" name="q15" value="Space"> Clear &amp; restrained</td>
+                    <td><input type="radio" name="q15" value="Water"> Deep &amp; conserved</td>
+                </tr>
+
+                <tr>
+                    <td>16</td>
+                    <td>Which organ feels most 'you' when you're active?</td>
+
+                    <td><input type="radio" name="q16" value="Air"> Liver / Decision-making</td>
+                    <td><input type="radio" name="q16" value="Fire"> Heart / Expression</td>
+                    <td><input type="radio" name="q16" value="Earth"> Spleen / Digestion</td>
+                    <td><input type="radio" name="q16" value="Space"> Lungs / Boundaries</td>
+                    <td><input type="radio" name="q16" value="Water"> Kidney / Willpower</td>
+                </tr>
+
+                <tr>
+                    <td>17</td>
+                    <td>How are you when you're healthiest?</td>
+
+                    <td><input type="radio" name="q17" value="Air"> Motivated &amp; Directed</td>
+                    <td><input type="radio" name="q17" value="Fire"> Energetic &amp; Joyful</td>
+                    <td><input type="radio" name="q17" value="Earth"> Grounded &amp; Content</td>
+                    <td><input type="radio" name="q17" value="Space"> Disciplined &amp; Clear</td>
+                    <td><input type="radio" name="q17" value="Water"> Peaceful &amp; Rested</td>
+                </tr>
+
+                <tr>
+                    <td>18</td>
+                    <td>What breaks down first when you're unwell?</td>
+
+                    <td><input type="radio" name="q18" value="Air"> Coordination / Anger</td>
+                    <td><input type="radio" name="q18" value="Fire"> Sleep / Restlessness</td>
+                    <td><input type="radio" name="q18" value="Earth"> Digestion / Worry</td>
+                    <td><input type="radio" name="q18" value="Space"> Breath / Sadness</td>
+                    <td><input type="radio" name="q18" value="Water"> Will / Fear</td>
+                </tr>
+
+                <tr>
+                    <td>19</td>
+                    <td>Which part of your body do you instinctively protect?</td>
+
+                    <td><input type="radio" name="q19" value="Air"> Ribs / Sides</td>
+                    <td><input type="radio" name="q19" value="Fire"> Chest / Heart</td>
+                    <td><input type="radio" name="q19" value="Earth"> Abdomen / Stomach</td>
+                    <td><input type="radio" name="q19" value="Space"> Skin / Lungs</td>
+                    <td><input type="radio" name="q19" value="Water"> Spine / Kidney area</td>
+                </tr>
+
+                <tr>
+                    <td>20</td>
+                    <td>What boosts your energy quickly?</td>
+
+                    <td><input type="radio" name="q20" value="Air"> Stretching / Herbs</td>
+                    <td><input type="radio" name="q20" value="Fire"> Movement / Warmth</td>
+                    <td><input type="radio" name="q20" value="Earth"> Nutrition / Rest</td>
+                    <td><input type="radio" name="q20" value="Space"> Breathing / Decluttering</td>
+                    <td><input type="radio" name="q20" value="Water"> Sleep / Stillness</td>
+                </tr>
+
+                <tr>
+                    <td>21</td>
+                    <td>Which identity suits you best?</td>
+
+                    <td><input type="radio" name="q21" value="Air"> Leader / Rebel</td>
+                    <td><input type="radio" name="q21" value="Fire"> Star / Performer</td>
+                    <td><input type="radio" name="q21" value="Earth"> Healer / Host</td>
+                    <td><input type="radio" name="q21" value="Space"> Judge / Thinker</td>
+                    <td><input type="radio" name="q21" value="Water"> Sage / Seeker</td>
+                </tr>
+
+                <tr>
+                    <td>22</td>
+                    <td>What's your biggest inner block?</td>
+
+                    <td><input type="radio" name="q22" value="Air"> Rage / Control issues</td>
+                    <td><input type="radio" name="q22" value="Fire"> Scattered / Over-stimulated</td>
+                    <td><input type="radio" name="q22" value="Earth"> Overgiving / Boundaries</td>
+                    <td><input type="radio" name="q22" value="Space"> Perfectionism / Guilt</td>
+                    <td><input type="radio" name="q22" value="Water"> Overwhelm / Fear</td>
+                </tr>
+
+                <tr>
+                    <td>23</td>
+                    <td>What helps you reset your energy?</td>
+
+                    <td><input type="radio" name="q23" value="Air"> Nature / Challenge</td>
+                    <td><input type="radio" name="q23" value="Fire"> Music / Dance</td>
+                    <td><input type="radio" name="q23" value="Earth"> Hugs / Food / Familiarity</td>
+                    <td><input type="radio" name="q23" value="Space"> Order / Structure</td>
+                    <td><input type="radio" name="q23" value="Water"> Isolation / Crying</td>
+                </tr>
+
+                <tr>
+                    <td>24</td>
+                    <td>What's your dominant inner quality?</td>
+
+                    <td><input type="radio" name="q24" value="Air"> Vision / Growth</td>
+                    <td><input type="radio" name="q24" value="Fire"> Passion / Expression</td>
+                    <td><input type="radio" name="q24" value="Earth"> Support / Empathy</td>
+                    <td><input type="radio" name="q24" value="Space"> Rules / Morality</td>
+                    <td><input type="radio" name="q24" value="Water"> Wisdom / Reflection</td>
+                </tr>
+
+                <tr>
+                    <td>25</td>
+                    <td>What does spirituality mean to you?</td>
+
+                    <td><input type="radio" name="q25" value="Air"> Purpose / Direction</td>
+                    <td><input type="radio" name="q25" value="Fire"> Devotion / Compassion</td>
+                    <td><input type="radio" name="q25" value="Earth"> Service / Balance</td>
+                    <td><input type="radio" name="q25" value="Space"> Purification / Clarity</td>
+                    <td><input type="radio" name="q25" value="Water"> Surrender</td>
+                </tr>
+
+                <tr style="font-weight:bold;background:#fff6df;">
+                    <td colspan="2" style="text-align:center;">Score</td>
+
+                    <td id="airScore">0 /25</td>
+                    <td id="fireScore">0 /25</td>
+                    <td id="earthScore">0 /25</td>
+                    <td id="spaceScore">0 /25</td>
+                    <td id="waterScore">0 /25</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <div class="button-section">
+
+            <button type="button" class="submit-btn" onclick="previousPage()">
+                ← Previous Page
+            </button>
+
+            <button type="button" class="submit-btn" onclick="nextPage()">
+                Next Page →
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="page2.js"></script>
+
+</body>
+
+</html>

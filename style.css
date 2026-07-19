@@ -12,10 +12,11 @@
 }
 
 body {
-
-    background: #eaf4fb;
-    overflow-x: hidden;
-    position: relative;
+    margin: 0;
+    padding: 0;
+    background: #F0F7FC url("images/watermark.png") center center no-repeat fixed;
+    background-size: 700px;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* ===========================
@@ -104,25 +105,36 @@ body {
    HEADER
 =========================== */
 
+/* ================= HEADER ================= */
+
 .header {
-
+    position: relative;
     text-align: center;
-
-    padding: 35px;
+    padding: 25px 20px 15px;
 }
+
+/* Main Logo */
 
 .logo {
-
+    display: block;
     width: 180px;
-
-    margin-bottom: 15px;
+    max-width: 55%;
+    height: auto;
+    margin: 0 auto 15px;
+    position: relative;
+    z-index: 2;
 }
 
-.header h2 {
+/* Corner Decoration */
 
-    color: #8a5b00;
-
-    font-size: 32px;
+.corner {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    width: 150px;
+    max-width: 30%;
+    height: auto;
+    z-index: 1;
 }
 
 .checkbox-grid {
@@ -600,4 +612,371 @@ body {
     width: 500px;
     /* Increase or decrease as needed */
     height: auto;
+}
+
+/* ================================
+   Mobile Responsive (Max 768px)
+================================ */
+
+@media screen and (max-width:768px) {
+
+    .logo {
+
+        width: 120px;
+
+        margin-bottom: 12px;
+
+        display: block;
+
+        margin-left: auto;
+
+        margin-right: auto;
+
+    }
+
+    .corner {
+
+        position: absolute;
+
+        top: 10px;
+
+        right: 10px;
+
+        width: 80px;
+
+        height: auto;
+
+        z-index: 5;
+
+    }
+
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width:768px) {
+
+    .header {
+        padding: 20px 15px 10px;
+    }
+
+    .logo {
+        width: 130px;
+        max-width: 65%;
+        margin-bottom: 10px;
+        max-height: 90%;
+    }
+
+    .corner {
+        width: 90px;
+        max-width: 20%;
+        top: -20px;
+        right: 10px;
+    }
+
+}
+
+/* ==========================================================
+                FIVE ELEMENTS QUIZ TABLE
+========================================================== */
+
+.quiz-container {
+    padding: 35px;
+}
+
+.quiz-title {
+    text-align: center;
+    color: #d97706;
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.quiz-subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, .08);
+}
+
+thead th {
+
+    position: sticky;
+    top: 0;
+    z-index: 5;
+
+    background: linear-gradient(90deg, #f57c00, #d4af37);
+
+    color: #fff;
+
+    padding: 16px 12px;
+
+    font-size: 17px;
+
+    text-align: center;
+}
+
+tbody td {
+
+    border: 1px solid #ececec;
+
+    padding: 15px 12px;
+
+    font-size: 15px;
+
+    color: #444;
+
+    vertical-align: middle;
+
+    transition: .25s;
+}
+
+tbody tr:nth-child(even) {
+    background: #fafafa;
+}
+
+tbody tr:hover {
+
+    background: #fff8ec;
+
+}
+
+tbody td:first-child {
+
+    width: 60px;
+
+    text-align: center;
+
+    font-weight: 700;
+
+    color: #d97706;
+}
+
+tbody td:nth-child(2) {
+
+    width: 340px;
+
+    font-weight: 500;
+
+    text-align: left;
+}
+
+
+/* ===========================
+        CHECKBOX
+=========================== */
+
+input[type="checkbox"] {
+
+    width: 20px;
+
+    height: 20px;
+
+    cursor: pointer;
+
+    accent-color: #f57c00;
+
+    margin-right: 8px;
+
+    transform: translateY(3px);
+
+}
+
+td label {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    gap: 8px;
+
+}
+
+
+/* ===========================
+          SCORE
+=========================== */
+
+.score-row {
+
+    background: linear-gradient(90deg, #fff3d9, #fff8ef) !important;
+
+}
+
+.score-row td {
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    color: #d97706;
+
+    text-align: center;
+
+    padding: 20px;
+
+}
+
+#airScore,
+#fireScore,
+#earthScore,
+#spaceScore,
+#waterScore {
+
+    color: #f57c00;
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+}
+
+
+/* ===========================
+      HOVER EFFECT
+=========================== */
+
+tbody td:hover {
+
+    background: #fff7e7;
+
+}
+
+
+/* ===========================
+      SCROLL TABLE
+=========================== */
+
+.table-wrapper {
+
+    overflow-x: auto;
+
+    border-radius: 15px;
+
+}
+
+
+/* ===========================
+     QUESTION COLUMN
+=========================== */
+
+.question {
+
+    font-weight: 600;
+
+    line-height: 1.5;
+
+}
+
+
+/* ===========================
+      OPTION CELLS
+=========================== */
+
+.option-cell {
+
+    min-width: 170px;
+
+    text-align: left;
+
+}
+
+
+/* ===========================
+      RESPONSIVE
+=========================== */
+
+@media(max-width:992px) {
+
+    table {
+
+        min-width: 1300px;
+
+    }
+
+    .table-wrapper {
+
+        overflow-x: auto;
+
+        -webkit-overflow-scrolling: touch;
+
+    }
+
+    .quiz-title {
+
+        font-size: 28px;
+
+    }
+
+}
+
+@media(max-width:768px) {
+
+    .quiz-container {
+
+        padding: 15px;
+
+    }
+
+    thead th {
+
+        font-size: 14px;
+
+        padding: 12px 8px;
+
+    }
+
+    tbody td {
+
+        font-size: 13px;
+
+        padding: 10px 8px;
+
+    }
+
+    #airScore,
+    #fireScore,
+    #earthScore,
+    #spaceScore,
+    #waterScore {
+
+        font-size: 18px;
+
+    }
+
+    input[type="checkbox"] {
+
+        width: 18px;
+
+        height: 18px;
+
+    }
+
+}
+
+@media(max-width:500px) {
+
+    .quiz-title {
+
+        font-size: 22px;
+
+    }
+
+    .quiz-subtitle {
+
+        font-size: 14px;
+
+    }
+
 }

@@ -1,341 +1,157 @@
 // ========================================
-// Blueberry AstroVastu Client Form
-// Page 1 JavaScript
+// BLUEBERRY ASTROVASTU
+// FIVE ELEMENTS QUIZ
 // ========================================
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    const form = document.getElementById("astroForm");
+    // ============================
+    // Only ONE option per question
+    // ============================
 
-    if (!form) {
-        console.error("Form with id='astroForm' not found.");
-        return;
-    }
+    const checkboxes = document.querySelectorAll('tbody input[type="checkbox"]');
 
-    // ========================================
-    // Show selected file name
-    // ========================================
+    checkboxes.forEach(box => {
 
-    const fileInputs = document.querySelectorAll("input[type='file']");
-
-    fileInputs.forEach(input => {
-
-        input.addEventListener("change", function () {
-
-            let fileNameBox = this.parentElement.querySelector(".filename");
-
-            if (!fileNameBox) {
-
-                fileNameBox = document.createElement("small");
-
-                fileNameBox.className = "filename";
-
-                fileNameBox.style.display = "block";
-                fileNameBox.style.marginTop = "8px";
-                fileNameBox.style.color = "#f57c00";
-                fileNameBox.style.fontWeight = "600";
-
-                this.parentElement.appendChild(fileNameBox);
-
-            }
-
-            if (this.files.length > 0) {
-
-                fileNameBox.innerHTML =
-                    "📄 Selected: " + this.files[0].name;
-
-            } else {
-
-                fileNameBox.innerHTML = "";
-
-            }
-
-        });
-
-    });
-
-    // ========================================
-    // Personal Accessories
-    // ========================================
-
-    const accessoryChecks = document.querySelectorAll(".accessory-check");
-
-    accessoryChecks.forEach(check => {
-
-        check.addEventListener("change", function () {
-
-            const accessory =
-                this.closest(".accessory");
-
-            const textarea =
-                accessory.querySelector(".accessory-desc");
+        box.addEventListener("change", function () {
 
             if (this.checked) {
 
-                textarea.style.display = "block";
+                document.querySelectorAll(
+                    'input[name="' + this.name + '"]'
+                ).forEach(other => {
 
-                textarea.required = true;
+                    if (other !== this) {
+                        other.checked = false;
+                    }
 
-            }
-
-            else {
-
-                textarea.style.display = "none";
-
-                textarea.required = false;
-
-                textarea.value = "";
+                });
 
             }
+
+            updateScore();
 
         });
 
     });
 
-    // ========================================
-    // Remove red border automatically
-    // ========================================
+    updateScore();
 
-    const fields = form.querySelectorAll("input, textarea, select");
+});
 
-    fields.forEach(field => {
 
-        field.addEventListener("input", function () {
+// ========================================
+// Update Score
+// ========================================
 
-            this.style.border = "1px solid #d8d8d8";
+function updateScore() {
 
-        });
+    let air = 0;
+    let fire = 0;
+    let earth = 0;
+    let space = 0;
+    let water = 0;
 
-        field.addEventListener("change", function () {
+    document.querySelectorAll(
+        'tbody input[type="checkbox"]:checked'
+    ).forEach(box => {
 
-            this.style.border = "1px solid #d8d8d8";
+        switch (box.value) {
 
-        });
+            case "Air":
+                air++;
+                break;
+
+            case "Fire":
+                fire++;
+                break;
+
+            case "Earth":
+                earth++;
+                break;
+
+            case "Space":
+                space++;
+                break;
+
+            case "Water":
+                water++;
+                break;
+
+        }
 
     });
 
-    // ========================================
-    // Form Validation
-    // ========================================
+    document.getElementById("airScore").textContent = air + " /25";
+    document.getElementById("fireScore").textContent = fire + " /25";
+    document.getElementById("earthScore").textContent = earth + " /25";
+    document.getElementById("spaceScore").textContent = space + " /25";
+    document.getElementById("waterScore").textContent = water + " /25";
 
-    form.addEventListener("submit", function (e) {
+}
 
-        e.preventDefault();
 
-        let valid = true;
+// ========================================
+// NEXT BUTTON
+// ========================================
 
-        let firstInvalid = null;
+function nextPage() {
 
-        const requiredFields = form.querySelectorAll("[required]");
+    // Validate every question
+    for (let i = 1; i <= 25; i++) {
 
-        requiredFields.forEach(field => {
+        const selected = document.querySelector(
+            'input[name="q' + i + '"]:checked'
+        );
 
-            let empty = false;
+        if (!selected) {
 
-            if (field.type === "checkbox") {
-
-                empty = !field.checked;
-
-            }
-
-            else if (field.type === "file") {
-
-                empty = field.files.length === 0;
-
-            }
-
-            else {
-
-                empty = field.value.trim() === "";
-
-            }
-
-            if (empty) {
-
-                valid = false;
-
-                field.style.border = "2px solid red";
-
-                if (!firstInvalid) {
-
-                    firstInvalid = field;
-
-                }
-
-            }
-
-            else {
-
-                field.style.border = "1px solid #d8d8d8";
-
-            }
-
-        });
-
-        if (!valid) {
-
-            alert("Please fill all required fields before proceeding.");
-
-            firstInvalid.scrollIntoView({
-
-                behavior: "smooth",
-
-                block: "center"
-
-            });
-
-            firstInvalid.focus();
+            alert("Please answer Question " + i);
 
             return;
 
         }
 
-        // ========================================
-        // Confirmation
-        // ========================================
-
-        const proceed = confirm(
-
-            "Are you sure you want to continue to the next page?"
-
-        );
-
-        if (!proceed) return;
-
-        // ========================================
-        // Save Page 1 Data
-        // ========================================
-
-        const formData = {};
-
-        const allFields = form.querySelectorAll("input, textarea, select");
-
-        allFields.forEach(field => {
-
-            if (!field.name) return;
-
-            if (field.type === "checkbox") {
-
-                formData[field.name] = field.checked;
-
-            }
-
-            else if (field.type === "file") {
-
-                if (field.files.length > 0) {
-
-                    formData[field.name] = field.files[0].name;
-
-                }
-
-            }
-
-            else {
-
-                formData[field.name] = field.value;
-
-            }
-
-        });
-
-        localStorage.setItem(
-
-            "BlueberryForm",
-
-            JSON.stringify(formData)
-
-        );
-
-        // ========================================
-        // Go to Page 2
-        // ========================================
-
-        window.location.href = "page2.html";
-
-    });
-
-});
-
-function addField(containerId, fieldName, placeholder) {
-
-    const container = document.getElementById(containerId);
-
-    const input = document.createElement("input");
-
-    input.type = "text";
-
-    if (fieldName.includes("mobile"))
-        input.type = "tel";
-
-    if (fieldName.includes("email"))
-        input.type = "email";
-
-    input.name = fieldName;
-
-    input.placeholder = placeholder;
-
-    input.style.marginTop = "10px";
-
-    container.appendChild(input);
-}
-
-function addTextarea(containerId, fieldName, placeholder) {
-
-    const container = document.getElementById(containerId);
-
-    const textarea = document.createElement("textarea");
-
-    textarea.name = fieldName;
-    textarea.placeholder = placeholder;
-    textarea.style.marginTop = "10px";
-
-    container.appendChild(textarea);
-}
-
-function addFileField(containerId, fieldName, required = false) {
-
-    const container = document.getElementById(containerId);
-
-    const input = document.createElement("input");
-
-    input.type = "file";
-    input.name = fieldName;
-
-    input.accept = "image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf";
-
-    if (required) {
-        input.required = true;
     }
 
-    input.style.display = "block";
-    input.style.marginTop = "10px";
+    // Save answers
 
-    // Show selected filename
-    input.addEventListener("change", function () {
+    const answers = {};
 
-        let fileNameBox = this.nextElementSibling;
+    for (let i = 1; i <= 25; i++) {
 
-        if (!fileNameBox || !fileNameBox.classList.contains("filename")) {
+        const selected = document.querySelector(
+            'input[name="q' + i + '"]:checked'
+        );
 
-            fileNameBox = document.createElement("small");
+        answers["q" + i] = selected.value;
 
-            fileNameBox.className = "filename";
-            fileNameBox.style.display = "block";
-            fileNameBox.style.marginTop = "8px";
-            fileNameBox.style.color = "#f57c00";
-            fileNameBox.style.fontWeight = "600";
+    }
 
-            this.insertAdjacentElement("afterend", fileNameBox);
-        }
+    // Save Scores
 
-        if (this.files.length > 0) {
-            fileNameBox.innerHTML = "📄 Selected: " + this.files[0].name;
-        } else {
-            fileNameBox.innerHTML = "";
-        }
+    answers.airScore =
+        parseInt(document.getElementById("airScore").textContent);
 
-    });
+    answers.fireScore =
+        parseInt(document.getElementById("fireScore").textContent);
 
-    container.appendChild(input);
+    answers.earthScore =
+        parseInt(document.getElementById("earthScore").textContent);
+
+    answers.spaceScore =
+        parseInt(document.getElementById("spaceScore").textContent);
+
+    answers.waterScore =
+        parseInt(document.getElementById("waterScore").textContent);
+
+    localStorage.setItem(
+        "FiveElementsQuiz",
+        JSON.stringify(answers)
+    );
+
+    // Go to next page
+
+    window.location.href = "page3.html";
 
 }
