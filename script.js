@@ -9,25 +9,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // Only ONE option per question
     // ============================
 
-    const checkboxes = document.querySelectorAll('tbody input[type="checkbox"]');
+    const radios = document.querySelectorAll('tbody input[type="radio"]');
 
-    checkboxes.forEach(box => {
+    radios.forEach(radio => {
 
-        box.addEventListener("change", function () {
-
-            if (this.checked) {
-
-                document.querySelectorAll(
-                    'input[name="' + this.name + '"]'
-                ).forEach(other => {
-
-                    if (other !== this) {
-                        other.checked = false;
-                    }
-
-                });
-
-            }
+        radio.addEventListener("change", function () {
 
             updateScore();
 
@@ -38,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
     updateScore();
 
 });
-
 
 // ========================================
 // Update Score
@@ -53,10 +38,10 @@ function updateScore() {
     let water = 0;
 
     document.querySelectorAll(
-        'tbody input[type="checkbox"]:checked'
-    ).forEach(box => {
+        'tbody input[type="radio"]:checked'
+    ).forEach(radio => {
 
-        switch (box.value) {
+        switch (radio.value) {
 
             case "Air":
                 air++;
@@ -89,7 +74,6 @@ function updateScore() {
     document.getElementById("waterScore").textContent = water + " /25";
 
 }
-
 
 // ========================================
 // NEXT BUTTON
@@ -152,6 +136,41 @@ function nextPage() {
 
     // Go to next page
 
-    window.location.href = "page3.html";
+    window.location.href = "page2.html";
 
 }
+
+// ========================================
+// SHOW / HIDE ACCESSORY DESCRIPTION
+// ========================================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    document.querySelectorAll(".accessory-check").forEach(function (checkbox) {
+
+        checkbox.addEventListener("change", function () {
+
+            const description = document.getElementById(
+                this.id.replace("Check", "Description")
+            );
+
+            if (!description) return;
+
+            if (this.checked) {
+
+                description.style.display = "block";
+                description.required = true;
+
+            } else {
+
+                description.style.display = "none";
+                description.required = false;
+                description.value = "";
+
+            }
+
+        });
+
+    });
+
+});
