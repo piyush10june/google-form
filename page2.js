@@ -36,6 +36,18 @@ async function submitForm(e) {
         });
 
         //--------------------------------------------------
+        // PAGE 1 UPLOADED FILES
+        //--------------------------------------------------
+
+        const page1UploadedFiles =
+            JSON.parse(localStorage.getItem("page1UploadedFiles")) || {};
+
+        formData.append(
+            "page1UploadedFiles",
+            JSON.stringify(page1UploadedFiles)
+        );
+
+        //--------------------------------------------------
         // FIVE ELEMENT SCORE
         //--------------------------------------------------
 

@@ -157,7 +157,8 @@
 
                     <label>What do you do? <span>*</span></label>
 
-                    <textarea id="occupation" name="occupation" placeholder="Enter your occupation" required></textarea>
+                    <textarea id="whatdoyoudo" name="occupationdoyoudo" placeholder="Enter your occupation"
+                        required></textarea>
 
                 </div>
 
@@ -165,7 +166,8 @@
 
                     <label>How do you earn money? <span>*</span></label>
 
-                    <textarea id="incomeSource" name="incomeSource" placeholder="Describe your source of income"></textarea>
+                    <textarea id="howearnmoney" name="earnmoney"
+                        placeholder="Describe your source of income"></textarea>
 
                 </div>
 
@@ -187,8 +189,8 @@
 
                     <label>client requirement <span>*</span></label>
 
-                    <textarea id="occupation" name="occupation" placeholder="Enter your requirement"
-                        required></textarea>
+                    <textarea id="requirementsofclient" name="occupationandrequirement"
+                        placeholder="Enter your requirement" required></textarea>
 
                 </div>
 
@@ -196,7 +198,7 @@
 
                     <label>problem statement <span>*</span></label>
 
-                    <textarea id="incomeSource" name="incomeSource" placeholder="Describe your problem"
+                    <textarea id="incomeSourcewithstatement" name="problemstatement" placeholder="Describe your problem"
                         required></textarea>
 
                 </div>
@@ -205,7 +207,7 @@
 
                     <label> Goals / Outcomes <span>*</span></label>
 
-                    <textarea id="incomeSource" name="incomeSource" placeholder="Describe your goals/outcomes"
+                    <textarea id="incomeSourcegoals" name="goals" placeholder="Describe your goals/outcomes"
                         required></textarea>
 
                 </div>
@@ -216,8 +218,7 @@
                         wish, and what do you want to achieve?
                         <span>*</span></label>
 
-                    <textarea id="incomeSource" name="incomeSource" placeholder="answer based on question"
-                    ></textarea>
+                    <textarea id="gains/profits" name="profits" placeholder="answer based on question"></textarea>
 
                 </div>
 
@@ -225,8 +226,7 @@
 
                     <label>What weakness or area of expenditure is causing you the most concern?<span>*</span></label>
 
-                    <textarea id="incomeSource" name="incomeSource" placeholder="answer based on question"
-                        ></textarea>
+                    <textarea id="helloincomeSource" name="weakness" placeholder="answer based on question"></textarea>
 
                 </div>
 
@@ -235,8 +235,8 @@
                     <label>Which of your investments do you feel is currently running at a loss?
                         <span>*</span></label>
 
-                    <textarea id="incomeSource" name="incomeSource" placeholder="answer based on question"
-                        ></textarea>
+                    <textarea id="incomeSourceinvestments" name="investments"
+                        placeholder="answer based on question"></textarea>
 
                 </div>
 
@@ -245,8 +245,7 @@
                     <label>What unresolved issue do you have, and which hidden problem would you like to fix?
                         <span>*</span></label>
 
-                    <textarea id="incomeSource" name="incomeSource" placeholder="answer based on question"
-                       ></textarea>
+                    <textarea id="incomeSource" name="unresolved" placeholder="answer based on question"></textarea>
 
                 </div>
 
@@ -612,7 +611,7 @@
 
                     <div id="houseMapContainer">
                         <input type="file" name="houseMap[]"
-                            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf" >
+                            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf">
                     </div>
 
                     <button type="button" class="add-btn" onclick="addFileField('houseMapContainer','houseMap[]',true)">
@@ -626,7 +625,7 @@
 
                     <div id="officeMapContainer">
                         <input type="file" name="officeMap[]"
-                            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf" >
+                            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf">
                     </div>
 
                     <button type="button" class="add-btn"
@@ -901,12 +900,12 @@
 
                 <div class="field">
                     <label>Preferred Date <span>*</span></label>
-                    <input type="date" id="preferredDate" name="preferredDate" >
+                    <input type="date" id="preferredDate" name="preferredDate">
                 </div>
 
                 <div class="field">
                     <label>Preferred Time <span>*</span></label>
-                    <input type="time" id="preferredTime" name="preferredTime" >
+                    <input type="time" id="preferredTime" name="preferredTime">
                 </div>
 
             </div>
@@ -1029,54 +1028,188 @@
 
     <script src="script.js"></script>
 
+
     <script>
 
-        document.getElementById("nextBtn").addEventListener("click", function () {
+        const SCRIPT_URL =
+            "https://script.google.com/macros/s/AKfycbyQUT1fvXzL4j56dc3BkZvBkubxG5Jv8WwFeO1u7SQCVmH_-AnjPGwT0xeQAABPd2fe/exec";
 
-            const form = document.getElementById("astroForm");
+        //----------------------------------------
+        // Convert File -> Base64
+        //----------------------------------------
 
-            if (!form.reportValidity()) {
-                return;
-            }
+        function fileToBase64(file) {
 
-            const formData = new FormData(form);
+            return new Promise((resolve, reject) => {
 
-            const data = {};
+                const reader = new FileReader();
 
-            formData.forEach((value, key) => {
+                reader.onload = function () {
 
-                if (data[key]) {
+                    resolve(reader.result.split(",")[1]);
 
-                    if (!Array.isArray(data[key])) {
-                        data[key] = [data[key]];
-                    }
+                };
 
-                    data[key].push(value);
+                reader.onerror = reject;
 
-                } else {
-
-                    data[key] = value;
-
-                }
+                reader.readAsDataURL(file);
 
             });
 
-            localStorage.setItem(
-                "astroFormData",
-                JSON.stringify(data)
-            );
+        }
 
-            window.location.href = "page2.html";
+        //----------------------------------------
+        // NEXT BUTTON
+        //----------------------------------------
+
+        document.getElementById("nextBtn").addEventListener("click", async function () {
+
+            const btn = this;
+
+            const form = document.getElementById("astroForm");
+
+            if (!form.reportValidity()) return;
+
+            btn.disabled = true;
+
+            btn.innerText = "Uploading Files...";
+
+            try {
+
+                //----------------------------------------
+                // Save normal fields
+                //----------------------------------------
+
+                const formData = new FormData(form);
+
+                const data = {};
+
+                formData.forEach((value, key) => {
+
+                    if (value instanceof File) return;
+
+                    if (data[key]) {
+
+                        if (!Array.isArray(data[key])) {
+
+                            data[key] = [data[key]];
+
+                        }
+
+                        data[key].push(value);
+
+                    }
+
+                    else {
+
+                        data[key] = value;
+
+                    }
+
+                });
+
+                localStorage.setItem(
+                    "astroFormData",
+                    JSON.stringify(data)
+                );
+
+                //----------------------------------------
+                // Upload Page-1 Files
+                //----------------------------------------
+
+                const uploadedFiles = {};
+
+                const fileInputs = form.querySelectorAll('input[type="file"]');
+
+                for (const input of fileInputs) {
+
+                    if (!input.files.length) continue;
+
+                    for (const file of input.files) {
+
+                        const base64 = await fileToBase64(file);
+
+                        const uploadData = new FormData();
+
+                        uploadData.append("action", "uploadSingleFile");
+
+                        uploadData.append("fieldName", input.name);
+
+                        uploadData.append("base64", base64);
+
+                        uploadData.append("fileName", file.name);
+
+                        uploadData.append("mimeType", file.type);
+
+                        const response = await fetch(SCRIPT_URL, {
+
+                            method: "POST",
+
+                            body: uploadData
+
+                        });
+
+                        const result = await response.json();
+
+                        if (!result.success) {
+
+                            throw new Error(result.error);
+
+                        }
+
+                        if (!uploadedFiles[input.name]) {
+
+                            uploadedFiles[input.name] = [];
+
+                        }
+
+                        uploadedFiles[input.name].push({
+
+                            id: result.id,
+
+                            url: result.url,
+
+                            name: result.name
+
+                        });
+
+                    }
+
+                }
+
+                //----------------------------------------
+                // Save uploaded file info
+                //----------------------------------------
+
+                localStorage.setItem(
+
+                    "page1UploadedFiles",
+
+                    JSON.stringify(uploadedFiles)
+
+                );
+
+                //----------------------------------------
+                // Go to page 2
+                //----------------------------------------
+
+                window.location.href = "page2.html";
+
+            }
+
+            catch (err) {
+
+                console.error(err);
+
+                alert("File Upload Failed\n\n" + err.message);
+
+                btn.disabled = false;
+
+                btn.innerText = "Next →";
+
+            }
 
         });
-
-        localStorage.setItem(
-            "astroFormData",
-            JSON.stringify(data)
-        );
-
-        window.location.href = "page2.html";
-
 
     </script>
 

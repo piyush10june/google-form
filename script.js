@@ -208,4 +208,3 @@ function addTextarea(containerId, name, placeholder) {
     container.appendChild(textarea);
 
 }
-
