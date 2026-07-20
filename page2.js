@@ -152,6 +152,26 @@ async function submitForm(e) {
             document.getElementById("prakritiWaterTotal").innerText
         );
 
+        const fileInputs = form.querySelectorAll('input[type="file"]');
+
+        for (const input of fileInputs) {
+
+            if (input.files.length) {
+
+                const file = input.files[0];
+
+                const base64 = await fileToBase64(file);
+
+                formData.append(input.name + "_base64", base64);
+
+                formData.append(input.name + "_filename", file.name);
+
+                formData.append(input.name + "_mime", file.type);
+
+            }
+
+        }
+
         //--------------------------------------------------
         // SEND
         //--------------------------------------------------
@@ -199,26 +219,6 @@ async function submitForm(e) {
     submitBtn.disabled = false;
 
     submitBtn.innerText = "Submit";
-
-    const fileInputs = form.querySelectorAll('input[type="file"]');
-
-    for (const input of fileInputs) {
-
-        if (input.files.length) {
-
-            const file = input.files[0];
-
-            const base64 = await fileToBase64(file);
-
-            formData.append(input.name + "_base64", base64);
-
-            formData.append(input.name + "_filename", file.name);
-
-            formData.append(input.name + "_mime", file.type);
-
-        }
-
-    }
 
 }
 
@@ -714,64 +714,5 @@ async function fileToBase64(file) {
         reader.readAsDataURL(file);
 
     });
-
-}
-
-function doPost(e) {
-
-    try {
-
-        const data = e.parameter;
-
-        const savedFiles = {};
-
-        Object.keys(data).forEach(function (key) {
-
-            if (key.endsWith("_base64")) {
-
-                const name = key.replace("_base64", "");
-
-                savedFiles[name] = saveBase64File(
-
-                    data[key],
-
-                    data[name + "_filename"],
-
-                    data[name + "_mime"]
-
-                );
-
-            }
-
-        });
-
-        // Next:
-        // Save data to Sheet
-        // Generate PDF
-        // Email PDF
-
-        return ContentService
-            .createTextOutput(JSON.stringify({
-
-                success: true,
-
-                files: savedFiles
-
-            }))
-            .setMimeType(ContentService.MimeType.JSON);
-
-    } catch (err) {
-
-        return ContentService
-            .createTextOutput(JSON.stringify({
-
-                success: false,
-
-                error: String(err)
-
-            }))
-            .setMimeType(ContentService.MimeType.JSON);
-
-    }
 
 }
