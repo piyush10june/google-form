@@ -716,3 +716,268 @@ async function fileToBase64(file) {
     });
 
 }
+
+function updateScore() {
+
+    const scores = {
+        Air: 0,
+        Fire: 0,
+        Earth: 0,
+        Space: 0,
+        Water: 0
+    };
+
+    for (let i = 1; i <= 25; i++) {
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+        if (selected) scores[selected.value]++;
+    }
+
+    document.getElementById("airScore").textContent = `${scores.Air} /25`;
+    document.getElementById("fireScore").textContent = `${scores.Fire} /25`;
+    document.getElementById("earthScore").textContent = `${scores.Earth} /25`;
+    document.getElementById("spaceScore").textContent = `${scores.Space} /25`;
+    document.getElementById("waterScore").textContent = `${scores.Water} /25`;
+}
+
+function updatePlanetScore() {
+
+    const scores = {
+        Ketu: 0,
+        Venus: 0,
+        Sun: 0,
+        Moon: 0,
+        Mars: 0,
+        Rahu: 0,
+        Jupiter: 0,
+        Saturn: 0,
+        Mercury: 0
+    };
+
+    for (let i = 1; i <= 13; i++) {
+
+        const selected = document.querySelector(`input[name="p1_q${i}"]:checked`);
+
+        if (selected) {
+            scores[selected.value]++;
+        }
+    }
+
+    document.getElementById("ketuScore").textContent = `${scores.Ketu} /13`;
+    document.getElementById("venusScore").textContent = `${scores.Venus} /13`;
+    document.getElementById("sunScore").textContent = `${scores.Sun} /13`;
+    document.getElementById("moonScore").textContent = `${scores.Moon} /13`;
+    document.getElementById("marsScore").textContent = `${scores.Mars} /13`;
+    document.getElementById("rahuScore").textContent = `${scores.Rahu} /13`;
+    document.getElementById("jupiterScore").textContent = `${scores.Jupiter} /13`;
+    document.getElementById("saturnScore").textContent = `${scores.Saturn} /13`;
+    document.getElementById("mercuryScore").textContent = `${scores.Mercury} /13`;
+}
+
+function updateGunaScore() {
+
+    const scores = {
+        Sattav: 0,
+        Rajas: 0,
+        Tamas: 0
+    };
+
+    for (let i = 1; i <= 25; i++) {
+
+        const selected = document.querySelector(`input[name="gu_q${i}"]:checked`);
+
+        if (selected) {
+            scores[selected.value]++;
+        }
+    }
+
+    document.getElementById("sattavScore").textContent = `${scores.Sattav} /25`;
+    document.getElementById("rajasScore").textContent = `${scores.Rajas} /25`;
+    document.getElementById("tamasScore").textContent = `${scores.Tamas} /25`;
+}
+
+function updateElementBalanceScore() {
+
+    const scores = {
+        Air: 0,
+        Fire: 0,
+        Water: 0
+    };
+
+    for (let i = 1; i <= 30; i++) {
+
+        const selected = document.querySelector(`input[name="eb_q${i}"]:checked`);
+
+        if (selected) {
+            scores[selected.value]++;
+        }
+    }
+
+    document.getElementById("ebAirScore").textContent = `${scores.Air} /30`;
+    document.getElementById("ebFireScore").textContent = `${scores.Fire} /30`;
+    document.getElementById("ebWaterScore").textContent = `${scores.Water} /30`;
+}
+
+/* =====================================================
+   DOSHA QUIZ SCORE (30 Questions)
+===================================================== */
+
+function updateDoshaQuizScore() {
+
+    let air = 0;
+    let fire = 0;
+    let water = 0;
+
+    for (let i = 1; i <= 30; i++) {
+
+        const selected = document.querySelector(`input[name="eb_q${i}"]:checked`);
+
+        if (!selected) continue;
+
+        switch (selected.value) {
+
+            case "Air":
+                air++;
+                break;
+
+            case "Fire":
+                fire++;
+                break;
+
+            case "Water":
+                water++;
+                break;
+        }
+    }
+
+    document.getElementById("airElementScore").textContent = air + " /30";
+    document.getElementById("fireElementScore").textContent = fire + " /30";
+    document.getElementById("waterElementScore").textContent = water + " /30";
+}
+
+
+
+/* =====================================================
+   PRAKRITI QUIZ SCORE
+===================================================== */
+
+function updatePrakritiQuizScore() {
+
+    let air = 0;
+    let fire = 0;
+    let water = 0;
+
+    const fields = [
+        "bodyWeight",
+        "nose",
+        "teeth",
+        "nails",
+        "skin",
+        "taste"
+    ];
+
+    fields.forEach(name => {
+
+        const selected = document.querySelector(`input[name="${name}"]:checked`);
+
+        if (!selected) return;
+
+        switch (selected.value) {
+
+            case "Air":
+                air++;
+                break;
+
+            case "Fire":
+                fire++;
+                break;
+
+            case "Water":
+                water++;
+                break;
+        }
+
+    });
+
+    document.getElementById("prakritiAirTotal").textContent = air;
+    document.getElementById("prakritiFireTotal").textContent = fire;
+    document.getElementById("prakritiWaterTotal").textContent = water;
+}
+
+
+
+/* =====================================================
+   AUTO UPDATE
+===================================================== */
+
+document.addEventListener("change", function (e) {
+
+    if (e.target.type !== "radio") return;
+
+    updateDoshaQuizScore();
+    updatePrakritiQuizScore();
+
+});
+
+
+window.addEventListener("load", function () {
+
+    updateDoshaQuizScore();
+    updatePrakritiQuizScore();
+
+});
+
+document.addEventListener("change", function (e) {
+
+    if (e.target.type !== "radio") return;
+
+    updateScore();
+    updatePlanetScore();
+    updateGunaScore();
+    updateElementBalanceScore();
+    updatePrakritiTableScore();
+
+});
+
+window.addEventListener("pageshow", function () {
+    document.getElementById("quizForm").reset();
+});
+
+window.addEventListener("load", function () {
+
+    // Reset form
+    document.getElementById("quizForm").reset();
+
+    // Five Elements
+    airScore.textContent = "0 /25";
+    fireScore.textContent = "0 /25";
+    earthScore.textContent = "0 /25";
+    spaceScore.textContent = "0 /25";
+    waterScore.textContent = "0 /25";
+
+    // Planets
+    ketuScore.textContent = "0 /13";
+    venusScore.textContent = "0 /13";
+    sunScore.textContent = "0 /13";
+    moonScore.textContent = "0 /13";
+    marsScore.textContent = "0 /13";
+    rahuScore.textContent = "0 /13";
+    jupiterScore.textContent = "0 /13";
+    saturnScore.textContent = "0 /13";
+    mercuryScore.textContent = "0 /13";
+
+    // Gunas
+    sattavScore.textContent = "0 /25";
+    rajasScore.textContent = "0 /25";
+    tamasScore.textContent = "0 /25";
+
+    // Dosha
+    airElementScore.textContent = "0 /30";
+    fireElementScore.textContent = "0 /30";
+    waterElementScore.textContent = "0 /30";
+
+    // Prakriti
+    prakritiAirTotal.textContent = "0";
+    prakritiFireTotal.textContent = "0";
+    prakritiWaterTotal.textContent = "0";
+
+});
