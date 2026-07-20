@@ -1,0 +1,24 @@
+{
+  "name": "google-form-(piy)",
+  "version": "1.0.0",
+  "description": "",
+  "main": "page2.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piyush10june/google-form.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/piyush10june/google-form/issues"
+  },
+  "homepage": "https://github.com/piyush10june/google-form#readme",
+  "dependencies": {
+    "nodemailer": "^9.0.3"
+  }
+}
