@@ -174,3 +174,38 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+function addField(containerId, name, placeholder) {
+
+    const container = document.getElementById(containerId);
+
+    const input = document.createElement("input");
+
+    input.type = "text";
+
+    input.name = name;
+
+    input.placeholder = placeholder;
+
+    input.style.marginTop = "10px";
+
+    container.appendChild(input);
+
+}
+
+function addTextarea(containerId, name, placeholder) {
+
+    const container = document.getElementById(containerId);
+
+    const textarea = document.createElement("textarea");
+
+    textarea.name = name;
+
+    textarea.placeholder = placeholder;
+
+    textarea.style.marginTop = "10px";
+
+    container.appendChild(textarea);
+
+}
+

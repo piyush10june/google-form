@@ -165,8 +165,7 @@
 
                     <label>How do you earn money? <span>*</span></label>
 
-                    <textarea id="incomeSource" name="incomeSource" placeholder="Describe your source of income"
-                        required></textarea>
+                    <textarea id="incomeSource" name="incomeSource" placeholder="Describe your source of income"></textarea>
 
                 </div>
 
@@ -218,7 +217,7 @@
                         <span>*</span></label>
 
                     <textarea id="incomeSource" name="incomeSource" placeholder="answer based on question"
-                        required></textarea>
+                    ></textarea>
 
                 </div>
 
@@ -227,7 +226,7 @@
                     <label>What weakness or area of expenditure is causing you the most concern?<span>*</span></label>
 
                     <textarea id="incomeSource" name="incomeSource" placeholder="answer based on question"
-                        required></textarea>
+                        ></textarea>
 
                 </div>
 
@@ -237,7 +236,7 @@
                         <span>*</span></label>
 
                     <textarea id="incomeSource" name="incomeSource" placeholder="answer based on question"
-                        required></textarea>
+                        ></textarea>
 
                 </div>
 
@@ -247,7 +246,7 @@
                         <span>*</span></label>
 
                     <textarea id="incomeSource" name="incomeSource" placeholder="answer based on question"
-                        required></textarea>
+                       ></textarea>
 
                 </div>
 
@@ -300,7 +299,7 @@
                     <label>Email ID(s)</label>
 
                     <div id="emailContainer">
-                        <input type="email" name="email[]" placeholder="Enter email address">
+                        <input type="email" name="email[]" placeholder="Enter email address" required>
                     </div>
 
                     <button type="button" class="add-btn"
@@ -377,7 +376,7 @@
                     <label>Domain Name / Website(s) / social media</label>
 
                     <div id="websiteContainer">
-                        <input type="url" name="website[]" placeholder="https://example.com">
+                        <input type="text" name="website[]" placeholder="https://example.com / website name">
                     </div>
 
                     <button type="button" class="add-btn"
@@ -506,7 +505,7 @@
 
                     <div id="signaturePhotoContainer">
 
-                        <input type="file" name="signaturePhoto[]" accept="image/*,.pdf,.doc,.docx" required>
+                        <input type="file" name="signaturePhoto[]" accept="image/*,.pdf,.doc,.docx">
 
                     </div>
 
@@ -613,7 +612,7 @@
 
                     <div id="houseMapContainer">
                         <input type="file" name="houseMap[]"
-                            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf" required>
+                            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf" >
                     </div>
 
                     <button type="button" class="add-btn" onclick="addFileField('houseMapContainer','houseMap[]',true)">
@@ -627,7 +626,7 @@
 
                     <div id="officeMapContainer">
                         <input type="file" name="officeMap[]"
-                            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf" required>
+                            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf" >
                     </div>
 
                     <button type="button" class="add-btn"
@@ -902,12 +901,12 @@
 
                 <div class="field">
                     <label>Preferred Date <span>*</span></label>
-                    <input type="date" id="preferredDate" name="preferredDate" required>
+                    <input type="date" id="preferredDate" name="preferredDate" >
                 </div>
 
                 <div class="field">
                     <label>Preferred Time <span>*</span></label>
-                    <input type="time" id="preferredTime" name="preferredTime" required>
+                    <input type="time" id="preferredTime" name="preferredTime" >
                 </div>
 
             </div>
@@ -1036,9 +1035,13 @@
 
             const form = document.getElementById("astroForm");
 
+            if (!form.reportValidity()) {
+                return;
+            }
+
             const formData = new FormData(form);
 
-            let data = {};
+            const data = {};
 
             formData.forEach((value, key) => {
 
@@ -1066,6 +1069,14 @@
             window.location.href = "page2.html";
 
         });
+
+        localStorage.setItem(
+            "astroFormData",
+            JSON.stringify(data)
+        );
+
+        window.location.href = "page2.html";
+
 
     </script>
 
