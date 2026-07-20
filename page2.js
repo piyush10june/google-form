@@ -24,7 +24,7 @@ async function submitForm(e) {
 
         //--------------------------------------------------
         // PAGE 1 DATA
-        //--------------------------------------------------
+        //-------------------------------------------------
 
         const page1Data =
             JSON.parse(localStorage.getItem("astroFormData")) || {};
