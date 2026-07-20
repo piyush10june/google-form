@@ -263,3 +263,132 @@ function updatePrakritiTableScore() {
 }
 
 updatePrakritiTableScore();
+
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyQUT1fvXzL4j56dc3BkZvBkubxG5Jv8WwFeO1u7SQCVmH_-AnjPGwT0xeQAABPd2fe/exec";
+
+const submitBtn = document.getElementById("submitBtn");
+
+submitBtn.addEventListener("click", async function () {
+
+    let page1Data = JSON.parse(localStorage.getItem("astroFormData")) || {};
+
+    const form = document.getElementById("quizForm");
+
+    const quizData = {};
+
+    new FormData(form).forEach((value, key) => {
+
+        quizData[key] = value;
+
+    });
+
+    const finalData = {
+
+        ...page1Data,
+        ...quizData
+
+    };
+
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Submitting...";
+
+    try {
+
+        const response = await fetch(SCRIPT_URL, {
+
+            method: "POST",
+
+            body: JSON.stringify(finalData)
+
+        });
+
+        const result = await response.json();
+
+        alert("Form Submitted Successfully!");
+
+        localStorage.removeItem("astroFormData");
+
+        form.reset();
+
+    } catch (e) {
+
+        alert("Submission Failed");
+
+    }
+
+    submitBtn.disabled = false;
+
+    submitBtn.innerText = "Submit";
+
+});
+
+//------------------------------------
+
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyQUT1fvXzL4j56dc3BkZvBkubxG5Jv8WwFeO1u7SQCVmH_-AnjPGwT0xeQAABPd2fe/exec";
+
+document.getElementById("submitBtn").addEventListener("click", async () => {
+
+    const page1Data = JSON.parse(localStorage.getItem("page1Data")) || {};
+
+    const form = document.getElementById("quizForm");
+
+    const formData = new FormData(form);
+
+    const quizData = {};
+
+    for (let [key, value] of formData.entries()) {
+        quizData[key] = value;
+    }
+
+    const finalData = {
+        ...page1Data,
+        ...quizData
+    };
+
+    const btn = document.getElementById("submitBtn");
+    btn.disabled = true;
+    btn.innerHTML = "Submitting...";
+
+    try {
+
+        const response = await fetch(SCRIPT_URL, {
+
+            method: "POST",
+
+            body: JSON.stringify(finalData)
+
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+
+            alert("Form Submitted Successfully!");
+
+            localStorage.removeItem("page1Data");
+
+            form.reset();
+
+            window.location.href = "index.html";
+
+        } else {
+
+            alert("Submission Failed");
+
+            console.log(result);
+
+        }
+
+    } catch (err) {
+
+        console.log(err);
+
+        alert("Network Error");
+
+    }
+
+    btn.disabled = false;
+
+    btn.innerHTML = "Submit";
+
+});

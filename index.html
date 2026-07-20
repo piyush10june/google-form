@@ -211,6 +211,46 @@
 
                 </div>
 
+                <div class="field">
+
+                    <label> What gains or profits do you seek, where do you want them from, what is your greatest
+                        wish, and what do you want to achieve?
+                        <span>*</span></label>
+
+                    <textarea id="incomeSource" name="incomeSource" placeholder="answer based on question"
+                        required></textarea>
+
+                </div>
+
+                <div class="field">
+
+                    <label>What weakness or area of expenditure is causing you the most concern?<span>*</span></label>
+
+                    <textarea id="incomeSource" name="incomeSource" placeholder="answer based on question"
+                        required></textarea>
+
+                </div>
+
+                <div class="field">
+
+                    <label>Which of your investments do you feel is currently running at a loss?
+                        <span>*</span></label>
+
+                    <textarea id="incomeSource" name="incomeSource" placeholder="answer based on question"
+                        required></textarea>
+
+                </div>
+
+                <div class="field">
+
+                    <label>**What unresolved issue do you have, and which hidden problem would you like to fix?**
+                        <span>*</span></label>
+
+                    <textarea id="incomeSource" name="incomeSource" placeholder="answer based on question"
+                        required></textarea>
+
+                </div>
+
             </div>
 
         </div>
@@ -910,20 +950,124 @@
 
         <div class="submit-section">
 
-            <button type="submit" class="submit-btn">
-                Next Page →
+            <button type="button" id="nextBtn">
+                Next →
             </button>
 
-            <button id="testEmailBtn">Send Test Email</button>
-
         </div>
 
         </div>
+
+        </div>
+
+        <footer class="blueberry-footer">
+
+            <div class="footer-top-line"></div>
+
+            <div class="footer-grid">
+
+                <div class="footer-item">
+                    <div class="footer-icon">✉</div>
+                    <div>
+                        <h4>Gmail</h4>
+                        <a href="mailto:infoblueberryvaastu@gmail.com">
+                            infoblueberryvaastu@gmail.com
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-item">
+                    <div class="footer-icon">in</div>
+                    <div>
+                        <h4>LinkedIn</h4>
+                        <p>Blueberry Luxury Interior Design<br>inbuilt with AstroVastu</p>
+                    </div>
+                </div>
+
+                <div class="footer-item">
+                    <div class="footer-icon">𝕏</div>
+                    <div>
+                        <h4>Twitter</h4>
+                        <p>Blueberry230326</p>
+                    </div>
+                </div>
+
+                <div class="footer-item">
+                    <div class="footer-icon">📷</div>
+                    <div>
+                        <h4>Instagram</h4>
+                        <p>blueberry_230326</p>
+                    </div>
+                </div>
+
+                <div class="footer-item">
+                    <div class="footer-icon">🌐</div>
+                    <div>
+                        <h4>Website</h4>
+                        <p>blueberries.in</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+
+                <p style="color: yellow;">
+                    Thank you for choosing <b>Blueberry Luxury Interior Design inbuilt with AstroVastu.</b><br>
+                    Our team will review your submission and contact you shortly.
+                </p>
+
+                <span>
+                    © 2026 Blueberry Luxury Interior Design inbuilt with AstroVastu. All Rights Reserved.
+                </span>
+
+            </div>
+
+        </footer>
 
     </form>
 
 
     <script src="script.js"></script>
+
+    <script>
+
+        document.getElementById("nextBtn").addEventListener("click", function () {
+
+            const form = document.getElementById("astroForm");
+
+            const formData = new FormData(form);
+
+            let data = {};
+
+            formData.forEach((value, key) => {
+
+                if (data[key]) {
+
+                    if (!Array.isArray(data[key])) {
+                        data[key] = [data[key]];
+                    }
+
+                    data[key].push(value);
+
+                } else {
+
+                    data[key] = value;
+
+                }
+
+            });
+
+            localStorage.setItem(
+                "astroFormData",
+                JSON.stringify(data)
+            );
+
+            window.location.href = "page2.html";
+
+        });
+
+    </script>
 
 </body>
 

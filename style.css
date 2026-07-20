@@ -3624,3 +3624,216 @@ Selection
 .outcome-col {
     width: 47%;
 }
+
+/* ================= FOOTER ================= */
+
+.blueberry-footer {
+
+    width: 100%;
+
+    margin: 40px 0 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    background: linear-gradient(90deg, #174b78, #2f86b0);
+
+    border-top: 6px solid #f59b23;
+
+}
+
+.footer-top-line {
+
+    height: 6px;
+
+    background: linear-gradient(90deg,
+            #f59b23,
+            gold,
+            #f59b23,
+            gold);
+
+}
+
+.footer-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+
+    gap: 0;
+
+    width: 100%;
+
+    padding: 25px;
+
+    box-sizing: border-box;
+
+}
+
+.footer-item {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 15px;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    border-right: 1px solid rgba(255, 215, 0, .35);
+
+}
+
+.footer-item:last-child {
+
+    border-right: none;
+
+}
+
+.footer-icon {
+
+    width: 52px;
+
+    height: 52px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(135deg, #f59b23, gold);
+
+    color: #0f3f68;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+    box-shadow: 0 0 18px rgba(255, 215, 0, .4);
+
+}
+
+.footer-item h4 {
+
+    margin: 0;
+
+    color: #FFD54F;
+
+    font-size: 18px;
+
+}
+
+.footer-item p,
+.footer-item a {
+
+    margin-top: 8px;
+
+    color: white;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+    text-decoration: none;
+
+}
+
+.footer-item a:hover {
+
+    color: #FFD54F;
+
+}
+
+.footer-bottom {
+
+    text-align: center;
+
+    background: rgba(0, 0, 0, .18);
+
+    padding: 25px;
+
+    border-top: 1px solid rgba(255, 255, 255, .12);
+
+}
+
+.footer-bottom p {
+
+    margin: 0;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+}
+
+.footer-bottom span {
+
+    display: block;
+
+    margin-top: 15px;
+
+    color: #FFD54F;
+
+    font-size: 14px;
+
+}
+
+/* Responsive */
+
+@media(max-width:900px) {
+
+    .footer-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .footer-item {
+
+        border-right: none;
+
+        padding-bottom: 20px;
+
+        border-bottom: 1px solid rgba(255, 255, 255, .15);
+
+    }
+
+    .footer-item:last-child {
+
+        border-bottom: none;
+
+    }
+
+}
+
+@media(max-width:1000px) {
+
+    .footer-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .footer-item {
+
+        border-right: none;
+
+        border-bottom: 1px solid rgba(255, 255, 255, .15);
+
+    }
+
+    .footer-item:last-child {
+
+        border-bottom: none;
+
+    }
+
+}

@@ -155,30 +155,3 @@ function nextPage() {
     window.location.href = "page3.html";
 
 }
-
-//---------------------------------------------------------------------
-document.getElementById("testEmailBtn").addEventListener("click", async () => {
-
-    try {
-
-        const response = await fetch("/api/send-email", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
-
-        const result = await response.json();
-
-        if (result.success) {
-            alert("✅ Email Sent Successfully!");
-        } else {
-            alert("❌ " + result.error);
-        }
-
-    } catch (err) {
-        console.error(err);
-        alert("Something went wrong.");
-    }
-
-});
