@@ -187,27 +187,12 @@ async function submitForm(e) {
         form.reset();
         localStorage.clear();
 
-        if (result.success) {
+        alert("Form submitted successfully. Please check your email in a few minutes.");
 
-            alert("Submitted Successfully");
+        form.reset();
 
-            if (result.pdf) {
-
-                window.open(result.pdf, "_blank");
-
-            }
-
-            form.reset();
-
-            localStorage.removeItem("astroFormData");
-
-            localStorage.removeItem("page2Draft");
-
-        } else {
-
-            alert(result.error);
-
-        }
+        localStorage.removeItem("astroFormData");
+        localStorage.removeItem("page2Draft");
 
     }
 
