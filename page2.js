@@ -21,7 +21,7 @@ async function submitForm(e) {
         const form = document.getElementById("quizForm");
 
         const formData = new FormData(form);
-
+               
         //--------------------------------------------------
         // PAGE 1 DATA
         //-------------------------------------------------
