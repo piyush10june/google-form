@@ -19,8 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (!form.reportValidity()) return;
 
-        const formData = new FormData(form);
-
         const uploadedFiles = {};
 
         const data = {};
