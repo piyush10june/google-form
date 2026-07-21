@@ -817,16 +817,32 @@ function updateElementBalanceScore() {
 
     for (let i = 1; i <= 30; i++) {
 
-        const selected = document.querySelector(`input[name="eb_q${i}"]:checked`);
+        const selected = document.querySelector(
+            `input[name="eb_q${i}"]:checked`
+        );
 
         if (selected) {
             scores[selected.value]++;
         }
+
     }
 
-    document.getElementById("ebAirScore").textContent = `${scores.Air} /30`;
-    document.getElementById("ebFireScore").textContent = `${scores.Fire} /30`;
-    document.getElementById("ebWaterScore").textContent = `${scores.Water} /30`;
+    const air = document.getElementById("airElementScore");
+    const fire = document.getElementById("fireElementScore");
+    const water = document.getElementById("waterElementScore");
+
+    if (air) {
+        air.textContent = scores.Air + " /30";
+    }
+
+    if (fire) {
+        fire.textContent = scores.Fire + " /30";
+    }
+
+    if (water) {
+        water.textContent = scores.Water + " /30";
+    }
+
 }
 
 /* =====================================================
