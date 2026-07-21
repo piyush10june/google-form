@@ -197,10 +197,9 @@ async function uploadSingleFile(file) {
     fd.append("base64", await fileToBase64(file));
 
     const response = await fetch(SCRIPT_URL, {
-
         method: "POST",
-        body: fd
-
+        body: formData,
+        redirect: "follow"
     });
 
     return await response.json();

@@ -177,11 +177,9 @@ async function submitForm(e) {
         //--------------------------------------------------
 
         const response = await fetch(SCRIPT_URL, {
-
             method: "POST",
-
-            body: formData
-
+            body: formData,
+            redirect: "follow"
         });
 
         const result = await response.json();
