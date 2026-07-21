@@ -179,16 +179,17 @@ async function submitForm(e) {
         const response = await fetch(SCRIPT_URL, {
             method: "POST",
             body: formData,
+            mode: "no-cors",
         });
-
-        alert("Form submitted. Please check your email in a few moments.");
-
-        form.reset();
-        localStorage.clear();
 
         alert("Form submitted successfully. Please check your email in a few minutes.");
 
         form.reset();
+
+        localStorage.clear();
+
+        localStorage.removeItem("astroFormData");
+        localStorage.removeItem("page2Draft");
 
         localStorage.removeItem("astroFormData");
         localStorage.removeItem("page2Draft");
