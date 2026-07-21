@@ -1,144 +1,89 @@
-// ========================================
-// BLUEBERRY ASTROVASTU
-// FIVE ELEMENTS QUIZ
-// ========================================
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    // ============================
-    // Only ONE option per question
-    // ============================
-
-    const radios = document.querySelectorAll('tbody input[type="radio"]');
-
-    radios.forEach(radio => {
-
-        radio.addEventListener("change", function () {
-
-            updateScore();
-
-        });
-
-    });
-
-    updateScore();
-
-});
-
-// ========================================
-// Update Score
-// ========================================
-
-function updateScore() {
-
-    let air = 0;
-    let fire = 0;
-    let earth = 0;
-    let space = 0;
-    let water = 0;
-
-    document.querySelectorAll(
-        'tbody input[type="radio"]:checked'
-    ).forEach(radio => {
-
-        switch (radio.value) {
-
-            case "Air":
-                air++;
-                break;
-
-            case "Fire":
-                fire++;
-                break;
-
-            case "Earth":
-                earth++;
-                break;
-
-            case "Space":
-                space++;
-                break;
-
-            case "Water":
-                water++;
-                break;
-
-        }
-
-    });
-
-    document.getElementById("airScore").textContent = air + " /25";
-    document.getElementById("fireScore").textContent = fire + " /25";
-    document.getElementById("earthScore").textContent = earth + " /25";
-    document.getElementById("spaceScore").textContent = space + " /25";
-    document.getElementById("waterScore").textContent = water + " /25";
-
-}
+const SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbyQUT1fvXzL4j56dc3BkZvBkubxG5Jv8WwFeO1u7SQCVmH_-AnjPGwT0xeQAABPd2fe/exec";
 
 // ========================================
 // NEXT BUTTON
 // ========================================
 
-function nextPage() {
+document.addEventListener("DOMContentLoaded", function () {
 
-    // Validate every question
-    for (let i = 1; i <= 25; i++) {
+    const nextBtn = document.getElementById("nextBtn");
 
-        const selected = document.querySelector(
-            'input[name="q' + i + '"]:checked'
-        );
+    if (!nextBtn) return;
 
-        if (!selected) {
+    nextBtn.addEventListener("click", function () {
 
-            alert("Please answer Question " + i);
+        const form = document.getElementById("astroForm");
 
-            return;
+        if (!form.reportValidity()) return;
+
+        const uploadedFiles = {};
+
+        const data = {};
+
+        for (const [key, value] of formData.entries()) {
+
+            if (value instanceof File && value.size > 0) {
+
+                const result = await uploadSingleFile(value);
+
+                if (!result.success) {
+
+                    alert("Failed to upload " + value.name);
+
+                    return;
+
+                }
+
+                if (!uploadedFiles[key]) {
+
+                    uploadedFiles[key] = [];
+
+                }
+
+                uploadedFiles[key].push(result);
+
+            }
+
+            else {
+
+                if (data[key]) {
+
+                    if (!Array.isArray(data[key])) {
+
+                        data[key] = [data[key]];
+
+                    }
+
+                    data[key].push(value);
+
+                }
+
+                else {
+
+                    data[key] = value;
+
+                }
+
+            }
 
         }
 
-    }
-
-    // Save answers
-
-    const answers = {};
-
-    for (let i = 1; i <= 25; i++) {
-
-        const selected = document.querySelector(
-            'input[name="q' + i + '"]:checked'
+        localStorage.setItem(
+            "astroFormData",
+            JSON.stringify(data)
         );
 
-        answers["q" + i] = selected.value;
+        localStorage.setItem(
+            "page1UploadedFiles",
+            JSON.stringify(uploadedFiles)
+        );
 
-    }
+        window.location.href = "page2.html";
 
-    // Save Scores
+    });
 
-    answers.airScore =
-        parseInt(document.getElementById("airScore").textContent);
-
-    answers.fireScore =
-        parseInt(document.getElementById("fireScore").textContent);
-
-    answers.earthScore =
-        parseInt(document.getElementById("earthScore").textContent);
-
-    answers.spaceScore =
-        parseInt(document.getElementById("spaceScore").textContent);
-
-    answers.waterScore =
-        parseInt(document.getElementById("waterScore").textContent);
-
-    localStorage.setItem(
-        "FiveElementsQuiz",
-        JSON.stringify(answers)
-    );
-
-    // Go to next page
-
-    window.location.href = "page2.html";
-
-}
+});
 
 // ========================================
 // SHOW / HIDE ACCESSORY DESCRIPTION
@@ -206,5 +151,62 @@ function addTextarea(containerId, name, placeholder) {
     textarea.style.marginTop = "10px";
 
     container.appendChild(textarea);
+
+}
+
+function addFileField(containerId, name) {
+
+    const container = document.getElementById(containerId);
+
+    const input = document.createElement("input");
+
+    input.type = "file";
+    input.name = name;
+    input.accept = "image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar,.dwg,.dxf";
+    input.style.marginTop = "10px";
+
+    container.appendChild(input);
+
+}
+
+async function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+
+        const reader = new FileReader();
+
+        reader.onload = () => resolve(reader.result.split(",")[1]);
+
+        reader.onerror = reject;
+
+        reader.readAsDataURL(file);
+
+    });
+}
+
+async function uploadSingleFile(file) {
+
+    const response = await fetch(SCRIPT_URL, {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+
+            action: "uploadSingleFile",
+
+            fileName: file.name,
+
+            mimeType: file.type,
+
+            base64: await fileToBase64(file)
+
+        })
+
+    });
+
+    return await response.json();
 
 }

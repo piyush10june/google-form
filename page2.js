@@ -36,18 +36,6 @@ async function submitForm(e) {
         });
 
         //--------------------------------------------------
-        // PAGE 1 UPLOADED FILES
-        //--------------------------------------------------
-
-        const page1UploadedFiles =
-            JSON.parse(localStorage.getItem("page1UploadedFiles")) || {};
-
-        formData.append(
-            "page1UploadedFiles",
-            JSON.stringify(page1UploadedFiles)
-        );
-
-        //--------------------------------------------------
         // FIVE ELEMENT SCORE
         //--------------------------------------------------
 
@@ -212,6 +200,8 @@ async function submitForm(e) {
 
             localStorage.removeItem("astroFormData");
 
+            localStorage.removeItem("page2Draft");
+
         } else {
 
             alert(result.error);
@@ -224,13 +214,17 @@ async function submitForm(e) {
 
         console.error(err);
 
-        alert("Submission Failed");
+        alert(err.message || err);
 
     }
 
-    submitBtn.disabled = false;
+    finally {
 
-    submitBtn.innerText = "Submit";
+        submitBtn.disabled = false;
+
+        submitBtn.innerText = "Submit";
+
+    }
 
 }
 
@@ -505,7 +499,7 @@ function loadQuizDraft() {
 
     updateElementBalanceScore();
 
-    updatePrakritiTableScore();
+    updatePrakritiQuizScore();
 
 }
 
@@ -563,7 +557,7 @@ function resetQuizForm() {
 
     updateElementBalanceScore();
 
-    updatePrakritiTableScore();
+    updatePrakritiQuizScore();
 
 }
 
@@ -583,7 +577,7 @@ document.addEventListener("change", function (e) {
 
     updateElementBalanceScore();
 
-    updatePrakritiTableScore();
+    updatePrakritiQuizScore();
 
 });
 
@@ -641,7 +635,7 @@ window.addEventListener("load", function () {
 
     updateElementBalanceScore();
 
-    updatePrakritiTableScore();
+    updatePrakritiQuizScore();
 
 });
 
@@ -962,7 +956,7 @@ document.addEventListener("change", function (e) {
     updatePlanetScore();
     updateGunaScore();
     updateElementBalanceScore();
-    updatePrakritiTableScore();
+    updatePrakritiQuizScore();
 
 });
 
