@@ -198,7 +198,7 @@ async function uploadSingleFile(file) {
 
     const response = await fetch(SCRIPT_URL, {
         method: "POST",
-        body: formData,
+        body: fd,
         redirect: "follow"
     });
 
