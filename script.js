@@ -5,7 +5,7 @@ const SCRIPT_URL =
 // NEXT BUTTON
 // =======================================
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {                                                  
 
     const nextBtn = document.getElementById("nextBtn");
 
