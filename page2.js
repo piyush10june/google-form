@@ -179,10 +179,13 @@ async function submitForm(e) {
         const response = await fetch(SCRIPT_URL, {
             method: "POST",
             body: formData,
-            redirect: "follow"
+            mode: "no-cors"
         });
 
-        const result = await response.json();
+        alert("Form submitted. Please check your email in a few moments.");
+
+        form.reset();
+        localStorage.clear();
 
         if (result.success) {
 
