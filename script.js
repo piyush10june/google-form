@@ -11,11 +11,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!nextBtn) return;
 
-    nextBtn.addEventListener("click", function () {
+    nextBtn.addEventListener("click", async function () {
 
         const form = document.getElementById("astroForm");
 
+        const formData = new FormData(form);
+
         if (!form.reportValidity()) return;
+
+        const formData = new FormData(form);
 
         const uploadedFiles = {};
 
@@ -78,6 +82,8 @@ document.addEventListener("DOMContentLoaded", function () {
             "page1UploadedFiles",
             JSON.stringify(uploadedFiles)
         );
+
+        console.log(uploadedFiles);
 
         window.location.href = "page2.html";
 
@@ -185,25 +191,17 @@ async function fileToBase64(file) {
 
 async function uploadSingleFile(file) {
 
+    const fd = new FormData();
+
+    fd.append("action", "uploadSingleFile");
+    fd.append("fileName", file.name);
+    fd.append("mimeType", file.type);
+    fd.append("base64", await fileToBase64(file));
+
     const response = await fetch(SCRIPT_URL, {
 
         method: "POST",
-
-        headers: {
-            "Content-Type": "application/json"
-        },
-
-        body: JSON.stringify({
-
-            action: "uploadSingleFile",
-
-            fileName: file.name,
-
-            mimeType: file.type,
-
-            base64: await fileToBase64(file)
-
-        })
+        body: fd
 
     });
 
