@@ -21,10 +21,12 @@ async function submitForm(e) {
         const form = document.getElementById("quizForm");
 
         const formData = new FormData(form);
-               
+
         //--------------------------------------------------
         // PAGE 1 DATA
         //-------------------------------------------------
+
+        console.log(page1Data);
 
         const page1Data =
             JSON.parse(localStorage.getItem("astroFormData")) || {};
@@ -34,6 +36,10 @@ async function submitForm(e) {
             formData.append(key, page1Data[key]);
 
         });
+
+        for (const pair of formData.entries()) {
+            console.log(pair[0], pair[1]);
+        }
 
         //--------------------------------------------------
         // FIVE ELEMENT SCORE
@@ -212,7 +218,7 @@ async function submitForm(e) {
 
     }
 
-}     
+}
 
 // =====================================
 // FORM VALIDATION
