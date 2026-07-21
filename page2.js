@@ -26,10 +26,24 @@ async function submitForm(e) {
         // PAGE 1 DATA
         //-------------------------------------------------
 
-        console.log(page1Data);
-
         const page1Data =
             JSON.parse(localStorage.getItem("astroFormData")) || {};
+
+        console.log("PAGE 1 DATA:", page1Data);
+
+        Object.keys(page1Data).forEach(key => {
+
+            formData.append(key, page1Data[key]);
+
+        });
+
+        console.log("===== FORM DATA =====");
+
+        for (const pair of formData.entries()) {
+
+            console.log(pair[0], pair[1]);
+
+        }
 
         Object.keys(page1Data).forEach(key => {
 
