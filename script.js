@@ -4,14 +4,14 @@ const SCRIPT_URL =
 // =======================================         
 // NEXT BUTTON
 // =======================================
-  
-document.addEventListener("DOMContentLoaded", function () {                                                  
+
+document.addEventListener("DOMContentLoaded", function () {
 
     const nextBtn = document.getElementById("nextBtn");
 
     if (!nextBtn) return;
 
-    nextBtn.addEventListener("click", async function () {  
+    nextBtn.addEventListener("click", async function () {
 
         const form = document.getElementById("astroForm");
 
@@ -188,20 +188,19 @@ async function fileToBase64(file) {
 }
 
 async function uploadSingleFile(file) {
-
-    const fd = new FormData();
-
-    fd.append("action", "uploadSingleFile");
-    fd.append("fileName", file.name);
-    fd.append("mimeType", file.type);
-    fd.append("base64", await fileToBase64(file));
+    const urlParams = new URLSearchParams();
+    urlParams.append("action", "uploadSingleFile");
+    urlParams.append("fileName", file.name);
+    urlParams.append("mimeType", file.type);
+    urlParams.append("base64", await fileToBase64(file));
 
     const response = await fetch(SCRIPT_URL, {
         method: "POST",
-        body: fd,
-        redirect: "follow"
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: urlParams.toString()
     });
 
     return await response.json();
-
 }
