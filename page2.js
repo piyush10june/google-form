@@ -319,4 +319,4 @@ window.addEventListener("load", function () {
     updateGunaScore();
     updateDoshaQuizScore();
     updatePrakritiQuizScore();
-});
+});                    
