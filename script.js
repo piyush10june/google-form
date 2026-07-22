@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!nextBtn) return;
 
-    nextBtn.addEventListener("click", async function () {
+    nextBtn.addEventListener("click", async function () {  
 
         const form = document.getElementById("astroForm");
 
