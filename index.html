@@ -15,8 +15,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 
 <body>
@@ -143,7 +143,7 @@
 
                     <label>Birth Place <span>*</span></label>
 
-                    <input type="text" id="birthPlace" name="birthPlace" placeholder="Enter your birth place" required>
+                    <input type="text" id="birthPlace" name="birthPlace" placeholder="Enter your birth place">
 
                 </div>
 
@@ -151,9 +151,21 @@
 
                     <label>Current City <span>*</span></label>
 
-                    <input type="text" id="currentCity" name="currentCity" placeholder="Enter your current city"
-                        required>
+                    <input type="text" id="currentCity" name="currentCity" placeholder="Enter your current city">
 
+                </div>
+
+                <div class="field full-width">
+                    <label>Mobile Number(s)</label>
+
+                    <div id="mobileNumbersContainer">
+                        <input type="tel" name="mobile" placeholder="Enter mobile number" required>
+                    </div>
+
+                    <button type="button" class="add-btn"
+                        onclick="addField('mobileNumbersContainer','mobile','Enter mobile number')">
+                        + Add More
+                    </button>
                 </div>
 
                 <div class="field">
@@ -174,11 +186,11 @@
 
                 </div>
 
-                 <div class="field">
+                <div class="field">
 
                     <label>Bank account number <span>*</span></label>
 
-                    <input type="text" id="bankaccount" name="bankaccount" placeholder="Enter your Bank Account Number" required>
+                    <input type="text" id="bankaccount" name="bankaccount" placeholder="Enter your Bank Account Number">
 
                 </div>
 
@@ -201,7 +213,7 @@
                     <label>client requirement <span>*</span></label>
 
                     <textarea id="requirementsofclient" name="occupationandrequirement"
-                        placeholder="Enter your requirement" required></textarea>
+                        placeholder="Enter your requirement"></textarea>
 
                 </div>
 
@@ -264,6 +276,8 @@
 
         </div>
 
+        <p>If you want to get full consulttion, then fill rest form also otherwise you can move to next page by next button</p>
+
         <!-- =====================================
      NUMEROLOGY DETAILS
 ===================================== -->
@@ -290,33 +304,19 @@
                     </button>
                 </div>
 
-                <!-- Mobile Numbers -->
-                <div class="field full-width">
-                    <label>Mobile Number(s)</label>
-
-                    <div id="mobileNumbersContainer">
-                        <input type="tel" name="mobile" placeholder="Enter mobile number">
-                    </div>
-
-                    <button type="button" class="add-btn"
-                        onclick="addField('mobileNumbersContainer','mobile','Enter mobile number')">
-                        + Add More
-                    </button>
-                </div>  
-
                 <!-- Email IDs -->
                 <div class="field full-width">
                     <label>Email ID(s)</label>
 
                     <div id="emailContainer">
-                        <input type="email" name="email" placeholder="Enter email address" required>
+                        <input type="email" name="email" placeholder="Enter email address">
                     </div>
 
                     <button type="button" class="add-btn"
                         onclick="addField('emailContainer','email','Enter email address')">
                         + Add More
                     </button>
-                </div>    
+                </div>
 
                 <!-- Marital Status -->
                 <div class="field">
