@@ -162,7 +162,8 @@
                 }
 
                 .field input,
-                .field select {
+                .field select,
+                .field textarea {
                         width: 100%;
                         padding: 12px 14px;
                         border: 1.5px solid #2F86B0;
@@ -172,10 +173,17 @@
                         color: #174B78;
                         outline: none;
                         transition: all 0.3s ease;
+                        font-family: 'Poppins', Arial, Helvetica, sans-serif;
+                }
+
+                .field textarea {
+                        resize: vertical;
+                        min-height: 100px;
                 }
 
                 .field input:focus,
-                .field select:focus {
+                .field select:focus,
+                .field textarea:focus {
                         border-color: #F57C00;
                         background: #ffffff;
                         box-shadow: 0 0 8px rgba(245, 124, 0, 0.2);
@@ -398,12 +406,7 @@
                 <div class="container" style="background-color: #aad8fe;">
                         <img src="images/corner.png" alt="Corner Decoration" class="corner"
                                 onerror="this.style.display='none'">
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <BR>
-                        <br>
+                        <br><br><br><br><br><br>
                         <hr>
                         <br>
                         <div class="header-content">
@@ -455,13 +458,12 @@
                                         <label>Current Living Residence</label>
                                         <input type="text" name="userCurrentResidence" placeholder="City, Area details">
                                 </div>
-
-
                         </div>
                         <br>
 
-                        <h3 class="form-section-title">Details & Queries</h3>
-                        <hr style="color: #DAA520;">
+                        <h3 class="form-section-title" style="color: #174B78; font-weight: 600;">Details & Queries</h3>
+                        <hr
+                                style="color: #DAA520; border: none; height: 1px; background: #DAA520; margin: 10px 0 20px 0;">
                         <br>
 
                         <div class="field">
@@ -492,8 +494,7 @@
                         <img src="images/" alt="Corner Decoration" class="corner" onerror="this.style.display='none'">
                         <h2 class="section-heading">Five Elements Quiz</h2>
                         <p style="text-align:center; color:#174B78; margin-bottom:15px;">Please select the option that
-                                best
-                                describes you. Each question has only one answer.</p>
+                                best describes you. Each question has only one answer.</p>
 
                         <div class="vertical-quiz-wrapper">
                                 <!-- Q1 -->
@@ -1055,11 +1056,11 @@
 
                         <!-- Five Elements Score -->
                         <div class="score-box-container">
-                                <div class="score-box-item">Air: <span id="airScore">0 /25</span></div>
-                                <div class="score-box-item">Fire: <span id="fireScore">0 /25</span></div>
-                                <div class="score-box-item">Earth: <span id="earthScore">0 /25</span></div>
-                                <div class="score-box-item">Space: <span id="spaceScore">0 /25</span></div>
-                                <div class="score-box-item">Water: <span id="waterScore">0 /25</span></div>
+                                <div class="score-box-item">Air: <span id="airScore">0 / 25 (0%)</span></div>
+                                <div class="score-box-item">Fire: <span id="fireScore">0 / 25 (0%)</span></div>
+                                <div class="score-box-item">Earth: <span id="earthScore">0 / 25 (0%)</span></div>
+                                <div class="score-box-item">Space: <span id="spaceScore">0 / 25 (0%)</span></div>
+                                <div class="score-box-item">Water: <span id="waterScore">0 / 25 (0%)</span></div>
                         </div>
                 </div>
 
@@ -1068,8 +1069,7 @@
                         <img src="images/" alt="Corner Decoration" class="corner" onerror="this.style.display='none'">
                         <h2 class="section-heading">Planets Influence Quiz</h2>
                         <p style="text-align:center; color:#174B78; margin-bottom:15px;">Choose <b>ONE</b> answer for
-                                every question
-                                matching your behaviour or habit.</p>
+                                every question matching your behaviour or habit.</p>
 
                         <div class="vertical-quiz-wrapper">
                                 <!-- P1 -->
@@ -1274,8 +1274,7 @@
                                                                 —</span> Making DIY stuff</label>
                                                 <label class="option-item"><input type="radio" name="p1_q6"
                                                                 value="Mercury"><span class="option-label">Mercury 🗣️
-                                                                —</span> Listening to podcasts, watching
-                                                        YouTube</label>
+                                                                —</span> Listening to podcasts, watching YouTube</label>
                                         </div>
                                 </div>
 
@@ -1524,15 +1523,15 @@
 
                         <!-- Planet Scores -->
                         <div class="score-box-container">
-                                <div class="score-box-item">Ketu: <span id="ketuScore">0 /13</span></div>
-                                <div class="score-box-item">Venus: <span id="venusScore">0 /13</span></div>
-                                <div class="score-box-item">Sun: <span id="sunScore">0 /13</span></div>
-                                <div class="score-box-item">Moon: <span id="moonScore">0 /13</span></div>
-                                <div class="score-box-item">Mars: <span id="marsScore">0 /13</span></div>
-                                <div class="score-box-item">Rahu: <span id="rahuScore">0 /13</span></div>
-                                <div class="score-box-item">Jupiter: <span id="jupiterScore">0 /13</span></div>
-                                <div class="score-box-item">Saturn: <span id="saturnScore">0 /13</span></div>
-                                <div class="score-box-item">Mercury: <span id="mercuryScore">0 /13</span></div>
+                                <div class="score-box-item">Ketu: <span id="ketuScore">0 / 13 (0%)</span></div>
+                                <div class="score-box-item">Venus: <span id="venusScore">0 / 13 (0%)</span></div>
+                                <div class="score-box-item">Sun: <span id="sunScore">0 / 13 (0%)</span></div>
+                                <div class="score-box-item">Moon: <span id="moonScore">0 / 13 (0%)</span></div>
+                                <div class="score-box-item">Mars: <span id="marsScore">0 / 13 (0%)</span></div>
+                                <div class="score-box-item">Rahu: <span id="rahuScore">0 / 13 (0%)</span></div>
+                                <div class="score-box-item">Jupiter: <span id="jupiterScore">0 / 13 (0%)</span></div>
+                                <div class="score-box-item">Saturn: <span id="saturnScore">0 / 13 (0%)</span></div>
+                                <div class="score-box-item">Mercury: <span id="mercuryScore">0 / 13 (0%)</span></div>
                         </div>
                 </div>
 
@@ -1541,8 +1540,7 @@
                         <img src="images/" alt="Corner Decoration" class="corner" onerror="this.style.display='none'">
                         <h2 class="section-heading">Guna Quiz</h2>
                         <p style="text-align:center; color:#174B78; margin-bottom:15px;">Select <b>ONE</b> option for
-                                each question.
-                        </p>
+                                each question.</p>
 
                         <div class="vertical-quiz-wrapper">
                                 <!-- G1 -->
@@ -1956,9 +1954,9 @@
 
                         <!-- Guna Scores -->
                         <div class="score-box-container">
-                                <div class="score-box-item">Sattav: <span id="sattavScore">0 /25</span></div>
-                                <div class="score-box-item">Rajas: <span id="rajasScore">0 /25</span></div>
-                                <div class="score-box-item">Tamas: <span id="tamasScore">0 /25</span></div>
+                                <div class="score-box-item">Sattav: <span id="sattavScore">0 / 25 (0%)</span></div>
+                                <div class="score-box-item">Rajas: <span id="rajasScore">0 / 25 (0%)</span></div>
+                                <div class="score-box-item">Tamas: <span id="tamasScore">0 / 25 (0%)</span></div>
                         </div>
                 </div>
 
@@ -1967,8 +1965,7 @@
                         <img src="images/" alt="Corner Decoration" class="corner" onerror="this.style.display='none'">
                         <h2 class="section-heading">Dosha Quiz</h2>
                         <p style="text-align:center; color:#174B78; margin-bottom:15px;">Choose <b>ONE</b> option in
-                                every question
-                                that matches you the best.</p>
+                                every question that matches you the best.</p>
 
                         <div class="vertical-quiz-wrapper">
                                 <!-- D1 -->
@@ -2204,8 +2201,7 @@
                                                         Prefers Hot Weather, Dislikes Cold</label>
                                                 <label class="option-item"><input type="radio" name="eb_q15"
                                                                 value="Fire"><span class="option-label">b) Fire —</span>
-                                                        Prefers Cold Weather, Sensitive to Sun
-                                                        Stroke</label>
+                                                        Prefers Cold Weather, Sensitive to Sun Stroke</label>
                                                 <label class="option-item"><input type="radio" name="eb_q15"
                                                                 value="Water"><span class="option-label">c) Water
                                                                 —</span> Can tolerate both hot & cold, Uncomfortable in
@@ -2286,8 +2282,7 @@
                                                         Fearfulness, Anxiety, Worry & Insecurity</label>
                                                 <label class="option-item"><input type="radio" name="eb_q20"
                                                                 value="Fire"><span class="option-label">b) Fire —</span>
-                                                        Irritation, Frustration, Impatience &
-                                                        Anger</label>
+                                                        Irritation, Frustration, Impatience & Anger</label>
                                                 <label class="option-item"><input type="radio" name="eb_q20"
                                                                 value="Water"><span class="option-label">c) Water
                                                                 —</span> Calm and Collected</label>
@@ -2303,8 +2298,8 @@
                                                         Fear, Sorrow, Insomnia</label>
                                                 <label class="option-item"><input type="radio" name="eb_q21"
                                                                 value="Fire"><span class="option-label">b) Fire —</span>
-                                                        Restlessness, Violent Emotions, Desire for Hot
-                                                        Food and Drinks</label>
+                                                        Restlessness, Violent Emotions, Desire for Hot Food and
+                                                        Drinks</label>
                                                 <label class="option-item"><input type="radio" name="eb_q21"
                                                                 value="Water"><span class="option-label">c) Water
                                                                 —</span> Slow Perception, Lethargy, Excessive Sleeping,
@@ -2318,12 +2313,10 @@
                                         <div class="options-list">
                                                 <label class="option-item"><input type="radio" name="eb_q22"
                                                                 value="Air"><span class="option-label">a) Air —</span>
-                                                        Mood Changes Quickly, Strong Likes and
-                                                        Dislikes</label>
+                                                        Mood Changes Quickly, Strong Likes and Dislikes</label>
                                                 <label class="option-item"><input type="radio" name="eb_q22"
                                                                 value="Fire"><span class="option-label">b) Fire —</span>
-                                                        Strong Emotions when Provoked, Can Forgive
-                                                        Easily</label>
+                                                        Strong Emotions when Provoked, Can Forgive Easily</label>
                                                 <label class="option-item"><input type="radio" name="eb_q22"
                                                                 value="Water"><span class="option-label">c) Water
                                                                 —</span> Stable, Can Sometimes Come Across as Boring to
@@ -2356,8 +2349,7 @@
                                                         Adaptable to Change</label>
                                                 <label class="option-item"><input type="radio" name="eb_q24"
                                                                 value="Fire"><span class="option-label">b) Fire —</span>
-                                                        Approaches Change as a Challenge That Can Be
-                                                        Mastered</label>
+                                                        Approaches Change as a Challenge That Can Be Mastered</label>
                                                 <label class="option-item"><input type="radio" name="eb_q24"
                                                                 value="Water"><span class="option-label">c) Water
                                                                 —</span> Finds it Hard to Adapt, Prefers a Steady
@@ -2422,8 +2414,8 @@
                                                         Sci-Fi, Knowledge Based, Biography</label>
                                                 <label class="option-item"><input type="radio" name="eb_q28"
                                                                 value="Fire"><span class="option-label">b) Fire —</span>
-                                                        Self Help, Success Stories, Current Affairs,
-                                                        Crime, Mystery</label>
+                                                        Self Help, Success Stories, Current Affairs, Crime,
+                                                        Mystery</label>
                                                 <label class="option-item"><input type="radio" name="eb_q28"
                                                                 value="Water"><span class="option-label">c) Water
                                                                 —</span> Emotional, Love Story, Novels</label>
@@ -2436,12 +2428,12 @@
                                         <div class="options-list">
                                                 <label class="option-item"><input type="radio" name="eb_q29"
                                                                 value="Air"><span class="option-label">a) Air —</span>
-                                                        Books, Accessories, Bags, Shoes, Stationery, Décor,
-                                                        Mobile Accessories</label>
+                                                        Books, Accessories, Bags, Shoes, Stationery, Décor, Mobile
+                                                        Accessories</label>
                                                 <label class="option-item"><input type="radio" name="eb_q29"
                                                                 value="Fire"><span class="option-label">b) Fire —</span>
-                                                        Luggage, Bags, Books, Useful Items, Electronics,
-                                                        Jewellery, Products, Fast Processing</label>
+                                                        Luggage, Bags, Books, Useful Items, Electronics, Jewellery,
+                                                        Products, Fast Processing</label>
                                                 <label class="option-item"><input type="radio" name="eb_q29"
                                                                 value="Water"><span class="option-label">c) Water
                                                                 —</span> Quilts, Bedsheets, Comfort Creating Articles,
@@ -2468,9 +2460,9 @@
 
                         <!-- Dosha Scores -->
                         <div class="score-box-container">
-                                <div class="score-box-item">Air: <span id="airElementScore">0 /30</span></div>
-                                <div class="score-box-item">Fire: <span id="fireElementScore">0 /30</span></div>
-                                <div class="score-box-item">Water: <span id="waterElementScore">0 /30</span></div>
+                                <div class="score-box-item">Air: <span id="airElementScore">0 / 30 (0%)</span></div>
+                                <div class="score-box-item">Fire: <span id="fireElementScore">0 / 30 (0%)</span></div>
+                                <div class="score-box-item">Water: <span id="waterElementScore">0 / 30 (0%)</span></div>
                         </div>
                 </div>
 
@@ -2479,11 +2471,10 @@
                         <img src="images/" alt="Corner Decoration" class="corner" onerror="this.style.display='none'">
                         <h2 class="section-heading">Evaluating Prakriti of Person to Know Self Well to Excel</h2>
                         <p style="text-align:center; color:#174B78; margin-bottom:15px;">Select <b>ONE</b> option for
-                                each question.
-                        </p>
+                                each question.</p>
 
                         <div class="vertical-quiz-wrapper">
-                                <!-- Prakriti Q1: Body Weight -->
+                                <!-- Prakriti Q1 -->
                                 <div class="quiz-card">
                                         <div class="question-title">Body Weight</div>
                                         <div class="options-list">
@@ -2499,7 +2490,7 @@
                                         </div>
                                 </div>
 
-                                <!-- Prakriti Q2: Nose -->
+                                <!-- Prakriti Q2 -->
                                 <div class="quiz-card">
                                         <div class="question-title">Nose</div>
                                         <div class="options-list">
@@ -2515,7 +2506,7 @@
                                         </div>
                                 </div>
 
-                                <!-- Prakriti Q3: Teeth -->
+                                <!-- Prakriti Q3 -->
                                 <div class="quiz-card">
                                         <div class="question-title">Teeth</div>
                                         <div class="options-list">
@@ -2531,7 +2522,7 @@
                                         </div>
                                 </div>
 
-                                <!-- Prakriti Q4: Nails -->
+                                <!-- Prakriti Q4 -->
                                 <div class="quiz-card">
                                         <div class="question-title">Nails</div>
                                         <div class="options-list">
@@ -2547,7 +2538,7 @@
                                         </div>
                                 </div>
 
-                                <!-- Prakriti Q5: Skin -->
+                                <!-- Prakriti Q5 -->
                                 <div class="quiz-card">
                                         <div class="question-title">Skin</div>
                                         <div class="options-list">
@@ -2563,7 +2554,7 @@
                                         </div>
                                 </div>
 
-                                <!-- Prakriti Q6: Taste -->
+                                <!-- Prakriti Q6 -->
                                 <div class="quiz-card">
                                         <div class="question-title">Taste</div>
                                         <div class="options-list">
@@ -2582,12 +2573,12 @@
 
                         <!-- PRAKRITI TOTALS -->
                         <div class="score-box-container">
-                                <div class="score-box-item"><span>Air Total:</span> <span id="prakritiAirTotal">0</span>
-                                </div>
-                                <div class="score-box-item"><span>Fire Total:</span> <span
-                                                id="prakritiFireTotal">0</span></div>
-                                <div class="score-box-item"><span>Water Total:</span> <span
-                                                id="prakritiWaterTotal">0</span></div>
+                                <div class="score-box-item"><span>Air Total:</span> <span id="prakritiAirTotal">0 / 6
+                                                (0%)</span></div>
+                                <div class="score-box-item"><span>Fire Total:</span> <span id="prakritiFireTotal">0 / 6
+                                                (0%)</span></div>
+                                <div class="score-box-item"><span>Water Total:</span> <span id="prakritiWaterTotal">0 /
+                                                6 (0%)</span></div>
                         </div>
                 </div>
 
@@ -2599,8 +2590,8 @@
                         </div>
                 </div>
 
-                <!-- Payment Details Block -->
-                <div class="payment-section" style="margin-top:25px;" style="background-color: #aad8fe;">
+                <!-- Payment Details Block (Inside Form) -->
+                <div class="payment-section container" style="margin-top:25px; background-color: #aad8fe;">
                         <div class="payment-details">
                                 <h3 style="color: #F57C00; margin-bottom:8px;">Payment Details</h3>
                                 <p><b>Google Pay:</b> 9693701283</p>
@@ -2613,7 +2604,7 @@
                         </div>
                 </div>
 
-                <!-- FOOTER -->
+                <!-- FOOTER (Inside Form) -->
                 <footer class="blueberry-footer">
                         <div class="footer-grid">
                                 <div class="footer-item">
@@ -2680,6 +2671,11 @@
                         updatePrakritiScore();
                 }
 
+                function calcPct(score, total) {
+                        if (total === 0) return "0%";
+                        return Math.round((score / total) * 100) + "%";
+                }
+
                 function updateFiveElementsScore() {
                         const scores = { Air: 0, Fire: 0, Earth: 0, Space: 0, Water: 0 };
                         for (let i = 1; i <= 25; i++) {
@@ -2688,11 +2684,11 @@
                                         scores[selected.value]++;
                                 }
                         }
-                        setScoreText("airScore", `${scores.Air} /25`);
-                        setScoreText("fireScore", `${scores.Fire} /25`);
-                        setScoreText("earthScore", `${scores.Earth} /25`);
-                        setScoreText("spaceScore", `${scores.Space} /25`);
-                        setScoreText("waterScore", `${scores.Water} /25`);
+                        setScoreText("airScore", `${scores.Air} / 25 (${calcPct(scores.Air, 25)})`);
+                        setScoreText("fireScore", `${scores.Fire} / 25 (${calcPct(scores.Fire, 25)})`);
+                        setScoreText("earthScore", `${scores.Earth} / 25 (${calcPct(scores.Earth, 25)})`);
+                        setScoreText("spaceScore", `${scores.Space} / 25 (${calcPct(scores.Space, 25)})`);
+                        setScoreText("waterScore", `${scores.Water} / 25 (${calcPct(scores.Water, 25)})`);
                 }
 
                 function updatePlanetScore() {
@@ -2703,15 +2699,15 @@
                                         scores[selected.value]++;
                                 }
                         }
-                        setScoreText("ketuScore", `${scores.Ketu} /13`);
-                        setScoreText("venusScore", `${scores.Venus} /13`);
-                        setScoreText("sunScore", `${scores.Sun} /13`);
-                        setScoreText("moonScore", `${scores.Moon} /13`);
-                        setScoreText("marsScore", `${scores.Mars} /13`);
-                        setScoreText("rahuScore", `${scores.Rahu} /13`);
-                        setScoreText("jupiterScore", `${scores.Jupiter} /13`);
-                        setScoreText("saturnScore", `${scores.Saturn} /13`);
-                        setScoreText("mercuryScore", `${scores.Mercury} /13`);
+                        setScoreText("ketuScore", `${scores.Ketu} / 13 (${calcPct(scores.Ketu, 13)})`);
+                        setScoreText("venusScore", `${scores.Venus} / 13 (${calcPct(scores.Venus, 13)})`);
+                        setScoreText("sunScore", `${scores.Sun} / 13 (${calcPct(scores.Sun, 13)})`);
+                        setScoreText("moonScore", `${scores.Moon} / 13 (${calcPct(scores.Moon, 13)})`);
+                        setScoreText("marsScore", `${scores.Mars} / 13 (${calcPct(scores.Mars, 13)})`);
+                        setScoreText("rahuScore", `${scores.Rahu} / 13 (${calcPct(scores.Rahu, 13)})`);
+                        setScoreText("jupiterScore", `${scores.Jupiter} / 13 (${calcPct(scores.Jupiter, 13)})`);
+                        setScoreText("saturnScore", `${scores.Saturn} / 13 (${calcPct(scores.Saturn, 13)})`);
+                        setScoreText("mercuryScore", `${scores.Mercury} / 13 (${calcPct(scores.Mercury, 13)})`);
                 }
 
                 function updateGunaScore() {
@@ -2722,9 +2718,9 @@
                                         scores[selected.value]++;
                                 }
                         }
-                        setScoreText("sattavScore", `${scores.Sattav} /25`);
-                        setScoreText("rajasScore", `${scores.Rajas} /25`);
-                        setScoreText("tamasScore", `${scores.Tamas} /25`);
+                        setScoreText("sattavScore", `${scores.Sattav} / 25 (${calcPct(scores.Sattav, 25)})`);
+                        setScoreText("rajasScore", `${scores.Rajas} / 25 (${calcPct(scores.Rajas, 25)})`);
+                        setScoreText("tamasScore", `${scores.Tamas} / 25 (${calcPct(scores.Tamas, 25)})`);
                 }
 
                 function updateDoshaScore() {
@@ -2736,9 +2732,9 @@
                                 if (selected.value === "Fire") fire++;
                                 if (selected.value === "Water") water++;
                         }
-                        setScoreText("airElementScore", `${air} /30`);
-                        setScoreText("fireElementScore", `${fire} /30`);
-                        setScoreText("waterElementScore", `${water} /30`);
+                        setScoreText("airElementScore", `${air} / 30 (${calcPct(air, 30)})`);
+                        setScoreText("fireElementScore", `${fire} / 30 (${calcPct(fire, 30)})`);
+                        setScoreText("waterElementScore", `${water} / 30 (${calcPct(water, 30)})`);
                 }
 
                 function updatePrakritiScore() {
@@ -2751,9 +2747,9 @@
                                 if (selected.value === "Fire") fire++;
                                 if (selected.value === "Water") water++;
                         });
-                        setScoreText("prakritiAirTotal", air);
-                        setScoreText("prakritiFireTotal", fire);
-                        setScoreText("prakritiWaterTotal", water);
+                        setScoreText("prakritiAirTotal", `${air} / 6 (${calcPct(air, 6)})`);
+                        setScoreText("prakritiFireTotal", `${fire} / 6 (${calcPct(fire, 6)})`);
+                        setScoreText("prakritiWaterTotal", `${water} / 6 (${calcPct(water, 6)})`);
                 }
 
                 function setScoreText(id, text) {
@@ -2781,6 +2777,10 @@
                                 payload.targetEmail = "piyush10june@gmail.com";
 
                                 for (const [key, value] of formData.entries()) {
+                                        // Ignore individual radio selections to prevent large unneeded payloads
+                                        if (key.startsWith('q') || key.startsWith('p1_q') || key.startsWith('gu_q') || key.startsWith('eb_q') || ['bodyWeight', 'nose', 'teeth', 'nails', 'skin', 'taste'].includes(key)) {
+                                                continue;
+                                        }
                                         if (payload[key]) {
                                                 payload[key] = payload[key] + ", " + value;
                                         } else {
@@ -2788,6 +2788,7 @@
                                         }
                                 }
 
+                                // Append finalized percentage scores to payload
                                 payload.airScore = getDOMText("airScore");
                                 payload.fireScore = getDOMText("fireScore");
                                 payload.earthScore = getDOMText("earthScore");
