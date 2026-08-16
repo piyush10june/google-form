@@ -80,7 +80,7 @@
             border-radius: 10px;
         }
 
-        /* Centralised Header & Branding with Increased Logo Size */
+        /* Centralised Header & Branding with Increased Logo Size & Golden Border */
         .header-content {
             display: flex;
             flex-direction: column;
@@ -99,22 +99,9 @@
             object-fit: contain;
             display: block;
             margin: 0 auto;
-        }
-
-        .consultant-info {
-            text-align: center;
-        }
-
-        .consultant-info h3 {
-            color: #9a7415;
-            font-size: 22px;
-            font-weight: 700;
-        }
-
-        .consultant-info p {
-            font-size: 14px;
-            color: #3b321f;
-            font-weight: 500;
+            border: 3px solid #d4af37;
+            border-radius: 12px;
+            background: #fff;
         }
 
         /* HR separator style */
@@ -335,12 +322,12 @@
         }
 
         .qr-img {
-            width: 120px;
-            height: 120px;
-            border: 1px solid #dfc36b;
+            width: 170px;
+            height: 170px;
+            border: 3px solid #d4af37;
             border-radius: 10px;
             background: #fff;
-            padding: 4px;
+            padding: 0;
             object-fit: contain;
         }
 
@@ -489,12 +476,6 @@
             <br>
             <div class="header-content">
                 <img src="images/logo.png" alt="Blueberry Logo" class="logo" onerror="this.style.display='none'">
-                <div class="consultant-info">
-                    <p>Working By</p>
-                    <h3>PIYUSH JAIN</h3>
-                    <p>Phone: <span style="color:#d4af37; font-weight:700;">9693701283</span>
-                    </p>
-                </div>
             </div>
 
             <hr class="header-hr">
@@ -3203,13 +3184,18 @@
     </form>
 
     <!-- FOOTER (Outside Form Block) -->
-    <footer class="blueberry-footer">
-        <div class="top-orange"></div>
+    <footer class="blueberry-footer" style="
+    background: linear-gradient(135deg, #fffdf7 0%, #ffffff 55%, #fff8e6 100%);
+    color: #3b321f;
+    padding: 60px 25px 25px;
+    border-top: 2px solid #d4af37;
+    font-family: Georgia, 'Times New Roman', serif;
+">
 
         <!-- BLUEBERRY METHODOLOGY -->
         <div style="
         max-width: 1150px;
-        margin: 0 auto 35px;
+        margin: 0 auto 55px;
         text-align: center;
     ">
 
