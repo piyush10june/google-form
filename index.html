@@ -210,8 +210,9 @@
         }
 
         .quiz-card {
+            box-sizing: border-box;
             background: rgba(255, 255, 255, 0.85);
-            border: 1px solid #dfc36b;
+            border: 1px solid #dfc36b !important;
             border-radius: 12px;
             padding: 20px;
             box-shadow: 0 4px 12px rgba(180, 140, 30, 0.08);
@@ -449,6 +450,239 @@
             .payment-right {
                 justify-content: center;
                 margin-top: 10px;
+            }
+        }
+
+
+        /* ================= PROFESSIONAL ASSESSMENT WIZARD ================= */
+        .assessment-shared-header {
+            position: relative;
+            z-index: 1;
+        }
+
+        .assessment-shared-header .header-content {
+            margin-bottom: 8px;
+        }
+
+        .assessment-shared-header .header-hr {
+            margin: 8px 0 18px;
+        }
+
+        #assessmentProgress {
+            box-sizing: border-box;
+            max-width: 1150px;
+            width: 100%;
+            margin: 0 auto 22px;
+            padding: 22px 26px;
+            border: 1px solid rgba(212, 175, 55, .65);
+            border-radius: 18px;
+            background: rgba(255, 255, 255, .94);
+            box-shadow: 0 10px 30px rgba(23, 75, 120, .08);
+            backdrop-filter: blur(10px);
+        }
+
+        .assessment-progress-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 13px;
+        }
+
+        .assessment-kicker {
+            color: #8f6b12;
+            font: 700 11px/1.4 Poppins, sans-serif;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        #assessmentStepTitle {
+            color: #174b78;
+            font: 600 19px/1.4 Poppins, sans-serif;
+        }
+
+        #assessmentStepCount {
+            color: #6b7280;
+            font: 500 13px/1.5 Poppins, sans-serif;
+            white-space: nowrap;
+        }
+
+        .assessment-progress-track {
+            width: 100%;
+            height: 8px;
+            overflow: hidden;
+            border-radius: 99px;
+            background: #e9f0f5;
+        }
+
+        #assessmentProgressFill {
+            width: 0%;
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #2f86b0, #d4af37);
+            transition: width .3s ease;
+        }
+
+        .assessment-progress-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+            font: 500 12px/1.5 Poppins, sans-serif;
+            color: #64748b;
+        }
+
+        #draftStatus {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            color: #376b4a;
+            font-weight: 600;
+        }
+
+        #draftStatus::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            display: inline-block;
+            border-radius: 50%;
+            background: #43a66b;
+        }
+
+        #draftStatus.saving {
+            color: #8f6b12;
+        }
+
+        #draftStatus.saving::before {
+            background: #d4af37;
+        }
+
+        #draftStatus.error {
+            color: #b42318;
+        }
+
+        #draftStatus.error::before {
+            background: #b42318;
+        }
+
+        .assessment-step-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 28px;
+            padding-top: 20px;
+            border-top: 1px solid #eee3bd;
+        }
+
+        .assessment-nav-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 46px;
+            padding: 12px 22px;
+            border-radius: 999px;
+            border: 1px solid #c8dce8;
+            background: #fff;
+            color: #174b78;
+            font: 600 13px Poppins, sans-serif;
+            cursor: pointer;
+            transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+        }
+
+        .assessment-nav-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 14px rgba(23, 75, 120, .1);
+        }
+
+        .assessment-nav-button.primary {
+            border: 0;
+            color: #fff;
+            background: linear-gradient(135deg, #174b78, #2f86b0);
+            box-shadow: 0 5px 14px rgba(23, 75, 120, .18);
+        }
+
+        .assessment-nav-button:disabled {
+            opacity: .45;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .assessment-step-note {
+            max-width: 1150px;
+            width: 100%;
+            margin: 0 auto 16px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            color: #526779;
+            background: rgba(211, 237, 237, .55);
+            border: 1px solid rgba(47, 134, 176, .16);
+            font: 400 12px/1.7 Poppins, sans-serif;
+        }
+
+        .wizard-step {
+            animation: stepFadeIn .24s ease both;
+        }
+
+        @keyframes stepFadeIn {
+            from {
+                opacity: .35;
+                transform: translateY(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .quiz-card {
+            transition: border-color .2s ease, box-shadow .2s ease;
+        }
+
+        .option-item:has(input:checked) {
+            background: #f0f8fb;
+            border: 1px solid #8dbed3;
+        }
+
+        .quiz-card,
+        .option-item {
+            box-sizing: border-box;
+        }
+
+        .quiz-card {
+            outline: none;
+        }
+
+        @media (max-width: 600px) {
+            #assessmentProgress {
+                padding: 18px;
+                margin-bottom: 14px;
+            }
+
+            #assessmentStepTitle {
+                font-size: 16px;
+            }
+
+            .assessment-step-nav {
+                gap: 8px;
+            }
+
+            .assessment-nav-button {
+                padding: 11px 15px;
+                min-height: 43px;
+                font-size: 12px;
+            }
+
+            .assessment-progress-bottom {
+                align-items: flex-start;
+                flex-direction: column;
             }
         }
     </style>
@@ -3582,21 +3816,278 @@
     <!-- ================= JAVASCRIPT LOGIC ================= -->
     <script>
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyQUT1fvXzL4j56dc3BkZvBkubxG5Jv8WwFeO1u7SQCVmH_-AnjPGwT0xeQAABPd2fe/exec";
+        const DRAFT_STORAGE_KEY = "blueberry_assessment_draft_v1";
+        let assessmentSteps = [];
+        let currentStepIndex = 0;
+        let draftSaveTimer = null;
+        let isRestoringDraft = false;
 
         document.addEventListener("DOMContentLoaded", function () {
             const submitBtn = document.getElementById("submitBtn");
-            if (submitBtn) {
-                submitBtn.addEventListener("click", submitForm);
-            }
+            if (submitBtn) submitBtn.addEventListener("click", submitForm);
+
+            setupAssessmentWizard();
+            restoreDraft();
+            recalculateAllScores();
+            updateAssessmentProgress();
+            setDraftStatus(hasSavedDraft() ? "Draft restored on this device" : "Your progress will be saved automatically", "saved");
 
             document.addEventListener("change", function (e) {
-                if (e.target.type === "radio") {
-                    recalculateAllScores();
+                if (e.target && e.target.type === "radio") recalculateAllScores();
+                if (e.target && e.target.matches("input, select, textarea")) {
+                    updateAssessmentProgress();
+                    scheduleDraftSave();
                 }
             });
-
-            recalculateAllScores();
+            document.addEventListener("input", function (e) {
+                if (e.target && e.target.matches("input:not([type=radio]):not([type=button]), textarea, select")) {
+                    scheduleDraftSave();
+                }
+            });
         });
+
+        function setupAssessmentWizard() {
+            const form = document.getElementById("quizForm");
+            if (!form) return;
+
+            // The six main assessment sections become individual steps.
+            const directChildren = Array.from(form.children);
+            const submitPanel = directChildren.find(el => el.classList.contains("container") && el.querySelector("#submitBtn"));
+            const paymentPanel = directChildren.find(el => el.classList.contains("payment-section"));
+            const mainSections = directChildren.filter(el => el.classList.contains("container") && el.querySelector(":scope > .section-heading"));
+            if (!mainSections.length) return;
+
+            // Keep final submission and payment information with the final assessment step.
+            const lastSection = mainSections[mainSections.length - 1];
+            if (submitPanel) lastSection.appendChild(submitPanel);
+            if (paymentPanel) lastSection.appendChild(paymentPanel);
+
+            assessmentSteps = mainSections;
+            assessmentSteps.forEach((section, index) => {
+                section.classList.add("wizard-step");
+                section.dataset.stepIndex = String(index);
+                const heading = section.querySelector(":scope > .section-heading");
+                if (heading) heading.id = "assessment-section-title-" + index;
+
+                const nav = document.createElement("div");
+                nav.className = "assessment-step-nav";
+                nav.innerHTML = `
+                    <button type="button" class="assessment-nav-button" data-step-action="back">← Back</button>
+                    <span style="font:500 12px Poppins,sans-serif;color:#718096;" data-nav-hint>You can return to previous steps</span>
+                    <button type="button" class="assessment-nav-button primary" data-step-action="next">Continue →</button>`;
+                section.appendChild(nav);
+                const backButton = nav.querySelector('[data-step-action="back"]');
+                const nextButton = nav.querySelector('[data-step-action="next"]');
+                backButton.addEventListener("click", () => showAssessmentStep(currentStepIndex - 1));
+                nextButton.addEventListener("click", () => {
+                    if (!validateCurrentStep()) return;
+                    if (currentStepIndex === assessmentSteps.length - 1) submitForm();
+                    else showAssessmentStep(currentStepIndex + 1);
+                });
+            });
+
+            const progress = document.createElement("section");
+            progress.id = "assessmentProgress";
+            progress.setAttribute("aria-label", "Assessment progress");
+            progress.innerHTML = `
+                <div class="assessment-progress-top">
+                    <div><div class="assessment-kicker">Blueberry · Guided Assessment</div><div id="assessmentStepTitle">Personal Details</div></div>
+                    <div id="assessmentStepCount">Step 1 of ${assessmentSteps.length}</div>
+                </div>
+                <div class="assessment-progress-track" role="progressbar" aria-label="Questions answered" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="assessmentProgressFill"></div></div>
+                <div class="assessment-progress-bottom"><span id="assessmentCompletionText">0% completed · 0 questions answered</span><span id="draftStatus" role="status" aria-live="polite">Your progress will be saved automatically</span></div>`;
+            // Keep the logo/header and progress information visible on every quiz step.
+            // Preserve the existing top spacing while moving only the logo/header rule
+            // out of the Personal Details step into a shared header above all steps.
+            const firstSection = assessmentSteps[0];
+            const logoHeader = firstSection.querySelector(":scope > .header-content");
+            const logoHeaderRule = firstSection.querySelector(":scope > .header-hr");
+            const sharedHeader = document.createElement("div");
+            sharedHeader.className = "assessment-shared-header";
+            sharedHeader.style.cssText = "max-width:1150px;width:100%;margin:0 auto;padding:0 25px;box-sizing:border-box;";
+            if (logoHeader) sharedHeader.appendChild(logoHeader);
+            if (logoHeaderRule) sharedHeader.appendChild(logoHeaderRule);
+            form.insertBefore(sharedHeader, firstSection);
+            sharedHeader.appendChild(progress);
+
+            const privacyNote = document.createElement("div");
+            privacyNote.className = "assessment-step-note";
+            privacyNote.textContent = "Take your time. Your answers are saved on this device as you go, so you can return later using the same browser. For privacy, avoid saving personal information on a shared device.";
+            sharedHeader.appendChild(privacyNote);
+
+            // Restore the last visited step after the sections and progress UI exist.
+            const savedStep = readDraft()?.currentStepIndex;
+            currentStepIndex = Number.isInteger(savedStep) ? Math.min(Math.max(savedStep, 0), assessmentSteps.length - 1) : 0;
+            showAssessmentStep(currentStepIndex, false);
+        }
+
+        function showAssessmentStep(index, shouldSave = true) {
+            if (!assessmentSteps.length) return;
+            currentStepIndex = Math.max(0, Math.min(index, assessmentSteps.length - 1));
+            assessmentSteps.forEach((section, i) => {
+                section.hidden = i !== currentStepIndex;
+                section.setAttribute("aria-hidden", i === currentStepIndex ? "false" : "true");
+            });
+
+            const current = assessmentSteps[currentStepIndex];
+            const heading = current.querySelector(":scope > .section-heading");
+            const title = document.getElementById("assessmentStepTitle");
+            const count = document.getElementById("assessmentStepCount");
+            if (title) title.textContent = heading ? heading.textContent.trim() : `Assessment Step ${currentStepIndex + 1}`;
+            if (count) count.textContent = `Step ${currentStepIndex + 1} of ${assessmentSteps.length}`;
+
+            current.querySelectorAll("[data-step-action]").forEach(button => {
+                const action = button.dataset.stepAction;
+                button.hidden = (action === "back" && currentStepIndex === 0);
+                if (action === "next") {
+                    const isLastStep = currentStepIndex === assessmentSteps.length - 1;
+                    button.textContent = isLastStep ? "Submit Assessment ✓" : "Continue →";
+                    button.setAttribute("aria-label", isLastStep ? "Submit assessment" : "Continue to next step");
+                }
+            });
+            const navHint = current.querySelector("[data-nav-hint]");
+            if (navHint) navHint.textContent = currentStepIndex === 0 ? "Start with your personal details" : (currentStepIndex === assessmentSteps.length - 1 ? "Review your answers, then submit" : "You can return to previous steps");
+            updateAssessmentProgress();
+            if (shouldSave) saveDraftNow();
+            // Every Continue/Back navigation starts the new step at its top.
+            window.scrollTo({ top: 0, behavior: "auto" });
+        }
+
+        function validateCurrentStep() {
+            const section = assessmentSteps[currentStepIndex];
+            if (!section) return true;
+            const requiredFields = Array.from(section.querySelectorAll("input[required], select[required], textarea[required]"));
+            for (const field of requiredFields) {
+                if (!field.checkValidity()) {
+                    field.reportValidity();
+                    field.focus({ preventScroll: false });
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function updateAssessmentProgress() {
+            if (!assessmentSteps.length) return;
+            const form = document.getElementById("quizForm");
+            const radioNames = [...new Set(Array.from(form.querySelectorAll('input[type="radio"][name]')).map(input => input.name))];
+            const answered = radioNames.filter(name => form.querySelector(`input[type="radio"][name="${CSS.escape(name)}"]:checked`)).length;
+            const percent = radioNames.length ? Math.round((answered / radioNames.length) * 100) : 0;
+            const fill = document.getElementById("assessmentProgressFill");
+            const completion = document.getElementById("assessmentCompletionText");
+            const track = document.querySelector("#assessmentProgress .assessment-progress-track");
+            if (fill) fill.style.width = percent + "%";
+            if (completion) completion.textContent = `${percent}% completed · ${answered} of ${radioNames.length} quiz questions answered`;
+            if (track) track.setAttribute("aria-valuenow", String(percent));
+        }
+
+        function setDraftStatus(message, state = "saved") {
+            const status = document.getElementById("draftStatus");
+            if (!status) return;
+            status.textContent = message;
+            status.classList.toggle("saving", state === "saving");
+            status.classList.toggle("error", state === "error");
+        }
+
+        function hasSavedDraft() { return Boolean(readDraft()); }
+
+        function readDraft() {
+            try {
+                const raw = localStorage.getItem(DRAFT_STORAGE_KEY);
+                return raw ? JSON.parse(raw) : null;
+            } catch (error) {
+                console.warn("Could not read local assessment draft:", error);
+                return null;
+            }
+        }
+
+        function collectFormState() {
+            const form = document.getElementById("quizForm");
+            const values = {};
+            Array.from(form.querySelectorAll("input[name], select[name], textarea[name]")).forEach(field => {
+                if (field.disabled || field.type === "file" || field.type === "submit" || field.type === "button" || field.type === "reset") return;
+                const name = field.name;
+                if (field.type === "radio") {
+                    if (field.checked) values[name] = field.value;
+                    return;
+                }
+                if (field.type === "checkbox") {
+                    if (!Array.isArray(values[name])) values[name] = [];
+                    if (field.checked) values[name].push(field.value);
+                    return;
+                }
+                if (name.endsWith("[]")) {
+                    if (!Array.isArray(values[name])) values[name] = [];
+                    values[name].push(field.value);
+                } else {
+                    values[name] = field.value;
+                }
+            });
+            return values;
+        }
+
+        function saveDraftNow() {
+            if (isRestoringDraft) return;
+            try {
+                const draft = {
+                    version: 1,
+                    savedAt: new Date().toISOString(),
+                    currentStepIndex,
+                    values: collectFormState()
+                };
+                localStorage.setItem(DRAFT_STORAGE_KEY, JSON.stringify(draft));
+                setDraftStatus("All changes saved on this device", "saved");
+            } catch (error) {
+                console.warn("Could not save assessment draft:", error);
+                setDraftStatus("Unable to save here — please keep this page open", "error");
+            }
+        }
+
+        function scheduleDraftSave() {
+            if (isRestoringDraft) return;
+            setDraftStatus("Saving your progress…", "saving");
+            clearTimeout(draftSaveTimer);
+            draftSaveTimer = setTimeout(() => {
+                saveDraftNow();
+                updateAssessmentProgress();
+            }, 250);
+        }
+
+        function restoreDraft() {
+            const draft = readDraft();
+            if (!draft || !draft.values) return;
+            const form = document.getElementById("quizForm");
+            isRestoringDraft = true;
+            try {
+                Object.entries(draft.values).forEach(([name, savedValue]) => {
+                    let fields = Array.from(form.querySelectorAll("[name]")).filter(field => field.name === name);
+                    if (name === "userMobile[]" && Array.isArray(savedValue)) {
+                        while (fields.length < savedValue.length) {
+                            addMobileField();
+                            fields = Array.from(form.querySelectorAll("[name]")).filter(field => field.name === name);
+                        }
+                    }
+                    if (!fields.length) return;
+                    if (fields[0].type === "radio") {
+                        fields.forEach(field => { field.checked = field.value === savedValue; });
+                    } else if (fields[0].type === "checkbox") {
+                        const selected = Array.isArray(savedValue) ? savedValue : [];
+                        fields.forEach(field => { field.checked = selected.includes(field.value); });
+                    } else if (Array.isArray(savedValue)) {
+                        fields.forEach((field, index) => { field.value = savedValue[index] ?? ""; });
+                    } else {
+                        fields[0].value = savedValue ?? "";
+                    }
+                });
+            } finally {
+                isRestoringDraft = false;
+            }
+        }
+
+        function clearSavedDraft() {
+            try { localStorage.removeItem(DRAFT_STORAGE_KEY); }
+            catch (error) { console.warn("Could not clear assessment draft:", error); }
+        }
 
         function addMobileField() {
             const container = document.getElementById("mobileContainer");
@@ -3606,6 +4097,7 @@
             input.placeholder = "Additional Mobile Number";
             input.style.marginTop = "6px";
             container.appendChild(input);
+            input.addEventListener("input", scheduleDraftSave);
         }
 
         function recalculateAllScores() {
@@ -3625,9 +4117,7 @@
             const scores = { Air: 0, Fire: 0, Earth: 0, Space: 0, Water: 0 };
             for (let i = 1; i <= 25; i++) {
                 const selected = document.querySelector(`input[name="q${i}"]:checked`);
-                if (selected && scores[selected.value] !== undefined) {
-                    scores[selected.value]++;
-                }
+                if (selected && scores[selected.value] !== undefined) scores[selected.value]++;
             }
             setScoreText("airScore", `${scores.Air} / 25 (${calcPct(scores.Air, 25)})`);
             setScoreText("fireScore", `${scores.Fire} / 25 (${calcPct(scores.Fire, 25)})`);
@@ -3640,9 +4130,7 @@
             const scores = { Ketu: 0, Venus: 0, Sun: 0, Moon: 0, Mars: 0, Rahu: 0, Jupiter: 0, Saturn: 0, Mercury: 0 };
             for (let i = 1; i <= 13; i++) {
                 const selected = document.querySelector(`input[name="p1_q${i}"]:checked`);
-                if (selected && scores[selected.value] !== undefined) {
-                    scores[selected.value]++;
-                }
+                if (selected && scores[selected.value] !== undefined) scores[selected.value]++;
             }
             setScoreText("ketuScore", `${scores.Ketu} / 13 (${calcPct(scores.Ketu, 13)})`);
             setScoreText("venusScore", `${scores.Venus} / 13 (${calcPct(scores.Venus, 13)})`);
@@ -3659,9 +4147,7 @@
             const scores = { Sattav: 0, Rajas: 0, Tamas: 0 };
             for (let i = 1; i <= 25; i++) {
                 const selected = document.querySelector(`input[name="gu_q${i}"]:checked`);
-                if (selected && scores[selected.value] !== undefined) {
-                    scores[selected.value]++;
-                }
+                if (selected && scores[selected.value] !== undefined) scores[selected.value]++;
             }
             setScoreText("sattavScore", `${scores.Sattav} / 25 (${calcPct(scores.Sattav, 25)})`);
             setScoreText("rajasScore", `${scores.Rajas} / 25 (${calcPct(scores.Rajas, 25)})`);
@@ -3684,8 +4170,7 @@
 
         function updatePrakritiScore() {
             let air = 0, fire = 0, water = 0;
-            const fields = ["bodyWeight", "nose", "teeth", "nails", "skin", "taste"];
-            fields.forEach((name) => {
+            ["bodyWeight", "nose", "teeth", "nails", "skin", "taste"].forEach(name => {
                 const selected = document.querySelector(`input[name="${name}"]:checked`);
                 if (!selected) return;
                 if (selected.value === "Air") air++;
@@ -3704,17 +4189,23 @@
 
         async function submitForm(e) {
             if (e) e.preventDefault();
-
             const form = document.getElementById("quizForm");
             const submitBtn = document.getElementById("submitBtn");
+            if (form.dataset.submitting === "true") return;
 
             if (!form.checkValidity()) {
+                // Required fields are checked before leaving their step, but this is a final safety check.
+                const invalidField = form.querySelector(":invalid");
+                const invalidStep = invalidField?.closest(".wizard-step");
+                if (invalidStep) showAssessmentStep(Number(invalidStep.dataset.stepIndex), false);
                 form.reportValidity();
                 return;
             }
 
-            submitBtn.disabled = true;
-            submitBtn.innerText = "Processing Data...";
+            form.dataset.submitting = "true";
+            if (submitBtn) { submitBtn.disabled = true; submitBtn.innerText = "Processing Data…"; }
+            saveDraftNow();
+            setDraftStatus("Submitting your completed assessment…", "saving");
 
             try {
                 const formData = new FormData(form);
@@ -3722,14 +4213,9 @@
                 payload.targetEmail = "piyush10june@gmail.com";
 
                 for (const [key, value] of formData.entries()) {
-                    if (key.startsWith('q') || key.startsWith('p1_q') || key.startsWith('gu_q') || key.startsWith('eb_q') || ['bodyWeight', 'nose', 'teeth', 'nails', 'skin', 'taste'].includes(key)) {
-                        continue;
-                    }
-                    if (payload[key]) {
-                        payload[key] = payload[key] + ", " + value;
-                    } else {
-                        payload[key] = value;
-                    }
+                    if (key.startsWith("q") || key.startsWith("p1_q") || key.startsWith("gu_q") || key.startsWith("eb_q") || ["bodyWeight", "nose", "teeth", "nails", "skin", "taste"].includes(key)) continue;
+                    if (payload[key]) payload[key] = payload[key] + ", " + value;
+                    else payload[key] = value;
                 }
 
                 payload.airScore = getDOMText("airScore");
@@ -3737,7 +4223,6 @@
                 payload.earthScore = getDOMText("earthScore");
                 payload.spaceScore = getDOMText("spaceScore");
                 payload.waterScore = getDOMText("waterScore");
-
                 payload.ketuScore = getDOMText("ketuScore");
                 payload.venusScore = getDOMText("venusScore");
                 payload.sunScore = getDOMText("sunScore");
@@ -3747,40 +4232,48 @@
                 payload.jupiterScore = getDOMText("jupiterScore");
                 payload.saturnScore = getDOMText("saturnScore");
                 payload.mercuryScore = getDOMText("mercuryScore");
-
                 payload.sattavScore = getDOMText("sattavScore");
                 payload.rajasScore = getDOMText("rajasScore");
                 payload.tamasScore = getDOMText("tamasScore");
-
                 payload.airElementScore = getDOMText("airElementScore");
                 payload.fireElementScore = getDOMText("fireElementScore");
                 payload.waterElementScore = getDOMText("waterElementScore");
-
                 payload.prakritiAirTotal = getDOMText("prakritiAirTotal");
                 payload.prakritiFireTotal = getDOMText("prakritiFireTotal");
                 payload.prakritiWaterTotal = getDOMText("prakritiWaterTotal");
 
-                submitBtn.innerText = "Submitting Data...";
-
+                if (submitBtn) submitBtn.innerText = "Submitting Data…";
                 const urlParams = new URLSearchParams();
-                Object.keys(payload).forEach(k => urlParams.append(k, payload[k]));
+                Object.keys(payload).forEach(key => urlParams.append(key, payload[key]));
 
+                // Keep the existing Google Apps Script endpoint and URL-encoded payload format.
                 await fetch(SCRIPT_URL, {
                     method: "POST",
                     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                    body: urlParams.toString(),
+                    body: urlParams.toString()
                 });
 
-                alert("Form submitted successfully! Details sent to piyush10june@gmail.com");
+                clearSavedDraft();
+                alert("Form submitted. Thank you for completing the Blueberry assessment.");
                 form.reset();
+                // Remove extra mobile fields so the next assessment starts cleanly.
+                const mobileContainer = document.getElementById("mobileContainer");
+                if (mobileContainer) {
+                    const mobileInputs = mobileContainer.querySelectorAll('input[name="userMobile[]"]');
+                    mobileInputs.forEach((input, index) => { if (index > 0) input.remove(); });
+                }
                 recalculateAllScores();
-
+                currentStepIndex = 0;
+                showAssessmentStep(0, false);
+                updateAssessmentProgress();
+                setDraftStatus("Submitted successfully · draft cleared", "saved");
             } catch (error) {
                 console.error("Submission Error:", error);
-                alert("Error during submission: " + (error.message || error));
+                setDraftStatus("Submission could not be confirmed. Your draft is still saved.", "error");
+                alert("We could not confirm submission. Your answers are still saved on this device. Please check your connection and try again.");
             } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerText = "Submit Form";
+                form.dataset.submitting = "false";
+                if (submitBtn) { submitBtn.disabled = false; submitBtn.innerText = "Submit Form"; }
             }
         }
 
