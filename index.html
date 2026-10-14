@@ -685,6 +685,82 @@
                 flex-direction: column;
             }
         }
+
+
+        /* Saved-draft choice dialog */
+        .saved-draft-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(20, 35, 48, .58);
+        }
+
+        /* The choice dialog must disappear completely after Yes or No.
+           The explicit rule is needed because .saved-draft-overlay uses display:flex. */
+        .saved-draft-overlay[hidden] {
+            display: none !important;
+        }
+
+        .saved-draft-dialog {
+            width: min(100%, 480px);
+            box-sizing: border-box;
+            padding: 28px;
+            border: 1px solid #d6ad36;
+            border-radius: 18px;
+            background: #fffdf7;
+            color: #403a2d;
+            box-shadow: 0 18px 60px rgba(0, 0, 0, .24);
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .saved-draft-dialog h2 {
+            margin: 0 0 12px;
+            color: #9a7415;
+            font-size: 22px;
+        }
+
+        .saved-draft-dialog p {
+            margin: 0 0 22px;
+            line-height: 1.65;
+            font-size: 14px;
+        }
+
+        .saved-draft-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .saved-draft-actions button {
+            min-width: 115px;
+            padding: 12px 22px;
+            border-radius: 999px;
+            border: 1px solid #c99b1c;
+            cursor: pointer;
+            font: 600 14px 'Poppins', sans-serif;
+        }
+
+        .saved-draft-actions .use-saved {
+            color: #fff;
+            background: #246b91;
+            border-color: #246b91;
+        }
+
+        .saved-draft-actions .start-fresh {
+            color: #6b5010;
+            background: #fff;
+        }
+
+        .saved-draft-actions button:focus-visible {
+            outline: 3px solid #8dc9ec;
+            outline-offset: 3px;
+        }
     </style>
 </head>
 
@@ -3813,6 +3889,20 @@
 
     </footer>
 
+
+    <div id="savedDraftChoice" class="saved-draft-overlay" role="dialog" aria-modal="true"
+        aria-labelledby="savedDraftTitle" hidden>
+        <div class="saved-draft-dialog">
+            <h2 id="savedDraftTitle">Saved information found</h2>
+            <p>We found answers saved on this device. Would you like to use your saved information and continue where
+                you left off?</p>
+            <div class="saved-draft-actions">
+                <button type="button" class="use-saved" id="useSavedDraftBtn">Yes, use saved info</button>
+                <button type="button" class="start-fresh" id="discardSavedDraftBtn">No, start fresh</button>
+            </div>
+        </div>
+    </div>
+
     <!-- ================= JAVASCRIPT LOGIC ================= -->
     <script>
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyQUT1fvXzL4j56dc3BkZvBkubxG5Jv8WwFeO1u7SQCVmH_-AnjPGwT0xeQAABPd2fe/exec";
@@ -3827,10 +3917,17 @@
             if (submitBtn) submitBtn.addEventListener("click", submitForm);
 
             setupAssessmentWizard();
-            restoreDraft();
-            recalculateAllScores();
-            updateAssessmentProgress();
-            setDraftStatus(hasSavedDraft() ? "Draft restored on this device" : "Your progress will be saved automatically", "saved");
+            const savedDraft = readDraft();
+            const hasUsefulSavedInfo = Boolean(savedDraft && savedDraft.values && Object.keys(savedDraft.values).length > 0);
+            if (hasUsefulSavedInfo) {
+                showSavedDraftChoice();
+                setDraftStatus("Saved information found on this device", "saved");
+            } else {
+                clearSavedDraft();
+                recalculateAllScores();
+                updateAssessmentProgress();
+                setDraftStatus("Your progress will be saved automatically", "saved");
+            }
 
             document.addEventListener("change", function (e) {
                 if (e.target && e.target.type === "radio") recalculateAllScores();
@@ -3857,9 +3954,12 @@
             const mainSections = directChildren.filter(el => el.classList.contains("container") && el.querySelector(":scope > .section-heading"));
             if (!mainSections.length) return;
 
-            // Keep final submission and payment information with the final assessment step.
+            // Remove the old gold "Submit Form" panel. The wizard's blue
+            // "Submit Assessment" button is the only submission control.
+            if (submitPanel) submitPanel.remove();
+
+            // Keep payment information with the final assessment step.
             const lastSection = mainSections[mainSections.length - 1];
-            if (submitPanel) lastSection.appendChild(submitPanel);
             if (paymentPanel) lastSection.appendChild(paymentPanel);
 
             assessmentSteps = mainSections;
@@ -3878,7 +3978,12 @@
                 section.appendChild(nav);
                 const backButton = nav.querySelector('[data-step-action="back"]');
                 const nextButton = nav.querySelector('[data-step-action="next"]');
-                backButton.addEventListener("click", () => showAssessmentStep(currentStepIndex - 1));
+                // Step 1 has no Back button; later steps retain normal navigation.
+                if (index === 0) {
+                    backButton.remove();
+                } else {
+                    backButton.addEventListener("click", () => showAssessmentStep(currentStepIndex - 1));
+                }
                 nextButton.addEventListener("click", () => {
                     if (!validateCurrentStep()) return;
                     if (currentStepIndex === assessmentSteps.length - 1) submitForm();
@@ -3989,7 +4094,48 @@
             status.classList.toggle("error", state === "error");
         }
 
-        function hasSavedDraft() { return Boolean(readDraft()); }
+        function showSavedDraftChoice() {
+            const dialog = document.getElementById("savedDraftChoice");
+            const yesButton = document.getElementById("useSavedDraftBtn");
+            const noButton = document.getElementById("discardSavedDraftBtn");
+            if (!dialog || !yesButton || !noButton) {
+                // Fallback: keep the assessment usable if the dialog markup is unavailable.
+                restoreDraft();
+                recalculateAllScores();
+                updateAssessmentProgress();
+                return;
+            }
+            dialog.hidden = false;
+            document.body.style.overflow = "hidden";
+            yesButton.focus();
+
+            yesButton.addEventListener("click", function () {
+                dialog.hidden = true;
+                dialog.style.display = "none";
+                document.body.style.overflow = "";
+                restoreDraft();
+                recalculateAllScores();
+                updateAssessmentProgress();
+                setDraftStatus("Saved information restored on this device", "saved");
+            }, { once: true });
+
+            noButton.addEventListener("click", function () {
+                dialog.hidden = true;
+                dialog.style.display = "none";
+                document.body.style.overflow = "";
+                clearSavedDraft();
+                currentStepIndex = 0;
+                recalculateAllScores();
+                updateAssessmentProgress();
+                setDraftStatus("Starting fresh · old saved information discarded", "saved");
+                showAssessmentStep(0);
+            }, { once: true });
+        }
+
+        function hasSavedDraft() {
+            const draft = readDraft();
+            return Boolean(draft && draft.values && Object.keys(draft.values).length > 0);
+        }
 
         function readDraft() {
             try {
