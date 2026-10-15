@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blueberry - Complete Assessment Quizzes</title>
-    <!-- jsPDF Library for Client-Side PDF Generation -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/favicon.png">
 
@@ -3914,7 +3913,7 @@
                 </b>
             </p>
 
-    </footer>
+        </footer>
 
 
     <div id="savedDraftChoice" class="saved-draft-overlay" role="dialog" aria-modal="true"
@@ -4397,11 +4396,13 @@
         async function submitForm(e) {
             if (e) e.preventDefault();
             const form = document.getElementById("quizForm");
+            // The visible submit control is the wizard's final-step navigation button.
             const submitBtn = assessmentSteps[currentStepIndex]?.querySelector('[data-step-action="next"]')
                 || document.getElementById("submitBtn");
             if (form.dataset.submitting === "true") return;
 
             if (!form.checkValidity()) {
+                // Required fields are checked before leaving their step, but this is a final safety check.
                 const invalidField = form.querySelector(":invalid");
                 const invalidStep = invalidField?.closest(".wizard-step");
                 if (invalidStep) showAssessmentStep(Number(invalidStep.dataset.stepIndex), false);
@@ -4412,11 +4413,11 @@
             form.dataset.submitting = "true";
             if (submitBtn) {
                 submitBtn.disabled = true;
-                submitBtn.innerText = "Generating PDF & Submitting…";
+                submitBtn.innerText = "Submitting… Please wait";
                 submitBtn.setAttribute("aria-live", "polite");
             }
             saveDraftNow();
-            setDraftStatus("Generating decorated PDF report…", "saving");
+            setDraftStatus("Submitting your completed assessment…", "saving");
 
             try {
                 const formData = new FormData(form);
@@ -4429,7 +4430,6 @@
                     else payload[key] = value;
                 }
 
-                // Collect all scores
                 payload.airScore = getDOMText("airScore");
                 payload.fireScore = getDOMText("fireScore");
                 payload.earthScore = getDOMText("earthScore");
@@ -4454,124 +4454,11 @@
                 payload.prakritiFireTotal = getDOMText("prakritiFireTotal");
                 payload.prakritiWaterTotal = getDOMText("prakritiWaterTotal");
 
-                // --- GENERATE DECORATED PDF CLIENT-SIDE ---
-                const { jsPDF } = window.jspdf;
-                const doc = new jsPDF();
-
-                // Calculate Day of Birth automatically
-                let dayOfBirth = "N/A";
-                if (payload.userDOB) {
-                    const dObj = new Date(payload.userDOB);
-                    if (!isNaN(dObj.getTime())) {
-                        const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-                        dayOfBirth = days[dObj.getDay()];
-                    }
-                }
-
-                // PDF Styling & Colors
-                const goldColor = [154, 116, 21]; // #9a7415
-                const darkColor = [59, 50, 31];  // #3b321f
-                const orangeColor = [245, 124, 0]; // #F57C00
-
-                let y = 20;
-
-                // Header Top Accent Bar
-                doc.setFillColor(212, 175, 55);
-                doc.rect(15, 10, 180, 3, "F");
-
-                // Title
-                doc.setFont("helvetica", "bold");
-                doc.setFontSize(16);
-                doc.setTextColor(goldColor[0], goldColor[1], goldColor[2]);
-                doc.text("BLUEBERRY ASTROVASTU CONSULTANCY", 105, y, { align: "center" });
-                y += 7;
-
-                doc.setFontSize(11);
-                doc.setTextColor(darkColor[0], darkColor[1], darkColor[2]);
-                doc.text("Complete Assessment Report & Quiz Summary", 105, y, { align: "center" });
-                y += 12;
-
-                // Divider Line
-                doc.setDrawColor(212, 175, 55);
-                doc.line(15, y, 195, y);
-                y += 10;
-
-                // Section Helper
-                function addPDFSection(title) {
-                    if (y > 270) { doc.addPage(); y = 20; }
-                    doc.setFont("helvetica", "bold");
-                    doc.setFontSize(12);
-                    doc.setTextColor(goldColor[0], goldColor[1], goldColor[2]);
-                    doc.text(title, 15, y);
-                    y += 6;
-                    doc.setDrawColor(223, 195, 107);
-                    doc.line(15, y, 195, y);
-                    y += 6;
-                }
-
-                // Field Helper
-                function addPDFField(label, val) {
-                    if (!val) return;
-                    if (y > 280) { doc.addPage(); y = 20; }
-                    doc.setFont("helvetica", "bold");
-                    doc.setFontSize(9);
-                    doc.setTextColor(darkColor[0], darkColor[1], darkColor[2]);
-                    doc.text(label + ":", 15, y);
-
-                    doc.setFont("helvetica", "normal");
-                    doc.text(String(val), 60, y);
-                    y += 6;
-                }
-
-                // Section 1: Personal Details
-                addPDFSection("1. Personal Details");
-                addPDFField("Full Name", payload.userName);
-                addPDFField("Date of Birth", payload.userDOB);
-                addPDFField("Day of Birth", dayOfBirth);
-                addPDFField("Time of Birth", payload.userTOB);
-                addPDFField("Place of Birth", payload.userPOB);
-                addPDFField("Current Residence", payload.userCurrentResidence);
-                addPDFField("Mobile Number", payload['userMobile[]']);
-
-                y += 4;
-                // Section 2: Professional Background & Goals
-                addPDFSection("2. Professional Background & Goals");
-                addPDFField("What do you do?", payload.occupation);
-                addPDFField("How do you earn money", payload.earningSource);
-                addPDFField("Problem Statement", payload.problemStatement);
-                addPDFField("Goals & Objectives", payload.userGoals);
-
-                y += 4;
-                // Section 3: Quiz Reports
-                addPDFSection("3. Assessment Quiz Results");
-
-                const quizLines = [
-                    `Five Elements -> Air: ${payload.airScore} | Fire: ${payload.fireScore} | Earth: ${payload.earthScore} | Space: ${payload.spaceScore} | Water: ${payload.waterScore}`,
-                    `Planets Influence -> Ketu: ${payload.ketuScore} | Venus: ${payload.venusScore} | Sun: ${payload.sunScore} | Moon: ${payload.moonScore} | Mars: ${payload.marsScore}`,
-                    `Planets (Cont.) -> Rahu: ${payload.rahuScore} | Jupiter: ${payload.jupiterScore} | Saturn: ${payload.saturnScore} | Mercury: ${payload.mercuryScore}`,
-                    `Guna Quiz -> Sattav: ${payload.sattavScore} | Rajas: ${payload.rajasScore} | Tamas: ${payload.tamasScore}`,
-                    `Dosha Quiz -> Air: ${payload.airElementScore} | Fire: ${payload.fireElementScore} | Water: ${payload.waterElementScore}`,
-                    `Prakriti Summary -> Air Total: ${payload.prakritiAirTotal} | Fire Total: ${payload.prakritiFireTotal} | Water Total: ${payload.prakritiWaterTotal}`
-                ];
-
-                doc.setFont("helvetica", "normal");
-                doc.setFontSize(9);
-                doc.setTextColor(darkColor[0], darkColor[1], darkColor[2]);
-
-                quizLines.forEach(line => {
-                    if (y > 280) { doc.addPage(); y = 20; }
-                    doc.text(line, 15, y);
-                    y += 6;
-                });
-
-                // Trigger PDF Download for the User
-                doc.save(`Blueberry_Assessment_${payload.userName || "Client"}.pdf`);
-
-                // --- SUBMIT TO APPS SCRIPT BACKEND ---
-                if (submitBtn) submitBtn.innerText = "Sending Data… Please wait";
+                if (submitBtn) submitBtn.innerText = "Submitting… Please wait";
                 const urlParams = new URLSearchParams();
                 Object.keys(payload).forEach(key => urlParams.append(key, payload[key]));
 
+                // Keep the existing Google Apps Script endpoint and URL-encoded payload format.
                 await fetch(SCRIPT_URL, {
                     method: "POST",
                     headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -4579,9 +4466,9 @@
                 });
 
                 clearSavedDraft();
-                alert("Assessment submitted and decorated PDF downloaded successfully!");
+                alert("Form submitted. Thank you for completing the Blueberry assessment.");
                 form.reset();
-
+                // Remove extra mobile fields so the next assessment starts cleanly.
                 const mobileContainer = document.getElementById("mobileContainer");
                 if (mobileContainer) {
                     const mobileInputs = mobileContainer.querySelectorAll('input[name="userMobile[]"]');
@@ -4595,9 +4482,10 @@
             } catch (error) {
                 console.error("Submission Error:", error);
                 setDraftStatus("Submission could not be confirmed. Your draft is still saved.", "error");
-                alert("Your decorated PDF has been downloaded. However, network confirmation failed. Please check your connection.");
+                alert("We could not confirm submission. Your answers are still saved on this device. Please check your connection and try again.");
             } finally {
                 form.dataset.submitting = "false";
+                // Restore the wizard label after an error; on success the form has returned to Step 1.
                 if (submitBtn && submitBtn.isConnected) {
                     submitBtn.disabled = false;
                     const isLastStep = currentStepIndex === assessmentSteps.length - 1;
