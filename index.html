@@ -454,6 +454,32 @@
         }
 
 
+        /* Keep every wizard page and the form itself the same width. */
+        #quizForm {
+            width: min(100%, 1150px);
+            max-width: 1150px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            box-sizing: border-box;
+        }
+
+        #quizForm>.container,
+        #quizForm>.wizard-step,
+        #quizForm>.assessment-shared-header {
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            box-sizing: border-box;
+        }
+
+        .wizard-step {
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
         /* ================= PROFESSIONAL ASSESSMENT WIZARD ================= */
         .assessment-shared-header {
             position: relative;
@@ -468,7 +494,7 @@
             margin: 8px 0 18px;
         }
 
-        #assessmentProgress {
+        .assessmentProgressPanel {
             box-sizing: border-box;
             max-width: 1150px;
             width: 100%;
@@ -498,12 +524,12 @@
             margin-bottom: 4px;
         }
 
-        #assessmentStepTitle {
+        .assessmentStepTitle {
             color: #174b78;
             font: 600 19px/1.4 Poppins, sans-serif;
         }
 
-        #assessmentStepCount {
+        .assessmentStepCount {
             color: #6b7280;
             font: 500 13px/1.5 Poppins, sans-serif;
             white-space: nowrap;
@@ -517,7 +543,7 @@
             background: #e9f0f5;
         }
 
-        #assessmentProgressFill {
+        .assessmentProgressFill {
             width: 0%;
             height: 100%;
             border-radius: inherit;
@@ -536,7 +562,7 @@
             color: #64748b;
         }
 
-        #draftStatus {
+        .draftStatus {
             display: inline-flex;
             align-items: center;
             gap: 7px;
@@ -544,7 +570,7 @@
             font-weight: 600;
         }
 
-        #draftStatus::before {
+        .draftStatus::before {
             content: "";
             width: 7px;
             height: 7px;
@@ -553,19 +579,19 @@
             background: #43a66b;
         }
 
-        #draftStatus.saving {
+        .draftStatus.saving {
             color: #8f6b12;
         }
 
-        #draftStatus.saving::before {
+        .draftStatus.saving::before {
             background: #d4af37;
         }
 
-        #draftStatus.error {
+        .draftStatus.error {
             color: #b42318;
         }
 
-        #draftStatus.error::before {
+        .draftStatus.error::before {
             background: #b42318;
         }
 
@@ -661,12 +687,12 @@
         }
 
         @media (max-width: 600px) {
-            #assessmentProgress {
+            .assessmentProgressPanel {
                 padding: 18px;
                 margin-bottom: 14px;
             }
 
-            #assessmentStepTitle {
+            .assessmentStepTitle {
                 font-size: 16px;
             }
 
@@ -3905,7 +3931,7 @@
 
     <!-- ================= JAVASCRIPT LOGIC ================= -->
     <script>
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyQUT1fvXzL4j56dc3BkZvBkubxG5Jv8WwFeO1u7SQCVmH_-AnjPGwT0xeQAABPd2fe/exec";
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxstCdlsc63eHbwAuRsdlK2KnoSi2crN9sNkHn7clo7KFr9UxFX1A1cWgBVlD7w4-UiTA/exec"
         const DRAFT_STORAGE_KEY = "blueberry_assessment_draft_v1";
         let assessmentSteps = [];
         let currentStepIndex = 0;
@@ -3991,19 +4017,49 @@
                 });
             });
 
-            const progress = document.createElement("section");
-            progress.id = "assessmentProgress";
-            progress.setAttribute("aria-label", "Assessment progress");
-            progress.innerHTML = `
-                <div class="assessment-progress-top">
-                    <div><div class="assessment-kicker">Blueberry · Guided Assessment</div><div id="assessmentStepTitle">Personal Details</div></div>
-                    <div id="assessmentStepCount">Step 1 of ${assessmentSteps.length}</div>
-                </div>
-                <div class="assessment-progress-track" role="progressbar" aria-label="Questions answered" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="assessmentProgressFill"></div></div>
-                <div class="assessment-progress-bottom"><span id="assessmentCompletionText">0% completed · 0 questions answered</span><span id="draftStatus" role="status" aria-live="polite">Your progress will be saved automatically</span></div>`;
-            // Keep the logo/header and progress information visible on every quiz step.
-            // Preserve the existing top spacing while moving only the logo/header rule
-            // out of the Personal Details step into a shared header above all steps.
+            // Add a separate progress panel only to steps that contain quiz questions.
+            // Each panel calculates completion using only the radio-question groups on that page.
+            const quizSteps = [];
+            assessmentSteps.forEach((section, index) => {
+                const questionNames = [...new Set(
+                    Array.from(section.querySelectorAll('input[type="radio"][name]')).map(input => input.name)
+                )];
+                if (!questionNames.length) return;
+
+                quizSteps.push(index);
+                const progress = document.createElement("section");
+                progress.className = "assessmentProgressPanel";
+                progress.setAttribute("aria-label", "This page's quiz progress");
+                progress.innerHTML = `
+                    <div class="assessment-progress-top">
+                        <div>
+                            <div class="assessment-kicker">Blueberry · Guided Assessment</div>
+                            <div class="assessmentStepTitle">${section.querySelector(":scope > .section-heading")?.textContent.trim() || "Guided Assessment"}</div>
+                        </div>
+                        <div class="assessmentStepCount">Step ${index + 1} of ${assessmentSteps.length}</div>
+                    </div>
+                    <div class="assessment-progress-track" role="progressbar" aria-label="Questions answered on this page" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                        <div class="assessmentProgressFill"></div>
+                    </div>
+                    <div class="assessment-progress-bottom">
+                        <span class="assessmentCompletionText">0% completed · 0 of ${questionNames.length} quiz questions answered</span>
+                        <span class="draftStatus" role="status" aria-live="polite">Your progress will be saved automatically</span>
+                    </div>`;
+                const privacyNote = document.createElement("div");
+                privacyNote.className = "assessment-step-note";
+                privacyNote.textContent = "Take your time. Your answers are saved on this device as you go, so you can return later using the same browser. For privacy, avoid saving personal information on a shared device.";
+
+                const heading = section.querySelector(":scope > .section-heading");
+                if (heading) {
+                    section.insertBefore(privacyNote, heading);
+                    section.insertBefore(progress, privacyNote);
+                } else {
+                    section.insertBefore(privacyNote, section.firstChild);
+                    section.insertBefore(progress, privacyNote);
+                }
+            });
+
+            // Keep the logo and its original spacing above the assessment pages.
             const firstSection = assessmentSteps[0];
             const logoHeader = firstSection.querySelector(":scope > .header-content");
             const logoHeaderRule = firstSection.querySelector(":scope > .header-hr");
@@ -4013,12 +4069,6 @@
             if (logoHeader) sharedHeader.appendChild(logoHeader);
             if (logoHeaderRule) sharedHeader.appendChild(logoHeaderRule);
             form.insertBefore(sharedHeader, firstSection);
-            sharedHeader.appendChild(progress);
-
-            const privacyNote = document.createElement("div");
-            privacyNote.className = "assessment-step-note";
-            privacyNote.textContent = "Take your time. Your answers are saved on this device as you go, so you can return later using the same browser. For privacy, avoid saving personal information on a shared device.";
-            sharedHeader.appendChild(privacyNote);
 
             // Restore the last visited step after the sections and progress UI exist.
             const savedStep = readDraft()?.currentStepIndex;
@@ -4036,9 +4086,10 @@
 
             const current = assessmentSteps[currentStepIndex];
             const heading = current.querySelector(":scope > .section-heading");
-            const title = document.getElementById("assessmentStepTitle");
-            const count = document.getElementById("assessmentStepCount");
-            if (title) title.textContent = heading ? heading.textContent.trim() : `Assessment Step ${currentStepIndex + 1}`;
+            const progress = current.querySelector(".assessmentProgressPanel");
+            const title = progress?.querySelector(".assessmentStepTitle");
+            const count = progress?.querySelector(".assessmentStepCount");
+            if (title) title.textContent = heading ? heading.textContent.trim() : "Guided Assessment";
             if (count) count.textContent = `Step ${currentStepIndex + 1} of ${assessmentSteps.length}`;
 
             current.querySelectorAll("[data-step-action]").forEach(button => {
@@ -4074,20 +4125,29 @@
 
         function updateAssessmentProgress() {
             if (!assessmentSteps.length) return;
-            const form = document.getElementById("quizForm");
-            const radioNames = [...new Set(Array.from(form.querySelectorAll('input[type="radio"][name]')).map(input => input.name))];
-            const answered = radioNames.filter(name => form.querySelector(`input[type="radio"][name="${CSS.escape(name)}"]:checked`)).length;
+            const current = assessmentSteps[currentStepIndex];
+            const progress = current?.querySelector(".assessmentProgressPanel");
+            // Personal Details and any non-quiz page intentionally have no quiz-progress panel.
+            if (!progress) return;
+
+            const radioNames = [...new Set(
+                Array.from(current.querySelectorAll('input[type="radio"][name]')).map(input => input.name)
+            )];
+            const answered = radioNames.filter(name =>
+                current.querySelector(`input[type="radio"][name="${CSS.escape(name)}"]:checked`)
+            ).length;
             const percent = radioNames.length ? Math.round((answered / radioNames.length) * 100) : 0;
-            const fill = document.getElementById("assessmentProgressFill");
-            const completion = document.getElementById("assessmentCompletionText");
-            const track = document.querySelector("#assessmentProgress .assessment-progress-track");
+            const fill = progress.querySelector(".assessmentProgressFill");
+            const completion = progress.querySelector(".assessmentCompletionText");
+            const track = progress.querySelector(".assessment-progress-track");
             if (fill) fill.style.width = percent + "%";
             if (completion) completion.textContent = `${percent}% completed · ${answered} of ${radioNames.length} quiz questions answered`;
             if (track) track.setAttribute("aria-valuenow", String(percent));
         }
 
         function setDraftStatus(message, state = "saved") {
-            const status = document.getElementById("draftStatus");
+            const current = assessmentSteps[currentStepIndex];
+            const status = current?.querySelector(".draftStatus");
             if (!status) return;
             status.textContent = message;
             status.classList.toggle("saving", state === "saving");
@@ -4336,7 +4396,9 @@
         async function submitForm(e) {
             if (e) e.preventDefault();
             const form = document.getElementById("quizForm");
-            const submitBtn = document.getElementById("submitBtn");
+            // The visible submit control is the wizard's final-step navigation button.
+            const submitBtn = assessmentSteps[currentStepIndex]?.querySelector('[data-step-action="next"]')
+                || document.getElementById("submitBtn");
             if (form.dataset.submitting === "true") return;
 
             if (!form.checkValidity()) {
@@ -4349,7 +4411,11 @@
             }
 
             form.dataset.submitting = "true";
-            if (submitBtn) { submitBtn.disabled = true; submitBtn.innerText = "Processing Data…"; }
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerText = "Submitting… Please wait";
+                submitBtn.setAttribute("aria-live", "polite");
+            }
             saveDraftNow();
             setDraftStatus("Submitting your completed assessment…", "saving");
 
@@ -4388,7 +4454,7 @@
                 payload.prakritiFireTotal = getDOMText("prakritiFireTotal");
                 payload.prakritiWaterTotal = getDOMText("prakritiWaterTotal");
 
-                if (submitBtn) submitBtn.innerText = "Submitting Data…";
+                if (submitBtn) submitBtn.innerText = "Submitting… Please wait";
                 const urlParams = new URLSearchParams();
                 Object.keys(payload).forEach(key => urlParams.append(key, payload[key]));
 
@@ -4419,7 +4485,13 @@
                 alert("We could not confirm submission. Your answers are still saved on this device. Please check your connection and try again.");
             } finally {
                 form.dataset.submitting = "false";
-                if (submitBtn) { submitBtn.disabled = false; submitBtn.innerText = "Submit Form"; }
+                // Restore the wizard label after an error; on success the form has returned to Step 1.
+                if (submitBtn && submitBtn.isConnected) {
+                    submitBtn.disabled = false;
+                    const isLastStep = currentStepIndex === assessmentSteps.length - 1;
+                    submitBtn.innerText = isLastStep ? "Submit Assessment ✓" : "Continue →";
+                    submitBtn.removeAttribute("aria-live");
+                }
             }
         }
 
